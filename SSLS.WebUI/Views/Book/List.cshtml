@@ -1,0 +1,16 @@
+﻿@model SSLS.WebUI.Models.BooksListViewModel
+
+@{
+    ViewBag.Title = "Book List";
+}
+
+<div class="Mycontent">
+    @foreach (var p in Model.Books)
+    {
+        @Html.Partial("BookSummary", p)
+    }
+</div>
+<div class="text-center">
+    @Html.PageLinks(Model.PagingInfo,
+   x => Url.Action("List", new { categoryId = Model.CurrentCategoryId, page = x }))
+</div>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<SSLS.Domain.Concrete.Category>
+
+<div class="list-group side-bar">
+    @Html.ActionLink("主页", "List", "Book", null, new { @class = "list-group-item" + (ViewBag.CurrentcategoryId == 0 ? " active" : "") })
+
+    @foreach (var category in Model)
+    {
+        @Html.RouteLink(category.Name,
+        new { controller = "Book", action = "List", categoryId = category.Id, Page = 1 },
+                new { @class = "list-group-item" + (category.Id == ViewBag.CurrentcategoryId ? " active" : "") })
+    }
+</div>

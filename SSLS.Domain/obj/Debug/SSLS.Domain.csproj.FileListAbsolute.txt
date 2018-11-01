@@ -1,0 +1,11 @@
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll.config
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.pdb
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\EntityFramework.dll
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.dll
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\EntityFramework.xml
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.xml
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb
+H:\2018_MVC\Work1\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
