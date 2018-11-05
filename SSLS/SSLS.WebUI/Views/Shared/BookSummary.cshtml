@@ -1,0 +1,17 @@
+﻿@model SSLS.Domain.Concrete.Book
+
+
+<div class="col-xs-6 col-sm-4 col-md-3">
+    <div class="Mythub thumbnail ">
+        <a href="#@Model.Id"><img src="@Model.ImageUrl" alt="@Model.Id"></a>
+        <div class="caption">
+            <h3 class="hheight"><a href="#@Model.Id">@Model.Name</a></h3>
+            <p class="pheight">@Model.Description</p>
+            <div class="myadd">
+                <span class="spanPrice">@Model.Price.Value.ToString("c")</span>
+                @*<p><a class="label label-danger">@Model.Authors</a></p>*@
+                <a href="" class="addto pull-right">添加</a>
+            </div>
+        </div>
+    </div>
+</div>

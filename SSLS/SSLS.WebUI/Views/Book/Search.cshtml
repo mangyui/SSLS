@@ -1,0 +1,36 @@
+﻿@model SSLS.WebUI.Models.BooksListViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+@*该视图专有的css 不要改变位置*@
+<script>
+    $(".list-group-item").removeClass("active");
+</script>
+<style>    
+    .Myh1{
+        display:none;
+    }
+    .Mybank {
+        height:150px;
+        padding-top:24px;
+    }
+    .mgt20{
+        margin-top:20px;
+        color:#666;
+    }
+
+</style>
+
+<div class="Mycontent">
+    @foreach (var p in Model.Books)
+    {
+        @Html.Partial("BookSummary2", p)
+    }
+</div>
+
+<div class="text-center mgt20">
+    <p>没有更多了...</p>
+</div>
