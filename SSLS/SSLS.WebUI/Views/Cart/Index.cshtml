@@ -1,0 +1,69 @@
+﻿@model SSLS.WebUI.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "购物车";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    #cartTable td, #cartTable th{
+        vertical-align: middle;
+        text-align: center;
+        width:20%;
+    }
+    .Cart_bg{
+        background:#fff;
+        padding:20px;
+    }
+</style>
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li class="active">图书暂存架</li>
+</ol>
+<div class="Cart_bg">
+    <table id="cartTable" class="table">
+        <thead>
+            <tr>
+                <th>图书</th>
+                <th>书名</th>
+                <th>数量</th>
+                <th>金额</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cartLine in Model.Cart.Lines)
+            {
+                <tr>
+                    <td><img src="@cartLine.Book.ImageUrl" alt="@cartLine.Book.Name" width="100%"></td>
+                    <td>@cartLine.Book.Name</td>
+                    <td>@cartLine.Quantity</td>
+                    <td>@cartLine.Book.Price.Value.ToString("c")</td>
+                    @*<td>@((cartLine.Book.Price.Value * cartLine.Quantity).ToString("c"))</td>*@
+                    <td>
+                        @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                        {
+                            @Html.Hidden("Id", cartLine.Book.Id)
+                            @Html.HiddenFor(x => x.ReturnUrl)
+                            <input class="btn btn-sm btn-warning" type="submit" value="移除" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" style="text-align:right">合计：￥@Model.Cart.ComputeTotalValue()</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-right">
+        <a href="@Model.ReturnUrl" class="btn btn-primary">继续选择</a>
+        @Html.ActionLink("立即借阅", "Checkout", null, new { @class = "btn btn-success" })
+    </div>
+</div>
+
+

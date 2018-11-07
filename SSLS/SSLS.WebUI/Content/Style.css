@@ -9,7 +9,7 @@ body{
 .navbar {
     border-radius: 0;
     margin-bottom: 0;
-    background: #d9534f;
+    background: #202d40;
     border: 0;
 }
 .navbar .navbar-brand {
@@ -19,11 +19,11 @@ body{
 }
 
 .navbar-inverse .navbar-right li a{
-    color:#ddd;
+    color:#eee;
 }
 
 .pheight {
-    height: 40px;
+    height: 36px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -58,7 +58,7 @@ body{
     transition:.3s;
 }
 .hheight a:hover{
-    color:#d9534f;
+    color:#202d40;
 }
 .hheight .label-info{
     margin-left:10px;
@@ -95,7 +95,7 @@ body{
 }
 
 .side-bar .list-group-item.active, .side-bar .list-group-item:hover {
-    background-color: #d9534f;
+    background-color: #202d40;
     color: #fff;
     margin-bottom: 0;
 }
@@ -173,7 +173,7 @@ body{
     margin-bottom: 10px;
 }
 .Mythub  img {
-    padding: 14px;
+    padding: 5px 45px;
 }
 .Mythub  img:hover {
    transition: .5s;
@@ -194,18 +194,20 @@ body{
 
 .addto{
     display:inline-block;
-    border:1px solid #d9534f;
-    width: 60px;
+    border:1px solid #202d40;
+    width:70px;
     height: 30px;
     text-align: center;
-    border-radius:5px;
-    color: #d9534f;
+    border-radius:50px;
+    color: #202d40;
     line-height: 30px;
     font-weight: bold;
+    background: transparent;
     transition:.3s;
+    padding-top: 0;
 }
 .addto:hover{
-   background: #d9534f;
+   background: #202d40;
    color:#fff;
    text-decoration:none;
 }
@@ -228,7 +230,7 @@ body{
 }
 .Mylist .Mylist_body{
     flex-grow: 1;
-    padding:10px;
+    padding-right:10px;
 }
 .Mylist img{
     width:180px;
@@ -257,11 +259,12 @@ body{
     opacity:0.6;
 }
 
-.push,footer{
-    height:49px;
+.push{
+    height:65px;
 }
 
 footer{
+    height:49px;
     background: #fff;
     line-height: 49px;
     border-top: 1px solid #eee;
@@ -270,11 +273,41 @@ footer p{
     margin:0;
 }
 
+.cart_total{
+    background:#fff;
+    border-radius:50%;
+    color:#202d40;
+    position: relative;
+    top: -8px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.navbar-nav>li>.dropdown-menu{
+    background-color:#202d40;
+    margin-top:1px;
+}
+.navbar-nav>li>.dropdown-menu>li>a{
+        padding-top: 10px;
+    padding-bottom: 10px;
+}
+.navbar-nav>li>.dropdown-menu>li>a:hover{
+    color: #202d40;
+    transition:.3s;
+}
+
+.breadcrumb a{
+    color:#202d40;
+}
+
 @media (max-width: 768px){
     #bs-example-navbar-collapse-1{
         position: absolute;
         z-index:999;
-        background: rgb(217, 83, 79);
+        background: #202d40;
         right: 15px;
         width: 36%;
         text-align: center;
@@ -311,7 +344,10 @@ footer p{
         padding-left:5px;
         padding-right:5px;
     }
-    ..Mylist .Mylist_body{
+    .Mylist .Mylist_body{
         padding:0;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+        color:#eee;
     }
 }

@@ -1,0 +1,82 @@
+﻿@model SSLS.Domain.Concrete.Reader
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    .Mypanel {
+        max-width: 350px;
+        margin: 100px auto;
+        padding: 80px 10px 10px;
+        position: relative;
+        border-color: #eee;
+    }
+    .login_logo{
+        width:150px;
+        height:150px;
+        background-image: linear-gradient(to bottom right,#202d40,#2a68c3,#202d40);
+        /*background:linear-gradient(to right,#673ab7,#d9534f);*/
+        border-radius:50%;
+        position:absolute;
+        top:0;
+        left:50%;
+        margin-left:-76px;
+        margin-top:-75px;
+        text-align:center;
+        line-height:150px;
+    }
+    .login_logo img{
+        width:120px;
+        border-radius:50%;
+        background:#fff;
+    }
+    .login_btn{
+        margin:25px 0 5px;
+        width:100%;
+        color:#fff;
+        background-image: linear-gradient(to bottom right,#202d40,#2a68c3,#202d40);
+        font-weight:bold;
+        border:0;
+    }
+    .login_btn:hover{
+        color:#fff;
+    }
+    .login_btn:active{
+       background:#202d40
+    }
+    .Mypanel .form-control,.Mypanel .login_btn{
+        height:auto;
+        padding:10px;
+    }
+    .login_to{
+        color:#202d40;
+        font-size:12px;
+    }
+</style>
+
+<div class="Mypanel panel panel-info">
+    <div class="login_logo">
+        <a href="#"><img src="/PImages/img/logo.png" alt="" /></a>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary();
+            <div class="form-group">
+                <label>UserCode</label>
+                @Html.TextBoxFor(c => c.Code, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
+            </div>
+            <div class="text-center">
+                <input type="submit" value="LOGIN" class="btn login_btn" />
+                <a href="#" class="login_to">还没有账号？前往注册....</a>
+            </div>
+        }
+    </div>
+</div>
+

@@ -3,13 +3,21 @@
 
 
 <div class="Mylist">
-    <a href="#@Model.Id"><img src="@Model.ImageUrl" alt="@Model.Id"></a>
+    <a href="#@Model.Id"><img src="@Model.ImageUrl" alt="@Model.Name"></a>
     <div class="Mylist_body">
         <h3 class="hheight"><a href="#@Model.Id">@Model.Name</a><span class="label label-info">@Model.Status</span></h3>
         <p class="pheight">@Model.Description</p>
         <p class="pull-right"><span>@Model.Press </span> <span>@Model.PublishDate.Value.ToString("d")</span></p>
         <p><a class="label label-danger">@Model.Authors</a></p>
-        <a href="" class="addto pull-right">添加</a>
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            <div class="pull-right">
+                @Html.HiddenFor(x => x.Id)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="addto pull-right" value="选择" />
+            </div>
+        }
+        @*<a href="" class="addto pull-right">选择</a>*@
         <span class="spanPrice">@Model.Price.Value.ToString("c")</span>
     </div>
 </div>

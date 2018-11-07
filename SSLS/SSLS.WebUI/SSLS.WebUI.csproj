@@ -109,6 +109,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\error.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -134,13 +135,19 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ReaderController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
+    <Compile Include="Infrastructure\Binders\ReaderModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\BooksListViewModel.cs" />
+    <Compile Include="Models\CartIndexViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -155,6 +162,11 @@
     <Content Include="Views\Shared\BookSummary.cshtml" />
     <Content Include="Views\Book\Search.cshtml" />
     <Content Include="Views\Shared\bookSummary2.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Reader\Login.cshtml" />
+    <Content Include="Views\Reader\Summary.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

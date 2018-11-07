@@ -11,5 +11,6 @@ namespace SSLS.Domain.Abstract
     {
         IQueryable<Book> Books { get; }
         IQueryable<Category> Categories { get; }
+        IQueryable<Reader> Readers { get; }
     }
 }

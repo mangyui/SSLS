@@ -1,13 +1,4 @@
-﻿
-
-/* Set padding to keep content from hitting the edges */
-
-
-/* Set width on the form input elements since they're 100% wide by default */
-
-
-/* styles for validation helpers */
-.field-validation-error {
+﻿.field-validation-error {
     color: #b94a48;
 }
 
@@ -25,6 +16,7 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-errors {
     color: #b94a48;
+    background: #fddede;
 }
 
 .validation-summary-valid {

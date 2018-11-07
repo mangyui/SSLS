@@ -9,6 +9,7 @@
     @*<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />*@
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/error.css" rel="stylesheet" />
     <style>
     </style>
 </head>
@@ -34,27 +35,7 @@
                 </div>
             </div>
         </nav>
-        <div class="Mybank">
-            <div class="Mybank_mark"></div>
-            <h1 class="Myh1">MANGYU</h1>
-            @using (Html.BeginForm("Search", "Book", FormMethod.Get, new { @id = "mySearch" }))
-            {
-                <p>
-                    @Html.TextBox("SearchString") <br />
-                    <button type="submit" class="btn btn-danger btn-lg">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </p>
-            }
-        </div>
-
-        <div id="categories">
-            <div class="container">
-                @Html.Action("Menu", "Nav")
-            </div>
-        </div>
         <div class="Mybody">
-            <hr class="Myhr" />
             <div class="container">
                 @RenderBody()
             </div>
