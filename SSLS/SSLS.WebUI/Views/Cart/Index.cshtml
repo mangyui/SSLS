@@ -14,6 +14,7 @@
     .Cart_bg{
         background:#fff;
         padding:20px;
+        border-top: 5px solid #d9534f;
     }
 </style>
 
@@ -27,7 +28,7 @@
             <tr>
                 <th>图书</th>
                 <th>书名</th>
-                <th>数量</th>
+                <th>作者</th>
                 <th>金额</th>
                 <th>操作</th>
             </tr>
@@ -38,7 +39,7 @@
                 <tr>
                     <td><img src="@cartLine.Book.ImageUrl" alt="@cartLine.Book.Name" width="100%"></td>
                     <td>@cartLine.Book.Name</td>
-                    <td>@cartLine.Quantity</td>
+                    <td>@cartLine.Book.Authors</td>
                     <td>@cartLine.Book.Price.Value.ToString("c")</td>
                     @*<td>@((cartLine.Book.Price.Value * cartLine.Quantity).ToString("c"))</td>*@
                     <td>

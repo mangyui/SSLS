@@ -3,7 +3,7 @@
 }
 
 body{
-    background: #f4f4f4;
+    background: #f6f6f6;
 }
 
 .navbar {
@@ -58,9 +58,9 @@ body{
     transition:.3s;
 }
 .hheight a:hover{
-    color:#202d40;
+    color:#d9534f;
 }
-.hheight .label-info{
+.hheight .label{
     margin-left:10px;
 }
 
@@ -70,6 +70,35 @@ body{
     font-size: 16px;
 }
 
+.book_state{
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 23px;
+    min-width: 82px;
+    position: absolute;
+    right: -40px;
+    text-align: center;
+    text-transform: uppercase;
+    top: 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index:99
+}
+.book_state::before{
+    border-bottom: 39px solid #d9534f;
+    border-top: 0 none;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+.book_state span{
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 13px;
+}
 
 #categories{
     padding-top:24px;
@@ -171,6 +200,7 @@ body{
     position:relative;
     border:0;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 .Mythub  img {
     padding: 5px 45px;
@@ -178,6 +208,7 @@ body{
 .Mythub  img:hover {
    transition: .5s;
    transform:scale(1.05);
+
 }
 .Mythub .caption
 {
@@ -206,10 +237,13 @@ body{
     transition:.3s;
     padding-top: 0;
 }
-.addto:hover{
+.addto:not([disabled]):hover{
    background: #202d40;
    color:#fff;
    text-decoration:none;
+}
+.addto[disabled]{
+    opacity: 0.4;
 }
 /*.Mybody{
         background: #f4f4f4;
@@ -218,6 +252,9 @@ body{
     display: inline-block;
     height: 100%;
     padding: 5px;
+}
+.book_label{
+    background-color:#202d40;
 }
 
 .Mylist{
@@ -301,6 +338,10 @@ footer p{
 
 .breadcrumb a{
     color:#202d40;
+}
+
+.foot_bg{
+    width:100%;
 }
 
 @media (max-width: 768px){
