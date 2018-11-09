@@ -1,0 +1,128 @@
+﻿@model SSLS.WebUI.Models.DetailViewModel
+
+@{
+    ViewBag.Title = "商品详情";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("List", "Book", new { categoryId = @Model.Book.Category_ID })">@Model.Book.Category.Name</a></li>
+    <li class="active">@Model.Book.Name</li>
+</ol>
+
+<div class="Detail_bg">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="@Model.Book.ImageUrl" class="Datail_book" alt="@Model.Book.Name" width="100%" />
+        </div>
+        <div class="col-sm-8">
+            <h3 class="Detail_name">@Model.Book.Name<span class="label @(Model.Book.Status =="在库" ? "label-info":"label-danger")">@Model.Book.Status</span></h3>
+            <p class="Myact">【@Model.category】不读此书，后悔一辈子...</p>
+            <div class="myMess">
+                <div>
+                    <span>售价</span><p class="myPrice">@Model.Book.Price.Value.ToString("c")</p>
+                </div>
+                <div>
+                    <span>作者</span><p>@Model.Book.Authors</p>
+                </div>
+                <div>
+                    <span>出版社</span><p>@Model.Book.Press</p>
+                </div>
+                <div>
+                    <span>出版日期</span><p>@Model.Book.PublishDate.Value.ToString("d")</p>
+                </div>
+            </div>
+            <div class="mySize">
+                <span>规格</span>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        请选择
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><a href="#">款式1</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">款式2</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">款式3</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="javascript:history.back(-1)" class="addto  pull-right">继续购物</a>
+            @using (Html.BeginForm("AddToCart", "Cart"))
+            {
+                <div class="">
+                    @Html.HiddenFor(x => x.Book.Id, new { Name = "Id" })
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" @(Model.Book.Status == "在库" ? "" : "disabled") class="addto" value="选择" />
+                </div>
+            }
+
+        </div>
+    </div>
+    <div>
+        <p class="myDesc">@Model.Book.Description</p>
+    </div>
+</div>
+<style>
+    .Detail_bg {
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 1px 2px 0 #cecece;
+    }
+    .Datail_book{
+        padding:20px;
+    }
+    .Detail_name{
+        font-weight:bold;
+    }
+    .Detail_name .label{
+        font-size:13px;
+        margin-left:20px;
+    }
+    .Myact {
+        font-size: 11px;
+        color: #d9534f;
+        margin-bottom:15px;
+    }
+
+    .myDesc {
+        border-left: 5px solid #113468;
+        padding: 10px;
+        margin: 20px 0;
+        background-color: #d0e3ff;
+        padding-bottom: 50px;
+    }
+
+    .myMess {
+        background: #f5f5f5;
+        padding: 10px 10px 20px;
+        font-size: 12px;
+    }
+
+    .mySize {
+        margin: 10px 0;
+        padding-left: 10px;
+    }
+
+    .myMess > div, .mySize {
+        display: flex;
+        align-items: center;
+    }
+
+    .myMess > div > span, .mySize > span {
+        margin: 8px 0;
+        width: 100px;
+    }
+
+    .myMess > div > p {
+        margin-bottom: 0;
+    }
+
+    .myPrice {
+        color: #d9534f;
+        font-size: 20px;
+    }
+</style>

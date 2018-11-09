@@ -10,6 +10,7 @@ body{
     border-radius: 0;
     margin-bottom: 0;
     background: #202d40;
+    background-image: linear-gradient(to right,#113468,#202d40);
     border: 0;
 }
 .navbar .navbar-brand {
@@ -201,6 +202,8 @@ body{
     border:0;
     margin-bottom: 10px;
     overflow: hidden;
+    box-shadow: 0 1px 2px 0 #cecece;
+    border-radius:2px;
 }
 .Mythub  img {
     padding: 5px 45px;
@@ -220,17 +223,17 @@ body{
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #eee;
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 .addto{
     display:inline-block;
-    border:1px solid #202d40;
+    border:1px solid #FF6160;
     width:70px;
     height: 30px;
     text-align: center;
-    border-radius:50px;
-    color: #202d40;
+    border-radius:1px;
+    color: #FF6160;
     line-height: 30px;
     font-weight: bold;
     background: transparent;
@@ -238,7 +241,7 @@ body{
     padding-top: 0;
 }
 .addto:not([disabled]):hover{
-   background: #202d40;
+   background: #FF6160;
    color:#fff;
    text-decoration:none;
 }
@@ -264,6 +267,7 @@ body{
     margin-bottom:10px;
     border-radius:5px;
     align-items: center;
+    box-shadow: 0 1px 2px 0 #cecece;
 }
 .Mylist .Mylist_body{
     flex-grow: 1;
@@ -325,6 +329,7 @@ footer p{
 }
 .navbar-nav>li>.dropdown-menu{
     background-color:#202d40;
+    background-image: linear-gradient(to right,#113468,#202d40);
     margin-top:1px;
 }
 .navbar-nav>li>.dropdown-menu>li>a{
@@ -349,6 +354,7 @@ footer p{
         position: absolute;
         z-index:999;
         background: #202d40;
+        background-image: linear-gradient(to right,#113468,#202d40);
         right: 15px;
         width: 36%;
         text-align: center;

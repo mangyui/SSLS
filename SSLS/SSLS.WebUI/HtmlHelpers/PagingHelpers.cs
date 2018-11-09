@@ -17,7 +17,7 @@ namespace SSLS.WebUI.HtmlHelpers
         {
             StringBuilder result = new StringBuilder();
             TagBuilder ul = new TagBuilder("ul");
-            ul.AddCssClass("pagination pagination-lg");
+            ul.AddCssClass("pagination");
             for (int i = 0; i <= PagingInfo.TotalPages + 1; i++)
             {
                 TagBuilder li = new TagBuilder("li");
