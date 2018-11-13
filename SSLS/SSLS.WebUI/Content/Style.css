@@ -10,7 +10,7 @@ body{
     border-radius: 0;
     margin-bottom: 0;
     background: #202d40;
-    background-image: linear-gradient(to right,#113468,#202d40);
+    background: linear-gradient(90deg,#f46d4c 0,#e4505d);
     border: 0;
 }
 .navbar .navbar-brand {
@@ -126,6 +126,7 @@ body{
 
 .side-bar .list-group-item.active, .side-bar .list-group-item:hover {
     background-color: #202d40;
+    background: linear-gradient(90deg,#f46d4c 0,#e4505d);
     color: #fff;
     margin-bottom: 0;
 }
@@ -217,7 +218,33 @@ body{
 {
     padding-top:0;
 }
-
+.hub_author{
+    display:flex;
+    align-items:center;
+}
+.hub_author .glyphicon{
+     background: #ec5353;
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+}
+.hub_author a{
+    display:inline-block;
+    text-decoration:none;
+    color:#e4505d;
+    font-size:12px;
+        overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    max-width:100px;
+    height:24px;
+    line-height:24px;
+    margin-left:5px;
+    cursor:pointer;
+}
 .myadd{
     display: flex;
     justify-content: space-between;
@@ -317,7 +344,7 @@ footer p{
 .cart_total{
     background:#fff;
     border-radius:50%;
-    color:#202d40;
+    color:#e4505d;
     position: relative;
     top: -8px;
     display: inline-block;
@@ -328,8 +355,8 @@ footer p{
     font-weight: bold;
 }
 .navbar-nav>li>.dropdown-menu{
-    background-color:#202d40;
-    background-image: linear-gradient(to right,#113468,#202d40);
+    border:0;
+    background: linear-gradient(90deg,#f46d4c 0,#e4505d);
     margin-top:1px;
 }
 .navbar-nav>li>.dropdown-menu>li>a{
@@ -349,12 +376,192 @@ footer p{
     width:100%;
 }
 
+/*登录页样式*/
+    .Mypanel {
+        max-width: 350px;
+        margin: 100px auto 0;
+        padding: 80px 10px 10px;
+        position: relative;
+        border-color: #eee;
+        background: rgba(255,255,255,0.9);
+    }
+    .login_logo{
+        width:150px;
+        height:150px;
+        /*background-image: linear-gradient(to bottom right,#202d40,#2a68c3,#202d40);*/
+        background-image:linear-gradient(to bottom right,#e4505d,#f46d4c,#e4505d);
+        border-radius:50%;
+        position:absolute;
+        top:0;
+        left:50%;
+        margin-left:-76px;
+        margin-top:-75px;
+        text-align:center;
+        line-height:150px;
+    }
+    .login_logo img{
+        width:120px;
+        border-radius:50%;
+        background:#fff;
+    }
+    .login_btn{
+        margin:25px 0 5px;
+        width:100%;
+        color:#fff;
+        /*background-image: linear-gradient(to bottom right,#202d40,#2a68c3,#202d40);*/
+        background-image:linear-gradient(to bottom right,#e4505d,#f46d4c,#e4505d);
+        font-weight:bold;
+        border:0;
+    }
+    .login_btn:hover{
+        color:#fff;
+    }
+    .login_btn:active{
+       background:#202d40
+    }
+    .Mypanel .form-control,.Mypanel .login_btn{
+        height:auto;
+        padding:10px;
+    }
+    .login_to{
+        color:#202d40;
+        font-size:12px;
+    }
+    .login_bg{
+        width:100%;
+        position:fixed;
+        z-index:-1;
+        /*opacity:0.8;*/
+        left:0;
+        background:url('/Pimages/img/book2.jpg') center no-repeat;
+        height:100%;
+    }
+    .myCode{
+        display:flex;
+    }
+    .myCode img{
+        border:1px solid #eee;
+        width:120px;
+    }
+
+
+
+/*图书详情样式*/
+    .Detail_bg {
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 1px 2px 0 #cecece;
+    }
+    .Detail_bigimg{
+        padding:20px;
+    }
+    .Detail_name{
+        font-weight:bold;
+    }
+    .Detail_name .label{
+        font-size:13px;
+        margin-left:20px;
+    }
+    .Myact {
+        font-size: 11px;
+        color: #d9534f;
+        margin-bottom:15px;
+    }
+
+    .myDesc {
+        border-left: 5px solid #e4505d;
+        padding: 10px;
+        margin: 20px 0;
+        background-color: #ffd7d7;
+        padding-bottom: 50px;
+    }
+
+    .myMess {
+        background: #f5f5f5;
+        padding: 10px 10px 20px;
+        font-size: 12px;
+    }
+
+    .mySize {
+        margin: 10px 0;
+        padding-left: 10px;
+    }
+
+    .myMess > div, .mySize {
+        display: flex;
+        align-items: center;
+    }
+
+    .myMess > div > span, .mySize > span {
+        margin: 8px 0;
+        width: 100px;
+    }
+
+    .myMess > div > p {
+        margin-bottom: 0;
+    }
+
+    .myPrice {
+        color: #d9534f;
+        font-size: 20px;
+    }
+
+/*图书暂存架样式*/
+    #cartTable td, #cartTable th{
+        vertical-align: middle;
+        text-align: center;
+    }
+    .Cart_bg{
+        background:#fff;
+        padding:20px;
+        border-top: 5px solid #e4505d;
+        box-shadow: 0 1px 2px 0 #cecece;
+    }
+    .Cart_select{
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 20px;
+        min-height: 20px;
+    }
+    .Cart_select i{
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+        border: 1px solid #d2d2d2;
+        line-height: 18px;
+        transition:.1s;
+        cursor:pointer;
+    }
+     .Cart_select i:hover{
+        border: 1px solid #5FB878;
+     }
+    .Cart_select .iactive{
+        background: #5FB878;
+        border: 1px solid #5FB878;
+    }
+    .Cart_datail{
+        margin: 0 auto;
+        display: inline-block;
+    }
+    .Cart_datail>div{
+        display: flex;
+        align-items: center;
+         font-size: 14px;
+    }
+    .Cart_datail>div > span{
+        margin: 5px 0;
+        width: 80px;
+        text-align: left;
+    }
+
 @media (max-width: 768px){
     #bs-example-navbar-collapse-1{
         position: absolute;
         z-index:999;
         background: #202d40;
-        background-image: linear-gradient(to right,#113468,#202d40);
+        background: linear-gradient(90deg,#f46d4c 0,#e4505d);
         right: 15px;
         width: 36%;
         text-align: center;
@@ -396,5 +603,23 @@ footer p{
     }
     .navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
         color:#eee;
+    }
+    .hub_author .glyphicon{
+        display:none;
+    }
+    .hub_author a{
+        max-width:60px;
+    }
+    .Cart_bg{
+        padding:5px;
+    }
+    .Cart_datail>div{
+        font-size:10px;
+    }
+    .Cart_datail>div > span{
+        width:50px;
+    }
+    .Cart_book{
+        padding:0!important;
     }
 }

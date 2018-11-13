@@ -13,8 +13,8 @@
             <h3 class="hheight"><a href="@Url.Action("Index", "Detail",new{id=Model.Id})">@Model.Name</a></h3>
             <p class="pheight">@Model.Description</p>
             <div class="myadd">
-                <span class="spanPrice">@Model.Price.Value.ToString("c")</span>
-                @*<p><a class="label label-danger">@Model.Authors</a></p>*@
+                @*<span class="spanPrice">@Model.Price.Value.ToString("c")</span>*@
+                <div class="hub_author"><span class="glyphicon glyphicon-pencil"></span><a>@Model.Authors</a></div>
                 @using (Html.BeginForm("AddToCart", "Cart"))
                 {
                     <div class="pull-right">

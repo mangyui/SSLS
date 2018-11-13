@@ -123,13 +123,72 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Pimages\img\book2.jpg" />
+    <Content Include="Pimages\img\logo.png" />
+    <Content Include="Pimages\img\topbg.jpg" />
+    <Content Include="Pimages\js_bczj.jpg" />
+    <Content Include="Pimages\js_c0d1.jpg" />
+    <Content Include="Pimages\js_cyydcx.jpg" />
+    <Content Include="Pimages\js_java.jpg" />
+    <Content Include="Pimages\js_jqxx.jpg" />
+    <Content Include="Pimages\js_sdxx.jpg" />
+    <Content Include="Pimages\ls_2z.jpg" />
+    <Content Include="Pimages\ls_sj.jpg" />
+    <Content Include="Pimages\ls_ybs.jpg" />
+    <Content Include="Pimages\ls_zglstkp.jpg" />
+    <Content Include="Pimages\ls_zgts.jpg" />
+    <Content Include="Pimages\ls_zztj.jpg" />
+    <Content Include="Pimages\lz_bdr.jpg" />
+    <Content Include="Pimages\lz_gtszylcd.jpg" />
+    <Content Include="Pimages\lz_hhxqj.jpg" />
+    <Content Include="Pimages\lz_jldn.jpg" />
+    <Content Include="Pimages\lz_rxdld.jpg" />
+    <Content Include="Pimages\lz_ypjqj.jpg" />
+    <Content Include="Pimages\qk_ambjy.jpg" />
+    <Content Include="Pimages\qk_ddhlw.jpg" />
+    <Content Include="Pimages\qk_qbg.jpg" />
+    <Content Include="Pimages\qk_syjh.jpg" />
+    <Content Include="Pimages\qk_xsjs99.jpg" />
+    <Content Include="Pimages\qk_yxl.jpg" />
+    <Content Include="Pimages\sr_1001y.jpg" />
+    <Content Include="Pimages\sr_atsth.jpg" />
+    <Content Include="Pimages\sr_glth.jpg" />
+    <Content Include="Pimages\sr_qydrj.jpg" />
+    <Content Include="Pimages\sr_ty300s.jpg" />
+    <Content Include="Pimages\sr_ysyy.jpg" />
+    <Content Include="Pimages\wx_fslj.jpg" />
+    <Content Include="Pimages\wx_jrgw3tgm.jpg" />
+    <Content Include="Pimages\wx_lbxplj.jpg" />
+    <Content Include="Pimages\wx_pfdsj.jpg" />
+    <Content Include="Pimages\wx_wc.jpg" />
+    <Content Include="Pimages\wx_zhxs.jpg" />
+    <Content Include="Pimages\xs_cndqsjlg.jpg" />
+    <Content Include="Pimages\xs_hz.jpg" />
+    <Content Include="Pimages\xs_jmqy.jpg" />
+    <Content Include="Pimages\xs_jyzhd.jpg" />
+    <Content Include="Pimages\xs_lbqdgcb.jpg" />
+    <Content Include="Pimages\xs_rs.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jqZoom\jquery.jqzoom.js" />
+    <Content Include="Scripts\jqZoom\use_jqzoom.js" />
+    <Content Include="Scripts\jqZoom\xq_bigimg.js" />
+    <Content Include="Scripts\layer\layer.js" />
+    <Content Include="Scripts\layer\mobile\layer.js" />
+    <Content Include="Scripts\layer\mobile\need\layer.css" />
+    <Content Include="Scripts\layer\theme\default\icon-ext.png" />
+    <Content Include="Scripts\layer\theme\default\icon.png" />
+    <Content Include="Scripts\layer\theme\default\layer.css" />
+    <Content Include="Scripts\layer\theme\default\loading-0.gif" />
+    <Content Include="Scripts\layer\theme\default\loading-1.gif" />
+    <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\totop.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -151,6 +210,7 @@
     <Compile Include="Models\DetailViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\ValidataCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

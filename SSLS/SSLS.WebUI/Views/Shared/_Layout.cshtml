@@ -71,9 +71,12 @@
     </footer>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/totop.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
     <script>
-        //if (window.location.pathname != "/")
-        //    window.location.hash = 'categories'
+        @*@if(TempData["msg"]!=null)
+        {
+            layer.msg(@TempData["msg"], {icon: 1});
+        }*@
     </script>
 </body>
 </html>

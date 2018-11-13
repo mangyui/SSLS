@@ -25,6 +25,12 @@ namespace SSLS.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(model.Vcode!=Session["vcode"].ToString())
+                {
+                    ModelState.AddModelError("", "验证码不正确！");
+                    TempData["msg"] = "验证码不正确";
+                    return View();
+                }
                 Reader ReaderEntry = repository.Readers.FirstOrDefault(c =>
                     c.Code == model.Code && c.Password == model.Password);
                 if (ReaderEntry != null)
@@ -35,6 +41,7 @@ namespace SSLS.WebUI.Controllers
                 else
                 {
                     ModelState.AddModelError("", "用户名或密码不正确！");
+                    TempData["msg"] = "用户名或密码不正确";
                     return View();
                 }
             }
@@ -47,11 +54,28 @@ namespace SSLS.WebUI.Controllers
         public ActionResult Logout()
         {
             HttpContext.Session["Reader"] = null;
-            return View("Login");
+            return RedirectToAction("Login");
         }
         public PartialViewResult Summary(Reader Reader)
         {
             return PartialView(Reader);
         }
+
+        #region 验证码
+        [OutputCache(Duration = 0)]
+        public ActionResult VCode()
+        {
+            string code = ValidataCode.MyRandom(4);
+            Session["vcode"] = code;
+            byte[] bytes = ValidataCode.GetVerifyCode(code);
+            //ValidateCode.CreateImage(code);
+            return File(bytes, @"image/gif");
+        }
+
+        public string GetCode()
+        {
+            return Session["vcode"].ToString();
+        }
+        #endregion
     }
 }

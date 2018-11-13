@@ -12,5 +12,6 @@ namespace SSLS.WebUI.Models
         public string Code { get; set; }
         [Required]
         public string Password { get; set; }
+        public string Vcode { get; set; }
     }
 }
