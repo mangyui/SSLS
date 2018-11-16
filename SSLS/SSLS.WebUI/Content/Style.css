@@ -353,11 +353,20 @@ footer p{
     line-height: 20px;
     text-align: center;
     font-weight: bold;
+    font-size:13px;
 }
+.cart_badge{
+    background:#f5f5f5;
+    color:#e4505d;
+    margin-left:5px;
+}
+.navbar-nav .glyphicon{
+    font-size:17px;
+}
+
 .navbar-nav>li>.dropdown-menu{
     border:0;
     background: linear-gradient(90deg,#f46d4c 0,#e4505d);
-    margin-top:1px;
 }
 .navbar-nav>li>.dropdown-menu>li>a{
         padding-top: 10px;
@@ -523,7 +532,10 @@ footer p{
         min-width: 20px;
         min-height: 20px;
     }
-    .Cart_select i{
+    .Cart_select input[type=checkbox]{
+        display:none;
+    }
+    .Cart_select label{
         width: 20px;
         height: 20px;
         font-size: 12px;
@@ -534,10 +546,10 @@ footer p{
         transition:.1s;
         cursor:pointer;
     }
-     .Cart_select i:hover{
+     .Cart_select label:hover{
         border: 1px solid #5FB878;
      }
-    .Cart_select .iactive{
+    .Cart_select input[type=checkbox]:checked + label{
         background: #5FB878;
         border: 1px solid #5FB878;
     }
@@ -555,7 +567,24 @@ footer p{
         width: 80px;
         text-align: left;
     }
-
+    .Cart_book img{
+        width:75%;
+    }
+    .Cart_bg .btn{
+        font-size:14px;
+    }
+.Checkout_reader{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.Checkout_reader th{
+  text-align: right;
+  width:50%;
+  padding: 10px 20px;
+}
+#msg{
+    display:none!important;
+}
 @media (max-width: 768px){
     #bs-example-navbar-collapse-1{
         position: absolute;
@@ -621,5 +650,8 @@ footer p{
     }
     .Cart_book{
         padding:0!important;
+    }
+    .Cart_book img{
+        width:120%;
     }
 }

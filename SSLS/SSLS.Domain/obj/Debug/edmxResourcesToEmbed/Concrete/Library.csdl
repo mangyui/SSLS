@@ -26,12 +26,13 @@
     <Property Name="Reader_ID" Type="Int32" Nullable="false" />
     <Property Name="Book_ID" Type="Int32" Nullable="false" />
     <Property Name="BorrowDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ShouldDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShouldDate" Type="DateTime" Precision="3" />
     <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Renew" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Book" Relationship="Self.FK__Borrow__Book_ID__0EA330E9" FromRole="Borrow" ToRole="Book" />
     <NavigationProperty Name="Reader" Relationship="Self.FK__Borrow__Reader_I__0DAF0CB0" FromRole="Borrow" ToRole="Reader" />
     <NavigationProperty Name="Fine" Relationship="Self.FK__Fine__Borrow_ID__145C0A3F" FromRole="Borrow" ToRole="Fine" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -54,6 +55,7 @@
     <Property Name="Payment" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <NavigationProperty Name="Borrow" Relationship="Self.FK__Fine__Borrow_ID__145C0A3F" FromRole="Fine" ToRole="Borrow" />
     <NavigationProperty Name="Reader" Relationship="Self.FK__Fine__Reader_ID__15502E78" FromRole="Fine" ToRole="Reader" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Reader">
     <Key>

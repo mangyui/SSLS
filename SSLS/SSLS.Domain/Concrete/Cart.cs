@@ -9,7 +9,7 @@ namespace SSLS.Domain.Concrete
     public class Cart
     {
         private List<CartLine> lineCollection = new List<CartLine>();
-        public void AddItem(Book book, int quantity)
+        public void AddItem(Book book)
         {
             CartLine line = lineCollection.Where(e => e.Book.Id == book.Id).FirstOrDefault();
             if (line == null)
@@ -24,22 +24,16 @@ namespace SSLS.Domain.Concrete
                  //   }
                  //}
 
-                lineCollection.Add(new CartLine { Book = book, Quantity = quantity });
+                lineCollection.Add(new CartLine { Book = book });
             }
         }
+        
         public IEnumerable<CartLine> Lines
         {
             get { return lineCollection; }
         }
         public void Removeline(Book book)
         {
-            //using (var db = new LibraryEntities())
-            //{
-            //    Book bookEntry = db.Book.Find(book.Id);
-            //    bookEntry.Status = "在库";
-            //    db.SaveChanges();  //保存更改，EF框架的数据对象修改部分会同步更新到数据库
-            //    lineCollection.RemoveAll(e => e.Book.Id == book.Id);
-            //}
             lineCollection.RemoveAll(e => e.Book.Id == book.Id);
         }
         public void Clear()
@@ -48,7 +42,7 @@ namespace SSLS.Domain.Concrete
         }
         public decimal ComputeTotalValue()
         {
-            return lineCollection.Sum(e => e.Book.Price.Value * e.Quantity);
+            return lineCollection.Sum(e => e.Book.Price.Value);
         }
     }
 }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IBooksRepository.cs" />
+    <Compile Include="Abstract\IBorrowProcessor.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Concrete\Book.cs">
       <DependentUpon>Library.tt</DependentUpon>
@@ -61,6 +62,7 @@
     <Compile Include="Concrete\Category.cs">
       <DependentUpon>Library.tt</DependentUpon>
     </Compile>
+    <Compile Include="Concrete\DatabaseBorrowProcessor.cs" />
     <Compile Include="Concrete\EFBookRepository.cs" />
     <Compile Include="Concrete\Fine.cs">
       <DependentUpon>Library.tt</DependentUpon>

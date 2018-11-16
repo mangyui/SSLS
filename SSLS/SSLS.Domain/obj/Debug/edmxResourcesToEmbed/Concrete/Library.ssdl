@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Book">
     <Key>
       <PropertyRef Name="Id" />
@@ -24,9 +24,10 @@
     <Property Name="Reader_ID" Type="int" Nullable="false" />
     <Property Name="Book_ID" Type="int" Nullable="false" />
     <Property Name="BorrowDate" Type="datetime" Nullable="false" />
-    <Property Name="ShouldDate" Type="datetime" Nullable="false" />
+    <Property Name="ShouldDate" Type="datetime" />
     <Property Name="ReturnDate" Type="datetime" Nullable="false" />
     <Property Name="Renew" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -46,6 +47,7 @@
     <Property Name="Reader_ID" Type="int" Nullable="false" />
     <Property Name="OverDays" Type="int" Nullable="false" />
     <Property Name="Payment" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Reader">
     <Key>
@@ -59,7 +61,7 @@
     <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Book__Category_I__0519C6AF">
+  <Association Name="FK__Book__Category_I__7F60ED59">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="Book" Type="Self.Book" Multiplicity="*" />
     <ReferentialConstraint>
@@ -71,7 +73,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Borrow__Book_ID__0EA330E9">
+  <Association Name="FK__Borrow__Book_ID__0519C6AF">
     <End Role="Book" Type="Self.Book" Multiplicity="1" />
     <End Role="Borrow" Type="Self.Borrow" Multiplicity="*" />
     <ReferentialConstraint>
@@ -83,7 +85,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Borrow__Reader_I__0DAF0CB0">
+  <Association Name="FK__Borrow__Reader_I__0425A276">
     <End Role="Reader" Type="Self.Reader" Multiplicity="1" />
     <End Role="Borrow" Type="Self.Borrow" Multiplicity="*" />
     <ReferentialConstraint>
@@ -95,7 +97,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Fine__Borrow_ID__145C0A3F">
+  <Association Name="FK__Fine__Borrow_ID__08EA5793">
     <End Role="Borrow" Type="Self.Borrow" Multiplicity="1" />
     <End Role="Fine" Type="Self.Fine" Multiplicity="*" />
     <ReferentialConstraint>
@@ -107,7 +109,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Fine__Reader_ID__15502E78">
+  <Association Name="FK__Fine__Reader_ID__09DE7BCC">
     <End Role="Reader" Type="Self.Reader" Multiplicity="1" />
     <End Role="Fine" Type="Self.Fine" Multiplicity="*" />
     <ReferentialConstraint>
@@ -125,23 +127,23 @@
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Fine" EntityType="Self.Fine" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reader" EntityType="Self.Reader" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Book__Category_I__0519C6AF" Association="Self.FK__Book__Category_I__0519C6AF">
+    <AssociationSet Name="FK__Book__Category_I__7F60ED59" Association="Self.FK__Book__Category_I__7F60ED59">
       <End Role="Category" EntitySet="Category" />
       <End Role="Book" EntitySet="Book" />
     </AssociationSet>
-    <AssociationSet Name="FK__Borrow__Book_ID__0EA330E9" Association="Self.FK__Borrow__Book_ID__0EA330E9">
+    <AssociationSet Name="FK__Borrow__Book_ID__0519C6AF" Association="Self.FK__Borrow__Book_ID__0519C6AF">
       <End Role="Book" EntitySet="Book" />
       <End Role="Borrow" EntitySet="Borrow" />
     </AssociationSet>
-    <AssociationSet Name="FK__Borrow__Reader_I__0DAF0CB0" Association="Self.FK__Borrow__Reader_I__0DAF0CB0">
+    <AssociationSet Name="FK__Borrow__Reader_I__0425A276" Association="Self.FK__Borrow__Reader_I__0425A276">
       <End Role="Reader" EntitySet="Reader" />
       <End Role="Borrow" EntitySet="Borrow" />
     </AssociationSet>
-    <AssociationSet Name="FK__Fine__Borrow_ID__145C0A3F" Association="Self.FK__Fine__Borrow_ID__145C0A3F">
+    <AssociationSet Name="FK__Fine__Borrow_ID__08EA5793" Association="Self.FK__Fine__Borrow_ID__08EA5793">
       <End Role="Borrow" EntitySet="Borrow" />
       <End Role="Fine" EntitySet="Fine" />
     </AssociationSet>
-    <AssociationSet Name="FK__Fine__Reader_ID__15502E78" Association="Self.FK__Fine__Reader_ID__15502E78">
+    <AssociationSet Name="FK__Fine__Reader_ID__09DE7BCC" Association="Self.FK__Fine__Reader_ID__09DE7BCC">
       <End Role="Reader" EntitySet="Reader" />
       <End Role="Fine" EntitySet="Fine" />
     </AssociationSet>

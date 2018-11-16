@@ -12,18 +12,18 @@ namespace SSLS.WebUI.Controllers
     public class CartController : Controller
     {
         private IBooksRepository repository;
-        //private IOrderProcessor orderProcessor;
-        public CartController(IBooksRepository bookRepository)
+        private IBorrowProcessor borrowProcessor;
+        public CartController(IBooksRepository bookRepository, IBorrowProcessor proc)
         {
             this.repository = bookRepository;
-            //this.orderProcessor = proc;
+            this.borrowProcessor = proc;
         }
         public RedirectToRouteResult AddToCart(Cart cart, int id, string returnUrl)
         {
             Book book = repository.Books.FirstOrDefault(p => p.Id == id);
             if (book != null)
             {
-                cart.AddItem(book, 1);
+                cart.AddItem(book);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
@@ -48,6 +48,53 @@ namespace SSLS.WebUI.Controllers
         public PartialViewResult Summary(Cart cart)
         {
             return PartialView(cart);
+        }
+        [HttpPost]
+        public RedirectToRouteResult Confirm(Cart cart, int[] Selected, Reader reader)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                TempData["msg"] = "您的暂存架为空！";
+                return RedirectToAction("Index");
+            }
+            if (reader.Id == 0)
+            {
+                TempData["msg"] = "抱歉，请先登录！";
+                return RedirectToAction("Index");
+            }
+            if (Selected==null || Selected.Length == 0)
+            {
+                TempData["msg"] = "您还未勾选书籍！";
+               return RedirectToAction("Index");;
+            }
+            List<Book> books=new List<Book>();
+            foreach(CartLine cl in cart.Lines)
+            {
+                if(Array.IndexOf(Selected,cl.Book.Id)!=-1)
+                {
+                    books.Add(cl.Book);
+                }
+            }
+             Session["books"] = books;
+            return RedirectToAction("Checkout");
+        }
+
+        public ViewResult Checkout(Reader reader)
+        {
+            List<Book> books = Session["books"] as List<Book>;
+            return View(new CheckoutModel
+            {
+                Books = books,
+                Reader=reader
+            });
+        }
+
+        public ViewResult Completed(Cart cart, Reader reader)
+        {
+            List<Book> books = Session["books"] as List<Book>;
+            borrowProcessor.ProcessBorrow(books, reader);
+            cart.Clear();
+            return View();
         }
     }
 }

@@ -7,10 +7,11 @@ using SSLS.Domain.Concrete;
 
 namespace SSLS.WebUI.Models
 {
-    public class CartIndexViewModel
+    public class CheckoutModel
     {
-        public Cart Cart { get; set; }
-        public string ReturnUrl { get; set; }
-        public int[] Selected { get; set; }
+        public List<Book> Books { get; set; }
+
+        public Reader Reader { get; set; }
+
     }
 }

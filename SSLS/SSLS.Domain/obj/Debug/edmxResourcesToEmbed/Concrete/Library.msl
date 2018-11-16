@@ -21,6 +21,7 @@
     <EntitySetMapping Name="Borrow">
       <EntityTypeMapping TypeName="LibraryModel.Borrow">
         <MappingFragment StoreEntitySet="Borrow">
+          <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Reader_ID" ColumnName="Reader_ID" />
           <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
@@ -44,6 +45,7 @@
     <EntitySetMapping Name="Fine">
       <EntityTypeMapping TypeName="LibraryModel.Fine">
         <MappingFragment StoreEntitySet="Fine">
+          <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Borrow_ID" ColumnName="Borrow_ID" />
           <ScalarProperty Name="Reader_ID" ColumnName="Reader_ID" />

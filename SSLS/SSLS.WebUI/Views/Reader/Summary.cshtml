@@ -3,7 +3,7 @@
 
 
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"> @Model.Name</span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user">@Model.Name</span></a>
     <ul class="dropdown-menu">
         @if (Model.Id == 0)
         {
@@ -13,6 +13,9 @@
         else
         {
             <li><a href=""><b>欢迎：</b>@Model.Name</a></li>
+            <li><a href="">我的借阅<span class="badge cart_badge">2</span></a></li>
+            <li><a href="">我的罚单<span class="badge cart_badge">0</span></a></li>
+            <li><a href="">借阅历史<span class="badge cart_badge">12</span></a></li>
             <li>@Html.ActionLink("登出", "Logout", "Reader")</li>
         }
     </ul>

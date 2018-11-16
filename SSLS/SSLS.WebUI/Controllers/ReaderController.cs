@@ -25,12 +25,11 @@ namespace SSLS.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(model.Vcode!=Session["vcode"].ToString())
-                {
-                    ModelState.AddModelError("", "验证码不正确！");
-                    TempData["msg"] = "验证码不正确";
-                    return View();
-                }
+                //if(model.Vcode!=Session["vcode"].ToString())
+                //{
+                //    TempData["msg"] = "验证码不正确";
+                //    return View();
+                //}
                 Reader ReaderEntry = repository.Readers.FirstOrDefault(c =>
                     c.Code == model.Code && c.Password == model.Password);
                 if (ReaderEntry != null)
@@ -40,7 +39,7 @@ namespace SSLS.WebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "用户名或密码不正确！");
+                    //ModelState.AddModelError("", "用户名或密码不正确！");
                     TempData["msg"] = "用户名或密码不正确";
                     return View();
                 }

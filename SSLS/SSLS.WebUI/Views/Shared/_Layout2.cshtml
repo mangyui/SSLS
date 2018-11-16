@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="@Url.Action("List", "Book")">MANGYU</a>
+                    <a class="navbar-brand" href="@Url.Action("List", "Book")">SSLS</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
@@ -46,20 +46,28 @@
     <footer class="text-center">
         <p>&copy; @DateTime.Now.Year - MANGYU</p>
     </footer>
+    @if (TempData["msg"] != null)
+    {
+        <div id="msg">@TempData["msg"]</div>
+    }
     <script src="~/Scripts/bootstrap.min.js"></script>
 
     <script src="~/Scripts/jqZoom/xq_bigimg.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script src="~/Scripts/totop.js"></script>
     <script>
-    //layer.ready(function () {
-
-    //    layer.msg("123", { icon: 2 });
-    //})
-     @*@if(TempData["msg"]!=null)
-    {
-        @TempData["msg"]
-    }*@
-</script>
+        layer.ready(function () {
+            if ($("#msg").text()!="")
+                layer.msg($("#msg").text(), { shift: 6 }, function () { });
+            layerwaring= function(mess, url) {
+                layer.confirm(mess, {         //询问框
+                    icon: 7,
+                    btn: ['确定', '取消'] //按钮
+                }, function () {
+                    window.location.href = url;
+                });
+            }
+    })
+    </script>
 </body>
 </html>

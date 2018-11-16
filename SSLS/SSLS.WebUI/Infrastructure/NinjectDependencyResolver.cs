@@ -33,6 +33,7 @@ namespace SSLS.WebUI.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IBooksRepository>().To<EFBookRepository>();
+            kernel.Bind<IBorrowProcessor>().To<DatabaseBorrowProcessor>();
         }
     }
 }

@@ -1,0 +1,80 @@
+﻿@model SSLS.WebUI.Models.CheckoutModel
+
+@{
+    ViewBag.Title = "确认订阅";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Cart")">图书暂存架</a></li>
+    <li class="active">确认订阅</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="Cart_bg" style="margin-bottom:30px">
+            <table class="Checkout_reader">
+                <caption class="text-center">借阅人信息</caption>
+                <tr>
+                    <th>借阅人：</th>
+                    <td>@Model.Reader.Name</td>
+                </tr>
+                <tr>
+                    <th>班级：</th>
+                    <td>@Model.Reader.Class</td>
+                </tr>
+                <tr>
+                    <th>邮箱：</th>
+                    <td>@Model.Reader.Email</td>
+                </tr>
+            </table>
+            <div class="text-center">
+                <a href="javascript:history.back(-1)" class="btn btn-primary">返回修改</a>
+                <a href="@Url.Action("Completed", "Cart")" class="btn btn-success">确认借阅</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div class="Cart_bg">
+            <table id="cartTable" class="table">
+                <caption class="text-center">借阅书籍</caption>
+                <thead>
+                    <tr>
+                        <th width="20%">图书</th>
+                        <th width="50%">图书详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in Model.Books)
+                    {
+                        <tr>
+                            <td class="Cart_book">
+                                <a href="@Url.Action("Index", "Detail", new { id = book.Id })">
+                                    <img src="@book.ImageUrl" alt="@book.Name" width="100%">
+                                </a>
+                            </td>
+                            <td>
+                                <div class="Cart_datail">
+                                    <div>
+                                        <span>书名:</span><div>@book.Name</div>
+                                    </div>
+                                    <div>
+                                        <span>作者:</span><div>@book.Authors</div>
+                                    </div>
+                                    <div>
+                                        <span>出版社:</span><div>@book.Press</div>
+                                    </div>
+                                    <div>
+                                        <span>出版日期:</span><div>@book.PublishDate.Value.ToString("d")</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -6,16 +6,22 @@
 }
 
 
-
 <ol class="breadcrumb">
     <li><a href="@Url.Action("List", "Book")">主页</a></li>
     <li class="active">图书暂存架</li>
 </ol>
 <div class="Cart_bg">
+@using (Html.BeginForm("Confirm", "Cart"))
+{ 
     <table id="cartTable" class="table">
         <thead>
             <tr>
-                <th width="15%"><div class="Cart_select th_selector"><i class="glyphicon glyphicon-ok"></i></div></th>  
+                <th width="15%">
+                    <div class="Cart_select">
+                        <input type="checkbox" id="Selecteds" />
+                        <label class="glyphicon glyphicon-ok" for="Selecteds"></label>
+                    </div>
+                </th>  
                 <th width="20%">图书</th>
                 <th width="50%">图书详情</th>
                 <th width="15%">操作</th>
@@ -25,7 +31,12 @@
             @foreach (var cartLine in Model.Cart.Lines)
             {
                 <tr>
-                    <td><div class="Cart_select td_selector"><i class="glyphicon glyphicon-ok"></i></div></td>  
+                    <td>
+                        <div class="Cart_select">
+                            <input type="checkbox" name="Selected" value="@cartLine.Book.Id" class="td_checkbox" id="Selected@(cartLine.Book.Id)" />
+                            <label class="glyphicon glyphicon-ok" for="Selected@(cartLine.Book.Id)"></label>
+                        </div>
+                    </td>  
                     <td class="Cart_book">
                         <a href="@Url.Action("Index", "Detail", new { id = cartLine.Book.Id })">
                            <img src="@cartLine.Book.ImageUrl" alt="@cartLine.Book.Name" width="100%">
@@ -34,7 +45,7 @@
                     <td>
                         <div class="Cart_datail">
                             <div>
-                                <span>售价:</span><div>@cartLine.Book.Price.Value.ToString("c")</div>
+                                <span>书名:</span><div>@cartLine.Book.Name</div>
                             </div>
                             <div>
                                 <span>作者:</span><div>@cartLine.Book.Authors</div>
@@ -47,57 +58,31 @@
                             </div>
                         </div>
                     </td>
-                    @*<td>@cartLine.Book.Authors</td>*@
-                    @*<td>@cartLine.Book.Price.Value.ToString("c")</td>*@
-                    @*<td>@((cartLine.Book.Price.Value * cartLine.Quantity).ToString("c"))</td>*@
                     <td>
-                        @using (Html.BeginForm("RemoveFromCart", "Cart"))
-                        {
-                            @Html.Hidden("Id", cartLine.Book.Id)
-                            @Html.HiddenFor(x => x.ReturnUrl)
-                            <input class="btn btn-sm btn-warning" type="submit" value="移除" />
-                        }
+                       <a class="btn btn-sm btn-warning" onclick="layerwaring('确定要删除吗', 'RemoveFromCart?id=@cartLine.Book.Id')">移除</a>
                     </td>
                 </tr>
             }
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="4" style="text-align:right">合计：￥@Model.Cart.ComputeTotalValue()</td>
-                <td></td>
-            </tr>
-        </tfoot>
     </table>
     <div class="text-right">
         <a href="@Model.ReturnUrl" class="btn btn-primary">继续选择</a>
-        @Html.ActionLink("立即借阅", "Checkout", null, new { @class = "btn btn-success" })
+        <input class="btn btn-sm btn-success" type="submit" value="立即借阅" />
     </div>
+}
 </div>
 
 
 <script>
-    $(".td_selector i").click(function () {
-        if ($(this).hasClass("iactive")) {
-            $(this).removeClass("iactive");
-            if ($(".td_selector i").length == $(".iactive").length)
-            $(".th_selector i").removeClass("iactive");
+    $(".td_checkbox").click(function () {
+        if ($(".td_checkbox").length == $(".td_checkbox:checked").length) {
+            $("#Selecteds").prop("checked", true);
         }
         else {
-            $(this).addClass("iactive");
-            if ($(".td_selector i").length == $(".iactive").length)
-               $(".th_selector i").addClass("iactive");
+            $("#Selecteds").prop("checked", false);
         }
     })
-    $(".th_selector i").click(function () {
-        if($(this).hasClass("iactive"))
-        {
-            $(this).removeClass("iactive");
-            $(".td_selector i").removeClass("iactive");
-        }
-        else
-        {
-            $(this).addClass("iactive");
-            $(".td_selector i").addClass("iactive");
-        }
+    $("#Selecteds").click(function () {
+        $(".td_checkbox").prop("checked", this.checked);
     })
 </script>

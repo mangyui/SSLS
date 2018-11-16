@@ -19,6 +19,7 @@ namespace SSLS.Domain.Concrete
         public int Reader_ID { get; set; }
         public int OverDays { get; set; }
         public decimal Payment { get; set; }
+        public string State { get; set; }
     
         public virtual Borrow Borrow { get; set; }
         public virtual Reader Reader { get; set; }

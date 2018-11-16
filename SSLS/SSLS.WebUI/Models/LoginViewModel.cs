@@ -8,10 +8,11 @@ namespace SSLS.WebUI.Models
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "请输入账号")]
         public string Code { get; set; }
-        [Required]
+        [Required(ErrorMessage = "请输入密码")]
         public string Password { get; set; }
+        //[Required(ErrorMessage = "请输入验证码")]
         public string Vcode { get; set; }
     }
 }
