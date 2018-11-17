@@ -48,7 +48,11 @@
     </footer>
     @if (TempData["msg"] != null)
     {
-        <div id="msg">@TempData["msg"]</div>
+        <div id="msg" class="hidden">@TempData["msg"]</div>
+    }
+    @if (TempData["msg1"] != null)
+    {
+        <div id="msg1" class="hidden">@TempData["msg1"]</div>
     }
     <script src="~/Scripts/bootstrap.min.js"></script>
 
@@ -58,11 +62,14 @@
     <script>
         layer.ready(function () {
             if ($("#msg").text()!="")
-                layer.msg($("#msg").text(), { shift: 6 }, function () { });
+                layer.msg($("#msg").text(), { anim: 6 });
+            if ($("#msg1").text() != "")
+                layer.alert($("#msg1").text(), { anim: 6 });
             layerwaring= function(mess, url) {
                 layer.confirm(mess, {         //询问框
                     icon: 7,
-                    btn: ['确定', '取消'] //按钮
+                    btn: ['确定', '取消'], //按钮
+                    anim: 3
                 }, function () {
                     window.location.href = url;
                 });

@@ -5,7 +5,7 @@
 <div class="Mylist">
     <a href="@Url.Action("Index", "Detail",new{id=Model.Id})"><img src="@Model.ImageUrl" alt="@Model.Name"></a>
     <div class="Mylist_body">
-        <h3 class="hheight"><a href="@Url.Action("Index", "Detail",new{id=Model.Id})">@Model.Name</a><span class="label @(Model.Status =="在库" ? "label-info":"label-danger")">@Model.Status</span></h3>
+        <h3 class="hheight"><a href="@Url.Action("Index", "Detail",new{id=Model.Id})">@Model.Name</a><span class="label @(Model.Status == "在库" ? "label-info" : (Model.Status == "未在库" ? "label-danger" : "label-warning"))">@Model.Status</span></h3>
         <p class="pheight">@Model.Description</p>
         <p class="pull-right"><span>@Model.Press </span> <span>@Model.PublishDate.Value.ToString("d")</span></p>
         <p><a class="label book_label">@Model.Authors</a></p>

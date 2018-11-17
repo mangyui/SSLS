@@ -10,5 +10,6 @@ namespace SSLS.Domain.Abstract
     public interface IBorrowProcessor
     {
         void ProcessBorrow(List<Book> books, Reader reader);
+        bool ProcessReturn(int borrowId, Reader reader);
     }
 }

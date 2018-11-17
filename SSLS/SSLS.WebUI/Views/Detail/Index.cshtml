@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <h3 class="Detail_name">@Model.Book.Name<span class="label @(Model.Book.Status =="在库" ? "label-info":"label-danger")">@Model.Book.Status</span></h3>
+            <h3 class="Detail_name">@Model.Book.Name<span class="label @(Model.Book.Status == "在库" ? "label-info" : (Model.Book.Status == "未在库" ? "label-danger" : "label-warning"))">@Model.Book.Status</span></h3>
             <p class="Myact">【@Model.category】不读此书，后悔一辈子...</p>
             <div class="myMess">
                 <div>

@@ -23,8 +23,8 @@ namespace SSLS.Domain.Concrete
         public int Reader_ID { get; set; }
         public int Book_ID { get; set; }
         public System.DateTime BorrowDate { get; set; }
-        public Nullable<System.DateTime> ShouldDate { get; set; }
-        public System.DateTime ReturnDate { get; set; }
+        public System.DateTime ShouldDate { get; set; }
+        public Nullable<System.DateTime> ReturnDate { get; set; }
         public string Renew { get; set; }
         public string State { get; set; }
     

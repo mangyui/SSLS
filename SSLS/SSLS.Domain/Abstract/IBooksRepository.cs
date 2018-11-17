@@ -12,5 +12,11 @@ namespace SSLS.Domain.Abstract
         IQueryable<Book> Books { get; }
         IQueryable<Category> Categories { get; }
         IQueryable<Reader> Readers { get; }
+        IQueryable<Borrow> Borrows { get; }
+
+        bool hasCode(string code);
+        void SaveReader(Reader reader);
+
+        void Recharge(Reader reader, decimal money);
     }
 }

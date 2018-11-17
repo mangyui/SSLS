@@ -65,7 +65,7 @@ namespace SSLS.WebUI.Controllers
             if (Selected==null || Selected.Length == 0)
             {
                 TempData["msg"] = "您还未勾选书籍！";
-               return RedirectToAction("Index");;
+               return RedirectToAction("Index");
             }
             List<Book> books=new List<Book>();
             foreach(CartLine cl in cart.Lines)
@@ -94,6 +94,7 @@ namespace SSLS.WebUI.Controllers
             List<Book> books = Session["books"] as List<Book>;
             borrowProcessor.ProcessBorrow(books, reader);
             cart.Clear();
+            Session["books"] = null;
             return View();
         }
     }

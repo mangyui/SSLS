@@ -13,18 +13,16 @@ namespace SSLS.Domain.Concrete
         {
             CartLine line = lineCollection.Where(e => e.Book.Id == book.Id).FirstOrDefault();
             if (line == null)
-            {    
-                 //using(var db = new LibraryEntities()){
-                 //   Book bookEntry = db.Book.Find(book.Id);
-                 //   if (bookEntry.Status == "在库")
-                 //   {
-                 //       bookEntry.Status = "已选择";
-                 //       db.SaveChanges();  //保存更改，EF框架的数据对象修改部分会同步更新到数据库
-                 //       lineCollection.Add(new CartLine { Book = book, Quantity = quantity });
-                 //   }
-                 //}
+            {
+                using (var db = new LibraryEntities())
+                {
+                    Book bookEntry = db.Book.Find(book.Id);
+                    if (bookEntry.Status == "在库")
+                    {
+                        lineCollection.Add(new CartLine { Book = book });
+                    }
 
-                lineCollection.Add(new CartLine { Book = book });
+                }
             }
         }
         

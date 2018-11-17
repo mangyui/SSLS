@@ -3,8 +3,8 @@
 
 <div class="col-xs-6 col-sm-4 col-md-3">
     <div class="Mythub thumbnail ">
-       @if (@Model.Status!="在库"){
-        <div class="book_state">
+       @if (Model.Status!="在库"){
+        <div class="book_state @(Model.Status == "外借" ? "state-warning" : "")">
             <span>@Model.Status</span>
         </div>
         }

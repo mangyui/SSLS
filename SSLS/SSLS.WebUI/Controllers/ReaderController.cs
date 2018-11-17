@@ -50,6 +50,44 @@ namespace SSLS.WebUI.Controllers
             }
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterModel registerModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if(!repository.hasCode(registerModel.Code))
+                {
+                    Reader reader = new Reader
+                    {
+                        Code = registerModel.Code,
+                        Name = registerModel.Name,
+                        Class = registerModel.Class,
+                        Email = registerModel.Email,
+                        Password = registerModel.Password,
+                    };
+                    repository.SaveReader(reader);
+                    TempData["msg1"] = string.Format("{0}注册成功", reader.Name);
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    TempData["msg1"] = string.Format("{0} 账号已占用", registerModel.Code);
+                    return View();
+                }
+            }
+            else
+            {
+                TempData["msg"] = "填写错误";
+                return View();
+            }
+
+        }
+
         public ActionResult Logout()
         {
             HttpContext.Session["Reader"] = null;

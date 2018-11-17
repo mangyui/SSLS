@@ -13,30 +13,7 @@
 </ol>
 
 <div class="row">
-    <div class="col-md-5">
-        <div class="Cart_bg" style="margin-bottom:30px">
-            <table class="Checkout_reader">
-                <caption class="text-center">借阅人信息</caption>
-                <tr>
-                    <th>借阅人：</th>
-                    <td>@Model.Reader.Name</td>
-                </tr>
-                <tr>
-                    <th>班级：</th>
-                    <td>@Model.Reader.Class</td>
-                </tr>
-                <tr>
-                    <th>邮箱：</th>
-                    <td>@Model.Reader.Email</td>
-                </tr>
-            </table>
-            <div class="text-center">
-                <a href="javascript:history.back(-1)" class="btn btn-primary">返回修改</a>
-                <a href="@Url.Action("Completed", "Cart")" class="btn btn-success">确认借阅</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-7">
+    <div class="col-md-8">
         <div class="Cart_bg">
             <table id="cartTable" class="table">
                 <caption class="text-center">借阅书籍</caption>
@@ -75,6 +52,29 @@
                     }
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="Cart_bg" style="margin-bottom:30px">
+            <table class="Checkout_reader">
+                <caption class="text-center">借阅人信息</caption>
+                <tr>
+                    <th>借阅人：</th>
+                    <td>@Model.Reader.Name (@Model.Reader.Code)</td>
+                </tr>
+                <tr>
+                    <th>班级：</th>
+                    <td>@Model.Reader.Class</td>
+                </tr>
+                <tr>
+                    <th>邮箱：</th>
+                    <td>@Model.Reader.Email</td>
+                </tr>
+            </table>
+            <div class="text-center">
+                <a href="javascript:history.back(-1)" class="btn btn-primary">返回修改</a>
+                <a href="@Url.Action("Completed", "Cart")" class="btn btn-success">确认借阅</a>
+            </div>
         </div>
     </div>
 </div>

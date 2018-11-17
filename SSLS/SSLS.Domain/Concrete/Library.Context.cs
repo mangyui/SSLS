@@ -13,14 +13,14 @@ namespace SSLS.Domain.Concrete
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.ModelConfiguration.Conventions;
-    
+
     public partial class LibraryEntities : DbContext
     {
         public LibraryEntities()
             : base("name=LibraryEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

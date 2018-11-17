@@ -37,7 +37,7 @@ namespace SSLS.WebUI.Models
                 gp.DrawLine(new Pen(RandColor()), rand.Next(MyBt.Width), rand.Next(MyBt.Height), rand.Next(MyBt.Width), rand.Next(MyBt.Height));
             }
             //绘制噪点
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 105; i++)
             {
                 MyBt.SetPixel(rand.Next(MyBt.Width), rand.Next(MyBt.Height), RandColor());
 

@@ -26,8 +26,8 @@
     <Property Name="Reader_ID" Type="Int32" Nullable="false" />
     <Property Name="Book_ID" Type="Int32" Nullable="false" />
     <Property Name="BorrowDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ShouldDate" Type="DateTime" Precision="3" />
-    <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShouldDate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
     <Property Name="Renew" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Book" Relationship="Self.FK__Borrow__Book_ID__0EA330E9" FromRole="Borrow" ToRole="Book" />
     <NavigationProperty Name="Reader" Relationship="Self.FK__Borrow__Reader_I__0DAF0CB0" FromRole="Borrow" ToRole="Reader" />

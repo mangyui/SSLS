@@ -194,6 +194,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BorrowController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\ReaderController.cs" />
@@ -206,11 +207,13 @@
     <Compile Include="Infrastructure\Binders\ReaderModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\BooksListViewModel.cs" />
+    <Compile Include="Models\BorrowViewModel.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\CheckoutModel.cs" />
     <Compile Include="Models\DetailViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ValidataCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,6 +236,9 @@
     <Content Include="Views\Detail\Index.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Completed.cshtml" />
+    <Content Include="Views\Borrow\Index.cshtml" />
+    <Content Include="Views\Reader\Register.cshtml" />
+    <Content Include="Views\Borrow\Summary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

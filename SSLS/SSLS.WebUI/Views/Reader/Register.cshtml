@@ -1,0 +1,61 @@
+﻿@model SSLS.WebUI.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="login_bg"></div>
+<div class="Mypanel panel panel-info">
+    <div class="login_logo">
+        <a href="#"><img src="/PImages/img/logo.png" alt="" /></a>
+    </div>
+    <div class="panel-body Register_form">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>账号:</label>
+                <div>
+                    @Html.TextBoxFor(c => c.Code, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>用户名:</label>
+                <div>
+                    @Html.TextBoxFor(c => c.Name, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>班级:</label>
+                <div>
+                    @Html.TextBoxFor(c => c.Class, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Class, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>邮箱:</label>
+                <div>
+                    @Html.TextBoxFor(c => c.Email, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>密码:</label>
+                <div>
+                    @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="注册" class="btn login_btn" />
+                <a href="@Url.Action("Login", "Reader")" class="login_to">已有账号，直接登录....</a>
+            </div>
+        }
+    </div>
+</div>
+
+

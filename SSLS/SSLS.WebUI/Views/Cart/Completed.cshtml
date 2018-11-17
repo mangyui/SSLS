@@ -4,5 +4,16 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Completed</h2>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Cart")">图书暂存架</a></li>
+    <li class="active">借阅结果</li>
+</ol>
 
+<div class="Cart_bg">
+    <h3 class="text-center">借阅成功！</h3>
+    <div class="text-center">
+        <a href="#" class="btn btn-primary">继续借阅</a>
+        <a href="#" class="btn btn-success">查看借阅</a>
+    </div>
+</div>
