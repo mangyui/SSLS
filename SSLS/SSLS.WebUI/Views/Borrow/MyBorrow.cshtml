@@ -1,0 +1,69 @@
+﻿@model SSLS.WebUI.Models.BorrowViewModel
+@{
+    ViewBag.Title = "我的借阅";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Borrow")">个人中心</a></li>
+    <li class="active">当前借阅</li>
+</ol>
+
+<div class="Cart_bg">
+    <table id="cartTable" class="table">
+        <caption class="text-center">我的借阅</caption>
+        <thead>
+            <tr>
+                <th width="20%">图书</th>
+                <th>图书详情</th>
+                <th>借阅详情</th>
+                <th width="">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var borrow in Model.Borrows)
+            {
+                <tr>
+                    <td class="Cart_book">
+                        <a href="@Url.Action("Detail", "Book", new { id = borrow.Book.Id })">
+                            <img src="@borrow.Book.ImageUrl" alt="@borrow.Book.Name" width="100%">
+                        </a>
+                    </td>
+                    <td>
+                        <div class="Cart_datail">
+                            <div>
+                                <div>《@borrow.Book.Name》</div>
+                            </div>
+                            <div>
+                                <div>@borrow.Book.Authors</div>
+                            </div>
+                            <div>
+                                <div>@borrow.Book.Press</div>
+                            </div>
+                            <div>
+                                <div>@borrow.Book.PublishDate.Value.ToString("d")</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="Cart_datail">
+                            <div>
+                                <span>借书日期:</span><div>@borrow.BorrowDate</div>
+                            </div>
+                            <div>
+                                <span>应还日期:</span><div>@borrow.ShouldDate</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="btn btn-sm bggreen" onclick="layerwaring('确定要归还《 @borrow.Book.Name 》吗', 'ReturnBook?id=@borrow.Id')">@(borrow.State == "已归还" ? "已归还" : "归还")</a>
+                        <a class="btn btn-sm bgblue @(borrow.Renew == "是" ? "disabled" : "")" onclick="layerwaring('确定要续借《 @borrow.Book.Name 》吗', 'Renew?id=@borrow.Id')">@(borrow.Renew == "是" ? "已续借" : "续借")</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

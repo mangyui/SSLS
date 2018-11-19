@@ -1,7 +1,7 @@
 ﻿@model SSLS.WebUI.Models.CheckoutModel
 
 @{
-    ViewBag.Title = "确认订阅";
+    ViewBag.Title = "确认借阅";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
@@ -28,7 +28,7 @@
                     {
                         <tr>
                             <td class="Cart_book">
-                                <a href="@Url.Action("Index", "Detail", new { id = book.Id })">
+                                <a href="@Url.Action("Detail", "Book", new { id = book.Id })">
                                     <img src="@book.ImageUrl" alt="@book.Name" width="100%">
                                 </a>
                             </td>
@@ -72,8 +72,8 @@
                 </tr>
             </table>
             <div class="text-center">
-                <a href="javascript:history.back(-1)" class="btn btn-primary">返回修改</a>
-                <a href="@Url.Action("Completed", "Cart")" class="btn btn-success">确认借阅</a>
+                <a href="javascript:history.back(-1)" class="btn bggray">返回修改</a>
+                <a href="@Url.Action("Completed", "Cart")" class="btn bggreen">确认借阅</a>
             </div>
         </div>
     </div>

@@ -67,7 +67,12 @@ namespace SSLS.WebUI.Controllers
                 };
                 return View(viewModel);
             }
+        }
 
+        public ActionResult Detail(int id)
+        {
+            Book book = repository.Books.FirstOrDefault(p => p.Id == id);
+            return View(book);
         }
     }
 }

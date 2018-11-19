@@ -196,7 +196,6 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BorrowController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\ReaderController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,7 +209,6 @@
     <Compile Include="Models\BorrowViewModel.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\CheckoutModel.cs" />
-    <Compile Include="Models\DetailViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -233,12 +231,14 @@
     <Content Include="Views\Reader\Summary.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
-    <Content Include="Views\Detail\Index.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Completed.cshtml" />
     <Content Include="Views\Borrow\Index.cshtml" />
     <Content Include="Views\Reader\Register.cshtml" />
     <Content Include="Views\Borrow\Summary.cshtml" />
+    <Content Include="Views\Borrow\MyBorrow.cshtml" />
+    <Content Include="Views\Book\Detail.cshtml" />
+    <Content Include="Views\Borrow\BorrowHistory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

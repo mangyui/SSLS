@@ -1,27 +1,30 @@
 ﻿@model SSLS.Domain.Concrete.Reader
 
-<div class="Cart_bg" style="margin-bottom:30px">
-    <table class="Checkout_reader">
-        <caption class="text-center">我的信息</caption>
-        <tr>
-            <th>借阅人：</th>
-            <td>@Model.Name (@Model.Code)</td>
-        </tr>
-        <tr>
-            <th>班级：</th>
-            <td>@Model.Class</td>
-        </tr>
-        <tr>
-            <th>邮箱：</th>
-            <td>@Model.Email</td>
-        </tr>
-        <tr>
-            <th>余额：</th>
-            <td>@Model.Price￥</td>
-        </tr>
-    </table>
-    <div class="text-center">
-        <a href="#" class="btn btn-primary">修改资料</a>
-        <a href="#" class="btn btn-success">充值余额</a>
+<div class="row">
+    <div class="user">
+        <div class="awater text-center">
+            <span class="glyphicon glyphicon-user"></span>
+            <p>@Model.Name (@Model.Code)</p>
+        </div>
+        <div>
+            <table class="Checkout_reader">
+                <tr>
+                    <th>班级：</th>
+                    <td>@Model.Class</td>
+                </tr>
+                <tr>
+                    <th>邮箱：</th>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <th>余额：</th>
+                    <td>@Model.Price￥</td>
+                </tr>
+            </table>
+            <div class="text-left">
+                <a href="#" class="btn bggray">修改资料</a>
+                <a href="#" class="btn bggreen">充值余额</a>
+            </div>
+        </div>
     </div>
 </div>

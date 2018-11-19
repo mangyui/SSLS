@@ -74,5 +74,32 @@ namespace SSLS.Domain.Concrete
                 }
             }
         }
+        public bool Renew(int borrowId, Reader reader)
+        {
+            using (var db = new LibraryEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {                              //使用数据库事务
+                    try
+                    {
+                        Borrow borrowEntry = db.Borrow.Find(borrowId);
+                        if (borrowEntry.Reader_ID==reader.Id&&borrowEntry.State == "在借" && borrowEntry.Renew=="否")
+                        {
+                            borrowEntry.ShouldDate = borrowEntry.ShouldDate.AddMonths(1);
+                            borrowEntry.Renew = "是";
+                            db.SaveChanges();  //保存更改，EF框架的数据对象修改部分会同步更新到数据库
+                            dbContextTransaction.Commit();  //事务完成，提交
+                            return true;
+                        }
+                        return false;
+                    }
+                    catch (Exception)
+                    {
+                        dbContextTransaction.Rollback(); //出现异常，事务回滚，所有数据操作取消
+                        return false;
+                    }
+                }
+            }
+        }
     }
 }

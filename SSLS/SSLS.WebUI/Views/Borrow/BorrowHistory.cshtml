@@ -1,0 +1,70 @@
+﻿@model SSLS.WebUI.Models.BorrowViewModel
+@{
+    ViewBag.Title = "借阅历史";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Borrow")">个人中心</a></li>
+    <li class="active">借阅历史</li>
+</ol>
+
+<div class="Cart_bg">
+    <table id="cartTable" class="table">
+        <caption class="text-center">借阅历史</caption>
+        <thead>
+            <tr>
+                <th width="20%">图书</th>
+                <th>图书详情</th>
+                <th>借阅详情</th>
+                <th width="">是否超期</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var borrow in Model.Borrows)
+            {
+                <tr>
+                    <td class="Cart_book">
+                        <a href="@Url.Action("Detail", "Book", new { id = borrow.Book.Id })">
+                            <img src="@borrow.Book.ImageUrl" alt="@borrow.Book.Name" width="100%">
+                        </a>
+                    </td>
+                    <td>
+                        <div class="Cart_datail">
+                            <div>
+                                <div>《@borrow.Book.Name》</div>
+                            </div>
+                            <div>
+                                <div>@borrow.Book.Authors</div>
+                            </div>
+                            <div>
+                                <div>@borrow.Book.Press</div>
+                            </div>
+                            <div>
+                                <div>@borrow.Book.PublishDate.Value.ToString("d")</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="Cart_datail">
+                            <div>
+                                <span>借书日期:</span><div>@borrow.BorrowDate</div>
+                            </div>
+                            <div>
+                                <span>应还日期:</span><div>@borrow.ShouldDate</div>
+                            </div>
+                            <div>
+                                <span>归还日期:</span><div>@borrow.ReturnDate</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        否
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

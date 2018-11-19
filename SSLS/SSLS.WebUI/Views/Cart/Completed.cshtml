@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Completed";
+    ViewBag.Title = "借阅结果";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
@@ -13,7 +13,7 @@
 <div class="Cart_bg">
     <h3 class="text-center">借阅成功！</h3>
     <div class="text-center">
-        <a href="#" class="btn btn-primary">继续借阅</a>
-        <a href="#" class="btn btn-success">查看借阅</a>
+        <a href="@Url.Action("List", "Book")" class="btn bgblue">继续借阅</a>
+        <a href="@Url.Action("Index", "Borrow")" class="btn bggray">查看借阅</a>
     </div>
 </div>

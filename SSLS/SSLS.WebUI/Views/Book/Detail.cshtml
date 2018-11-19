@@ -1,0 +1,70 @@
+﻿@model SSLS.Domain.Concrete.Book
+
+@{
+    ViewBag.Title = "图书详情";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("List", "Book", new { categoryId = @Model.Category_ID })">@Model.Category.Name</a></li>
+    <li class="active">@Model.Name</li>
+</ol>
+
+<div class="Detail_bg">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="Detail_bigimg">
+                <img src="@Model.ImageUrl" class="Datail_book" alt="@Model.Name" width="100%" xq_big="true" setting='{"pwidth":360,"pheight":360,"margin_top":0,"margin_left":0,"border":"1px solid #ccc"}' />
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h3 class="Detail_name">@Model.Name<span class="label @(Model.Status == "在库" ? "bggreen" : (Model.Status == "未在库" ? "label-danger" : "label-warning"))">@Model.Status</span></h3>
+            <p class="Myact">【@Model.Category.Name】不读此书，后悔一辈子...</p>
+            <div class="myMess">
+                <div>
+                    <span>售价</span><p class="myPrice">@Model.Price.Value.ToString("c")</p>
+                </div>
+                <div>
+                    <span>作者</span><p>@Model.Authors</p>
+                </div>
+                <div>
+                    <span>出版社</span><p>@Model.Press</p>
+                </div>
+                <div>
+                    <span>出版日期</span><p>@Model.PublishDate.Value.ToString("d")</p>
+                </div>
+            </div>
+            <div class="mySize">
+                <span>规格</span>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        请选择
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><a href="#">款式1</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">款式2</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">款式3</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="javascript:history.back(-1)" class="addto  pull-right">继续购物</a>
+            @using (Html.BeginForm("AddToCart", "Cart"))
+            {
+                <div class="">
+                    @Html.HiddenFor(x => x.Id, new { Name = "Id" })
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" @(Model.Status == "在库" ? "" : "disabled") class="addto" value="选择" />
+                </div>
+            }
+
+        </div>
+    </div>
+    <div>
+        <p class="myDesc">@Model.Description</p>
+    </div>
+</div>

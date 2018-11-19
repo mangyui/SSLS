@@ -1,74 +1,45 @@
 ﻿@model SSLS.WebUI.Models.BorrowViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "个人中心";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 
 <ol class="breadcrumb">
     <li><a href="@Url.Action("List", "Book")">主页</a></li>
-    <li class="active">我的借阅</li>
+    <li class="active">个人中心</li>
 </ol>
 
-<div class="row">
-    <div class="col-md-4 col-lg-3">
-        @Html.Action("Summary", "Borrow")
-    </div>
-    <div class="col-md-8 col-lg-9">
-        <div class="Cart_bg">
-            <table id="cartTable" class="table">
-                <caption class="text-center">我的借阅</caption>
-                <thead>
-                    <tr>
-                        <th width="20%">图书</th>
-                        <th>图书详情</th>
-                        <th>借阅详情</th>  
-                        <th width="">操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var borrow in Model.Borrows)
-                    {
-                        <tr>
-                            <td class="Cart_book">
-                                <a href="@Url.Action("Index", "Detail", new { id = borrow.Book.Id })">
-                                    <img src="@borrow.Book.ImageUrl" alt="@borrow.Book.Name" width="100%">
-                                </a>
-                            </td>
-                            <td>
-                                <div class="Cart_datail">
-                                    <div>
-                                        <div>《@borrow.Book.Name》</div>
-                                    </div>
-                                    <div>
-                                        <div>@borrow.Book.Authors</div>
-                                    </div>
-                                    <div>
-                                        <div>@borrow.Book.Press</div>
-                                    </div>
-                                    <div>
-                                        <div>@borrow.Book.PublishDate.Value.ToString("d")</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="Cart_datail">
-                                    <div>
-                                        <span>借书日期:</span><div>@borrow.BorrowDate</div>
-                                    </div>
-                                    <div>
-                                        <span>应还日期:</span><div>@borrow.ShouldDate</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <a class="btn btn-sm btn-warning" onclick="layerwaring('确定要归还《 @borrow.Book.Name 》吗', 'ReturnBook?id=@borrow.Id')">@(borrow.State == "已归还" ? "已归还" : "归还")</a>
-                                <a class="btn btn-sm btn-warning" onclick="layerwaring('确定要续借《 @borrow.Book.Name 》吗', '')">续借</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+<div class="Cart_bg">
+    @Html.Action("Summary", "Borrow")
+    <hr />
+    <div class="row">
+        <div class="col-sm-4 col-xs-6">
+            <a href="@Url.Action("MyBorrow", "Borrow")" class="My_block bgblue">
+                <div>
+                    <h3>@Model.Borrows.Count(c=>c.State=="在借")</h3>
+                    <p>当前借阅</p>
+                </div>
+                <span class="glyphicon glyphicon-duplicate"></span>
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <a href="@Url.Action("BorrowHistory", "Borrow")" class="My_block bggray">
+                <div>
+                    <h3>@Model.Borrows.Count(c => c.State == "已归还")</h3>
+                    <p>借阅历史</p>
+                </div>
+                <span class="glyphicon glyphicon-hourglass"></span>
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <a href="#" class="My_block">
+                <div>
+                    <h3>2</h3>
+                    <p>我的罚单</p>
+                </div>
+                <span class="glyphicon glyphicon-jpy"></span>
+            </a>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 ﻿@model SSLS.WebUI.Models.CartIndexViewModel
 
 @{
-    ViewBag.Title = "购物车";
+    ViewBag.Title = "图书暂存架";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
@@ -38,7 +38,7 @@
                         </div>
                     </td>  
                     <td class="Cart_book">
-                        <a href="@Url.Action("Index", "Detail", new { id = cartLine.Book.Id })">
+                        <a href="@Url.Action("Detail", "Book", new { id = cartLine.Book.Id })">
                            <img src="@cartLine.Book.ImageUrl" alt="@cartLine.Book.Name" width="100%">
                         </a>
                     </td>
@@ -66,8 +66,8 @@
         </tbody>
     </table>
     <div class="text-right">
-        <a href="@Model.ReturnUrl" class="btn btn-primary">继续选择</a>
-        <input class="btn btn-sm btn-success" type="submit" value="立即借阅" />
+        <a href="@Model.ReturnUrl" class="btn bggray">继续选择</a>
+        <input class="btn btn-sm bggreen" type="submit" value="立即借阅" />
     </div>
 }
 </div>
