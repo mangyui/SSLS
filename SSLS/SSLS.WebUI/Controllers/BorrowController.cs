@@ -13,6 +13,7 @@ namespace SSLS.WebUI.Controllers
     {
         private IBooksRepository repository;
         private IBorrowProcessor borrowProcessor;
+        public int PageSize = 5;
         public BorrowController(IBooksRepository bookRepository, IBorrowProcessor proc)
         {
             this.repository = bookRepository;
@@ -30,40 +31,62 @@ namespace SSLS.WebUI.Controllers
              Borrows=BorrowList
             });
         }
-        public ActionResult MyBorrow(Reader reader)
+        public ActionResult MyBorrow(Reader reader, int page = 1)
         {
             if (reader.Id == 0)
             {
                 TempData["msg"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
-            IQueryable<Borrow> BorrowList = repository.Borrows.OrderByDescending(b=>b.BorrowDate).Where(b => b.Reader_ID == reader.Id && b.State == "在借");
+            IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State == "在借");
+
             return View(new BorrowViewModel
             {
-                Borrows = BorrowList
+                Borrows = BorrowList.OrderByDescending(b => b.BorrowDate)
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = BorrowList.Count()
+                }
             });
         }
-        public ActionResult BorrowHistory(Reader reader)
+        public ActionResult BorrowHistory(Reader reader, int page = 1)
         {
             if (reader.Id == 0)
             {
                 TempData["msg"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
-            IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State == "已归还").OrderByDescending(b => b.ReturnDate);
+            IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State == "已归还");
+
             return View(new BorrowViewModel
             {
-                Borrows = BorrowList
+                Borrows = BorrowList.OrderByDescending(b => b.ReturnDate)
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = BorrowList.Count()
+                }
             });
         }
         public RedirectToRouteResult ReturnBook(int id, Reader reader)
         {
             bool f= borrowProcessor.ProcessReturn(id, reader);
+            if(f)
+                TempData["msg1"] = "归还成功！";
             return RedirectToAction("MyBorrow");
         }
         public RedirectToRouteResult Renew(int id, Reader reader)
         {
             bool f= borrowProcessor.Renew(id, reader);
+            if (f)
+                TempData["msg1"] = "续借成功！";
             return RedirectToAction("MyBorrow");
         }
         public PartialViewResult Summary(Reader Reader)

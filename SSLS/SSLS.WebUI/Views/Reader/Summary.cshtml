@@ -15,7 +15,7 @@
             <li><a href="@Url.Action("Index", "Borrow")">个人中心(<b>@Model.Name</b>)</a></li>
             <li><a href="@Url.Action("MyBorrow", "Borrow")">我的借阅<span class="badge cart_badge">2</span></a></li>
             <li><a href="@Url.Action("Index", "Borrow")">我的罚单<span class="badge cart_badge">0</span></a></li>
-            <li><a href="@Url.Action("Index", "Borrow")">借阅历史<span class="badge cart_badge">12</span></a></li>
+            <li><a href="@Url.Action("BorrowHistory", "Borrow")">借阅历史<span class="badge cart_badge">12</span></a></li>
             <li>@Html.ActionLink("登出", "Logout", "Reader")</li>
         }
     </ul>

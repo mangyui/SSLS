@@ -89,13 +89,18 @@ namespace SSLS.WebUI.Controllers
             });
         }
 
-        public ViewResult Completed(Cart cart, Reader reader)
+        public ActionResult Completed(Cart cart, Reader reader)   //ActionResult  可以RedirectToAction
         {
+            if(Session["books"]==null)
+            {
+                TempData["msg"] = "您还未勾选书籍！";
+                return RedirectToAction("Index");
+            }
             List<Book> books = Session["books"] as List<Book>;
             borrowProcessor.ProcessBorrow(books, reader);
             cart.Clear();
             Session["books"] = null;
-            return View();
+            return View(books);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@using SSLS.Domain.Concrete
+@model List<Book>
 @{
     ViewBag.Title = "借阅结果";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -12,6 +13,28 @@
 
 <div class="Cart_bg">
     <h3 class="text-center">借阅成功！</h3>
+    <table class="Checkout_reader">
+        <tr>
+            <th style="width: 40%;">借阅书籍：</th>
+            <td>
+             @if (Model.Count > 0)
+            {
+                foreach (Book b in Model)
+                {
+                    @("《"+b.Name+"》 ")
+                }
+            }
+         </td>
+        </tr>
+        <tr>
+            <th>借阅日期：</th>
+            <td>@DateTime.Now</td>
+        </tr>
+        <tr>
+            <th>应还日期：</th>
+            <td>@DateTime.Now.AddMonths(1)</td>
+        </tr>
+    </table>
     <div class="text-center">
         <a href="@Url.Action("List", "Book")" class="btn bgblue">继续借阅</a>
         <a href="@Url.Action("Index", "Borrow")" class="btn bggray">查看借阅</a>

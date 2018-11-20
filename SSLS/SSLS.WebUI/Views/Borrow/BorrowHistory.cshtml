@@ -30,19 +30,19 @@
                             <img src="@borrow.Book.ImageUrl" alt="@borrow.Book.Name" width="100%">
                         </a>
                     </td>
-                    <td>
+                    <td style="text-align:left">
                         <div class="Cart_datail">
                             <div>
-                                <div>《@borrow.Book.Name》</div>
+                                <span>书名:</span><div>《@borrow.Book.Name》</div>
                             </div>
                             <div>
-                                <div>@borrow.Book.Authors</div>
+                                <span>作者:</span><div>@borrow.Book.Authors</div>
                             </div>
                             <div>
-                                <div>@borrow.Book.Press</div>
+                                <span>出版社:</span><i>@borrow.Book.Press</i>
                             </div>
                             <div>
-                                <div>@borrow.Book.PublishDate.Value.ToString("d")</div>
+                                <span>出版日期:</span><div>@borrow.Book.PublishDate.Value.ToString("d")</div>
                             </div>
                         </div>
                     </td>
@@ -60,11 +60,15 @@
                         </div>
                     </td>
                     <td>
-                        否
+                        <span class="label bggreen">否</span>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+    <div class="text-center">
+        @Html.PageLinks(Model.PagingInfo,
+                    x => Url.Action("BorrowHistory", new { page = x }))
+    </div>
 </div>
 

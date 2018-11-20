@@ -14,7 +14,7 @@ namespace SSLS.WebUI.Controllers
     {
 
         private IBooksRepository repository;
-        public int PageSize = 8;
+        public int PageSize = 12;
 
         public BookController(IBooksRepository BookRepository)
         {
