@@ -6,7 +6,7 @@
 
 <ol class="breadcrumb">
     <li><a href="@Url.Action("List", "Book")">主页</a></li>
-    <li><a href="@Url.Action("Index", "Borrow")">个人中心</a></li>
+    <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
     <li class="active">借阅历史</li>
 </ol>
 
@@ -18,7 +18,18 @@
                 <th width="20%">图书</th>
                 <th>图书详情</th>
                 <th>借阅详情</th>
-                <th width="">是否超期</th>
+                <th width="">
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">是否超期 <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=0 })">全部</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=1 })">超期</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=2 })">未超期</a></li>
+                        </ul>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -60,7 +71,7 @@
                         </div>
                     </td>
                     <td>
-                        <span class="label bggreen">否</span>
+                        <span class="label @(borrow.State == "超期" ? "bgred" : "bggreen")">@(borrow.State == "超期" ? "是" : "否")</span>
                     </td>
                 </tr>
             }

@@ -1,0 +1,72 @@
+﻿@model SSLS.WebUI.Models.FinesViewModel
+@{
+    ViewBag.Title = "我的罚单";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
+    <li class="active">我的罚单</li>
+</ol>
+
+<div class="Cart_bg">
+    <table id="cartTable" class="table">
+        <caption class="text-center">我的罚单</caption>
+        <thead>
+            <tr>
+                <th width="20%">图书</th>
+                <th>超期详情</th>
+                <th>罚金</th>
+                <th>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">状态 <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=0 })">全部</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=1 })">待缴纳</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=2 })">已缴纳</a></li>
+                        </ul>
+                    </div>
+                </th>
+                <th width="">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fine in Model.Fines)
+            {
+                <tr>
+                    <td class="Cart_book">
+                        <a href="@Url.Action("Detail", "Book", new { id = fine.Borrow.Book.Id })">
+                            <img src="@fine.Borrow.Book.ImageUrl" alt="@fine.Borrow.Book.Name" width="100%">
+                        </a>
+                    </td>
+                    <td>
+                        <div class="Cart_datail">
+                            <div>
+                                <span>应还日期:</span><div>@fine.Borrow.ShouldDate</div>
+                            </div>
+                            <div>
+                                <span>归还日期:</span><div>@fine.Borrow.ReturnDate</div>
+                            </div>
+                            <div>
+                                <span>超期天数:</span><div>@fine.OverDays (天)</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@fine.Payment￥</td> 
+                    <td>@fine.State</td>                      
+                    <td>
+                        <a class="btn btn-sm bgred" onclick="layerwaring('确定要归还吗', '')">@(fine.State == "待缴纳" ? "缴纳" : "已缴纳")</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center">
+        @Html.PageLinks(Model.PagingInfo,
+                    x => Url.Action("Index", new { page = x }))
+    </div>
+</div>

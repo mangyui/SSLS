@@ -27,6 +27,10 @@ namespace SSLS.Domain.Concrete
         {
             get { return db.Borrow; }
         }
+        public IQueryable<Fine> Fines
+        {
+            get { return db.Fine; }
+        }
         public bool hasCode(string code)
         {
             if (db.Reader.Any(r => r.Code == code))

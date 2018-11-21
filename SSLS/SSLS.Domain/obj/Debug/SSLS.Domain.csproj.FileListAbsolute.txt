@@ -52,3 +52,14 @@ G:\2018_MVC\11_19\SSLS\SSLS.Domain\bin\Debug\zh-Hans\EntityFramework.resources.d
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll.config
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.pdb
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\EntityFramework.dll
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.dll
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\EntityFramework.xml
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.xml
+E:\11_19\SSLS\SSLS.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
+E:\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
+E:\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb

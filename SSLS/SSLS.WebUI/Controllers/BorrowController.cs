@@ -19,18 +19,6 @@ namespace SSLS.WebUI.Controllers
             this.repository = bookRepository;
             this.borrowProcessor = proc;
         }
-        public ActionResult Index(Reader reader)
-        {
-            if (reader.Id == 0)
-            {
-                TempData["msg"] = "您还未登录！";
-                return RedirectToAction("Login","Reader");
-            }
-            IQueryable<Borrow> BorrowList = repository.Borrows.Where(b=>b.Reader_ID == reader.Id);
-            return View(new BorrowViewModel { 
-             Borrows=BorrowList
-            });
-        }
         public ActionResult MyBorrow(Reader reader, int page = 1)
         {
             if (reader.Id == 0)
@@ -60,7 +48,7 @@ namespace SSLS.WebUI.Controllers
                 TempData["msg"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
-            IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State == "已归还");
+            IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State != "在借");
 
             return View(new BorrowViewModel
             {
@@ -88,10 +76,6 @@ namespace SSLS.WebUI.Controllers
             if (f)
                 TempData["msg1"] = "续借成功！";
             return RedirectToAction("MyBorrow");
-        }
-        public PartialViewResult Summary(Reader Reader)
-        {
-            return PartialView(Reader);
         }
 
     }

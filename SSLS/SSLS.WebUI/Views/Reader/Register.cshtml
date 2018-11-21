@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label>账号:</label>
                 <div>
-                    @Html.TextBoxFor(c => c.Code, "", new { @class = "form-control" })
+                    @Html.TextBoxFor(c => c.Code, "", new { Type = "number", @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Code, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label>邮箱:</label>
                 <div>
-                    @Html.TextBoxFor(c => c.Email, "", new { @class = "form-control" })
+                    @Html.TextBoxFor(c => c.Email, "", new { Type="email", @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
                 </div>
             </div>

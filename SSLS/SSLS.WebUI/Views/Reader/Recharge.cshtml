@@ -1,0 +1,48 @@
+﻿@model SSLS.Domain.Concrete.Reader
+@{
+    ViewBag.Title = "充值";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
+    <li class="active">余额充值</li>
+</ol>
+
+<div class="Cart_bg">
+    <div class="row">
+        <div class="user">
+            <div class="awater text-center">
+                <span class="glyphicon glyphicon-user"></span>
+                <p>@Model.Name (@Model.Code)</p>
+            </div>
+            <div>
+                <table class="Checkout_reader">
+                    <tr>
+                        <th>班级：</th>
+                        <td>@Model.Class</td>
+                    </tr>
+                    <tr>
+                        <th>邮箱：</th>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <th>余额：</th>
+                        <td>@Model.Price￥</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-4 col-sm-3">
+            @using (Html.BeginForm())
+            {
+                <input class="form-control" type="number" name="money" value="" min="0.01" max="10000.00" step="0.01" />
+                <br>
+                <input class="btn bggray" type="submit" value="充值" />
+            }</div>
+        </div>
+</div>
+

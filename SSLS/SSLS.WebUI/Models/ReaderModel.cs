@@ -7,9 +7,10 @@ using SSLS.Domain.Concrete;
 
 namespace SSLS.WebUI.Models
 {
-    public class CartIndexViewModel
+    public class ReaderModel
     {
-        public Cart Cart { get; set; }
-        public string ReturnUrl { get; set; }
+        public Reader Reader { get; set; }
+        public IEnumerable<Borrow> Borrows { get; set; }
+        public IEnumerable<Fine> Fines { get; set; }
     }
 }

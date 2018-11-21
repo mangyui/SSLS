@@ -7,9 +7,9 @@ using SSLS.Domain.Concrete;
 
 namespace SSLS.WebUI.Models
 {
-    public class CartIndexViewModel
+    public class FinesViewModel
     {
-        public Cart Cart { get; set; }
-        public string ReturnUrl { get; set; }
+        public IEnumerable<Fine> Fines { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
 }

@@ -50,14 +50,26 @@ namespace SSLS.Domain.Concrete
                     try
                     {
                         Borrow borrowEntry = db.Borrow.Find(borrowId);
-                        if (borrowEntry.State == "在借")
+                        if (borrowEntry.Reader_ID==reader.Id&&borrowEntry.State == "在借")
                         {
-                            //if(borrowEntry.ShouldDate<DateTime.Now)
-                            //{
-
-                            //}
+                            int over=(DateTime.Now - borrowEntry.ShouldDate).Days;
+                            if(over>0)
+                            {
+                                Fine fine = new Fine();
+                                fine.Borrow_ID = borrowId;
+                                fine.Reader_ID = reader.Id;
+                                fine.OverDays = over;
+                                fine.State = "待缴纳";
+                                fine.Payment = (decimal)(over * 1);   // 1 默认每超期1天罚款1元
+                                db.Fine.Add(fine);
+                                borrowEntry.State = "超期";
+                            }
+                            else
+                            {
+                                borrowEntry.State = "未超期";
+                            }
                             borrowEntry.ReturnDate = DateTime.Now;
-                            borrowEntry.State = "已归还";
+
                             Book bookEntry = db.Book.Find(borrowEntry.Book_ID);
                             bookEntry.Status = "在库";
                             db.SaveChanges();  //保存更改，EF框架的数据对象修改部分会同步更新到数据库

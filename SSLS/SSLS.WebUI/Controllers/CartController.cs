@@ -100,7 +100,11 @@ namespace SSLS.WebUI.Controllers
             borrowProcessor.ProcessBorrow(books, reader);
             cart.Clear();
             Session["books"] = null;
-            return View(books);
+            return View(new CheckoutModel
+            {
+                Books = books,
+                Reader = reader
+            });
         }
     }
 }

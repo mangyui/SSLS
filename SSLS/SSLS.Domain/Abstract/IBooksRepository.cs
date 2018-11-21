@@ -13,6 +13,7 @@ namespace SSLS.Domain.Abstract
         IQueryable<Category> Categories { get; }
         IQueryable<Reader> Readers { get; }
         IQueryable<Borrow> Borrows { get; }
+        IQueryable<Fine> Fines { get; }
 
         bool hasCode(string code);
         void SaveReader(Reader reader);

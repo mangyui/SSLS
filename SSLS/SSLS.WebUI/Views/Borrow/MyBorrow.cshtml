@@ -7,7 +7,7 @@
 
 <ol class="breadcrumb">
     <li><a href="@Url.Action("List", "Book")">主页</a></li>
-    <li><a href="@Url.Action("Index", "Borrow")">个人中心</a></li>
+    <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
     <li class="active">当前借阅</li>
 </ol>
 
@@ -58,7 +58,7 @@
                         </div>
                     </td>
                     <td>
-                        <a class="btn btn-sm bggreen" onclick="layerwaring('确定要归还《 @borrow.Book.Name 》吗', 'ReturnBook?id=@borrow.Id')">@(borrow.State == "已归还" ? "已归还" : "归还")</a>
+                        <a class="btn btn-sm bggreen" onclick="layerwaring('确定要归还《 @borrow.Book.Name 》吗', 'ReturnBook?id=@borrow.Id')">@(borrow.State != "在借" ? "已归还" : "归还")</a>
                         <a class="btn btn-sm bgblue @(borrow.Renew == "是" ? "disabled" : "")" onclick="layerwaring('确定要续借《 @borrow.Book.Name 》吗', 'Renew?id=@borrow.Id')">@(borrow.Renew == "是" ? "已续借" : "续借")</a>
                     </td>
                 </tr>

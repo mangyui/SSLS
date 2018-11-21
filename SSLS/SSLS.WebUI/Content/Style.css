@@ -642,7 +642,7 @@ a.My_block{
     font-size:40px;
 }
 
-.bggreen,.bgblue,.bggray,.bgyellow,bgred{
+.bggreen,.bgblue,.bggray,.bgyellow,.bgred{
     color:#fff!important
 }
 .bggreen{
@@ -718,7 +718,7 @@ a.My_block{
         max-width:60px;
     }
     .Cart_bg{
-        padding:5px;
+       padding: 5px 5px 30px 5px;
     }
     .Cart_datail>div{
         font-size:10px;

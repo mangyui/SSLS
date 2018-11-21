@@ -16,6 +16,41 @@ namespace SSLS.WebUI.Controllers
         {
             this.repository = productsRepository;
         }
+
+        public ActionResult Index(Reader reader)   //待完成
+        {
+            if (reader.Id == 0)
+            {
+                TempData["msg"] = "您还未登录！";
+                return RedirectToAction("Login", "Reader");
+            }
+            ReaderModel RM = new ReaderModel
+            {
+                Reader = reader,
+                Borrows = repository.Borrows.Where(b => b.Reader_ID == reader.Id),
+                Fines = repository.Fines.Where(f => f.Reader_ID == reader.Id)
+            };
+            return View(RM);
+        }
+        public ActionResult Recharge(Reader reader)
+        {
+            return View(reader);
+        }
+        [HttpPost]
+        public ActionResult Recharge(Reader reader,decimal money=0)
+        {
+            if(money==0)
+            {
+                TempData["msg1"] = "充值失败！";
+            }
+            else
+            {
+               repository.Recharge(reader, money);
+               reader.Price += money;
+               TempData["msg1"] = "充值成功！";
+            }
+            return View(reader);
+        }
         public ActionResult Login()
         {
             return View();
@@ -93,9 +128,15 @@ namespace SSLS.WebUI.Controllers
             HttpContext.Session["Reader"] = null;
             return RedirectToAction("Login");
         }
-        public PartialViewResult Summary(Reader Reader)
+        public PartialViewResult Summary(Reader reader)
         {
-            return PartialView(Reader);
+            ReaderModel RM = new ReaderModel
+            {
+                Reader = reader,
+                Borrows = repository.Borrows.Where(b => b.Reader_ID == reader.Id),
+                Fines = repository.Fines.Where(f => f.Reader_ID == reader.Id)
+            };
+            return PartialView(RM);
         }
 
         #region 验证码
