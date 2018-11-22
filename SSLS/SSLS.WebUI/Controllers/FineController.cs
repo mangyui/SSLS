@@ -18,15 +18,20 @@ namespace SSLS.WebUI.Controllers
             this.repository = bookRepository;
         }
 
-        public ActionResult Index(Reader reader, int page = 1)
+        public ActionResult Index(Reader reader,int isFinish=0, int page = 1)
         {
             if (reader.Id == 0)
             {
                 TempData["msg"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
-            IQueryable<Fine> FineList = repository.Fines.Where(b => b.Reader_ID == reader.Id);
-
+            if (isFinish < 0 || isFinish > 2)
+                isFinish = 0;
+            IQueryable<Fine> FineList = repository.Fines.Where(f => f.Reader_ID == reader.Id);
+            if (isFinish == 1)
+                FineList = FineList.Where(f => f.State == "待缴纳");
+            else if (isFinish == 2)
+                FineList = FineList.Where(f => f.State == "已缴纳");
             return View(new FinesViewModel
             {
                 Fines = FineList.OrderByDescending(f => f.Id)
@@ -37,7 +42,8 @@ namespace SSLS.WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = FineList.Count()
-                }
+                },
+                IsFinish=isFinish
             });
         }
     }

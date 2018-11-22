@@ -51,6 +51,10 @@ namespace SSLS.WebUI.Controllers
             }
             return View(reader);
         }
+        public ActionResult ModifyData(Reader reader)
+        {
+            return View(reader);
+        }
         public ActionResult Login()
         {
             return View();

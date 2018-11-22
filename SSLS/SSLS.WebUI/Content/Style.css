@@ -476,11 +476,14 @@ footer p{
         align-items: center;
     }
     .Register_form .form-group label{
-        flex-grow: 1;
         text-align: right;
         padding-right: 20px;
        color: #666;
+       width:70px;
     }
+   .Register_form .form-group .Register_input{
+        flex-grow: 1;
+   }
 
 
 
@@ -641,6 +644,15 @@ a.My_block{
 .My_block .glyphicon{
     font-size:40px;
 }
+.Modify{
+    display: flex;
+    margin-bottom: 20px;
+}
+.Modify .btn{
+    width:50%;
+    border-radius:1px;
+    border:0;
+}
 
 .bggreen,.bgblue,.bggray,.bgyellow,.bgred{
     color:#fff!important
@@ -702,8 +714,8 @@ a.My_block{
     width:100px;
    }
     .Mybody .container{
-        padding-left:5px;
-        padding-right:5px;
+        padding-left:0;
+        padding-right:0;
     }
     .Mylist .Mylist_body{
         padding:0;

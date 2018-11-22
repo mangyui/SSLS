@@ -214,6 +214,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ReaderModel.cs" />
+    <Compile Include="Models\ReaderModifyModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ValidataCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,6 +244,7 @@
     <Content Include="Views\Reader\Index.cshtml" />
     <Content Include="Views\Fine\Index.cshtml" />
     <Content Include="Views\Reader\Recharge.cshtml" />
+    <Content Include="Views\Reader\ModifyData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

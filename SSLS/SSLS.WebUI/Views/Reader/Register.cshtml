@@ -17,35 +17,35 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 <label>账号:</label>
-                <div>
+                <div class="Register_input">
                     @Html.TextBoxFor(c => c.Code, "", new { Type = "number", @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Code, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                <label>用户名:</label>
-                <div>
+                <label>昵称:</label>
+                <div class="Register_input">
                     @Html.TextBoxFor(c => c.Name, "", new { @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label>班级:</label>
-                <div>
+                <div class="Register_input">
                     @Html.TextBoxFor(c => c.Class, "", new { @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Class, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label>邮箱:</label>
-                <div>
-                    @Html.TextBoxFor(c => c.Email, "", new { Type="email", @class = "form-control" })
+                <div class="Register_input">
+                    @Html.TextBoxFor(c => c.Email, "", new { Type = "email", @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label>密码:</label>
-                <div>
+                <div class="Register_input">
                     @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
                 </div>

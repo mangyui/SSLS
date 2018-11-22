@@ -41,15 +41,20 @@ namespace SSLS.WebUI.Controllers
                 }
             });
         }
-        public ActionResult BorrowHistory(Reader reader, int page = 1)
+        public ActionResult BorrowHistory(Reader reader, int isOver = 0, int page = 1)
         {
             if (reader.Id == 0)
             {
                 TempData["msg"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
+            if (isOver < 0 || isOver > 2)
+                isOver = 0;
             IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State != "在借");
-
+            if (isOver == 1)
+                BorrowList=BorrowList.Where(b => b.State == "超期");
+            else if (isOver == 2)
+                BorrowList=BorrowList.Where(b => b.State != "超期");
             return View(new BorrowViewModel
             {
                 Borrows = BorrowList.OrderByDescending(b => b.ReturnDate)
@@ -60,7 +65,8 @@ namespace SSLS.WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = BorrowList.Count()
-                }
+                },
+                IsOver = isOver
             });
         }
         public RedirectToRouteResult ReturnBook(int id, Reader reader)

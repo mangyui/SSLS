@@ -21,13 +21,13 @@
                 <th>罚金</th>
                 <th>
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">状态 <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">是否缴纳(@(Model.IsFinish == 2 ? "否" : (Model.IsFinish == 1 ? "是" : "ALL")))<span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=0 })">全部</a></li>
+                            <li><a href="@Url.Action("Index", "Fine", new { isFinish = 0 })">全部</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=1 })">待缴纳</a></li>
+                            <li><a href="@Url.Action("Index", "Fine", new { isFinish = 1 })">待缴纳</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="@Url.Action("Index", "Reader", new{ isOver=2 })">已缴纳</a></li>
+                            <li><a href="@Url.Action("Index", "Fine", new { isFinish = 2 })">已缴纳</a></li>
                         </ul>
                     </div>
                 </th>
@@ -59,7 +59,7 @@
                     <td>@fine.Payment￥</td> 
                     <td>@fine.State</td>                      
                     <td>
-                        <a class="btn btn-sm bgred" onclick="layerwaring('确定要归还吗', '')">@(fine.State == "待缴纳" ? "缴纳" : "已缴纳")</a>
+                        <a class="btn btn-sm bgred" @(fine.State == "待缴纳" ? "" : "disabled")>@(fine.State == "待缴纳" ? "缴纳" : "已缴纳")</a>
                     </td>
                 </tr>
             }
@@ -67,6 +67,6 @@
     </table>
     <div class="text-center">
         @Html.PageLinks(Model.PagingInfo,
-                    x => Url.Action("Index", new { page = x }))
+                                      x => Url.Action("Index", new { isFinish = Model.IsFinish, page = x }))
     </div>
 </div>

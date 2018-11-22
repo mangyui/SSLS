@@ -19,6 +19,7 @@
                 <th width="20%">图书</th>
                 <th>图书详情</th>
                 <th>借阅详情</th>
+                <th>是否超期</th>
                 <th width="">操作</th>
             </tr>
         </thead>
@@ -53,12 +54,15 @@
                                 <span>借书日期:</span><div>@borrow.BorrowDate</div>
                             </div>
                             <div>
-                                <span>应还日期:</span><div>@borrow.ShouldDate</div>
+                                <span>应还日期:</span><b>@borrow.ShouldDate</b>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <a class="btn btn-sm bggreen" onclick="layerwaring('确定要归还《 @borrow.Book.Name 》吗', 'ReturnBook?id=@borrow.Id')">@(borrow.State != "在借" ? "已归还" : "归还")</a>
+                        <span class="label @(borrow.ShouldDate <DateTime.Now ? "bgred" : "bggreen")">@(borrow.ShouldDate < DateTime.Now ? "超期" + (DateTime.Now - borrow.ShouldDate).Days + "天" : (borrow.ShouldDate - DateTime.Now).Days + "天到期")</span>
+                    </td>
+                    <td>
+                        <a class="btn btn-sm bggray" onclick="layerwaring('确定要归还《 @borrow.Book.Name 》吗', 'ReturnBook?id=@borrow.Id')">@(borrow.State != "在借" ? "已归还" : "归还")</a>
                         <a class="btn btn-sm bgblue @(borrow.Renew == "是" ? "disabled" : "")" onclick="layerwaring('确定要续借《 @borrow.Book.Name 》吗', 'Renew?id=@borrow.Id')">@(borrow.Renew == "是" ? "已续借" : "续借")</a>
                     </td>
                 </tr>

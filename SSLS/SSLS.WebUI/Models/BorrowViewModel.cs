@@ -11,6 +11,7 @@ namespace SSLS.WebUI.Models
     {
         public IEnumerable<Borrow> Borrows { get; set; }
         public PagingInfo PagingInfo { get; set; }
+        public int IsOver { get; set; }
 
     }
 }

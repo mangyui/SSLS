@@ -11,5 +11,7 @@ namespace SSLS.WebUI.Models
     {
         public IEnumerable<Fine> Fines { get; set; }
         public PagingInfo PagingInfo { get; set; }
+
+        public int IsFinish { get; set; }
     }
 }

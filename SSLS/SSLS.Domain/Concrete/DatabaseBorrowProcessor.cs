@@ -62,7 +62,7 @@ namespace SSLS.Domain.Concrete
                                 fine.State = "待缴纳";
                                 fine.Payment = (decimal)(over * 1);   // 1 默认每超期1天罚款1元
                                 db.Fine.Add(fine);
-                                borrowEntry.State = "超期";
+                                borrowEntry.State = "超期";    //在借  超期  未超期
                             }
                             else
                             {

@@ -1,0 +1,59 @@
+﻿@model SSLS.Domain.Concrete.Reader
+@{
+    ViewBag.Title = "修改资料";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
+    <li class="active">余额充值</li>
+</ol>
+
+<div class="Cart_bg">
+    <hr />
+    <div class="row">
+        <div class="col-sm-offset-4 col-sm-4 Modify">
+            <div class="btn btn-lg bgblue">修改基本资料</div>
+            <div class="btn btn-lg btn-default">修改密码 </div>
+        </div>
+        <div class="col-xs-offset-3 col-sm-offset-4 col-xs-6 col-sm-4 Modify_form">
+            @using (Html.BeginForm())
+            {
+                <label class="control-label" form="Name">名称</label>
+                <input class="form-control" type="text" name="Name" value="@Model.Name" />
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <br>
+                <label class="control-label" form="Name">班级</label>
+                <input class="form-control" type="text" name="Class" value="@Model.Class" />
+                @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
+                <br>
+                <label class="control-label" form="Name">邮箱</label>
+                <input class="form-control" type="text" name="Email" value="@Model.Email" />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <br>
+                <input class="btn bggray" type="submit" value="修改" />
+            }
+        </div>
+        <div class="col-xs-offset-3 col-sm-offset-4 col-xs-6 col-sm-4 Modify_form" style="display:none">
+            @using (Html.BeginForm())
+            {
+                <label class="control-label" form="oldPwd">旧密码</label>
+                <input class="form-control" type="password" name="oldPwd" value="" />
+                <br>
+                <label class="control-label" form="newPwd">新密码</label>
+                <input class="form-control" type="password" name="newPwd" value="" />
+                <br>
+                <input class="btn bggray" type="submit" value="修改" />
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $(".Modify .btn").click(function () {
+        $(".Modify .btn").removeClass("bgblue").addClass("btn-default");
+        $(this).addClass("bgblue");
+        $(".Modify_form").hide();
+        $(".Modify_form").eq($(this).index()).show();
+    })
+</script>
+
