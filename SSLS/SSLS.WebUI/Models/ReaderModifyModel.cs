@@ -14,6 +14,7 @@ namespace SSLS.WebUI.Models
         [Required(ErrorMessage = "请输入所在班级")]
         public string Class { get; set; }
         [Required(ErrorMessage = "请输入您的邮箱")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "请输入正确的电子邮件！")]
         public string Email { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model SSLS.Domain.Concrete.Reader
+﻿@model SSLS.WebUI.Models.ReaderModifyModel
 @{
     ViewBag.Title = "修改资料";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -6,7 +6,7 @@
 <ol class="breadcrumb">
     <li><a href="@Url.Action("List", "Book")">主页</a></li>
     <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
-    <li class="active">余额充值</li>
+    <li class="active">修改资料</li>
 </ol>
 
 <div class="Cart_bg">
@@ -20,22 +20,22 @@
             @using (Html.BeginForm())
             {
                 <label class="control-label" form="Name">名称</label>
-                <input class="form-control" type="text" name="Name" value="@Model.Name" />
+                @Html.TextBoxFor(model => model.Name,  new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 <br>
                 <label class="control-label" form="Name">班级</label>
-                <input class="form-control" type="text" name="Class" value="@Model.Class" />
+                @Html.TextBoxFor(model => model.Class, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
                 <br>
                 <label class="control-label" form="Name">邮箱</label>
-                <input class="form-control" type="text" name="Email" value="@Model.Email" />
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 <br>
                 <input class="btn bggray" type="submit" value="修改" />
             }
         </div>
         <div class="col-xs-offset-3 col-sm-offset-4 col-xs-6 col-sm-4 Modify_form" style="display:none">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("ModifyPwd","Reader"))
             {
                 <label class="control-label" form="oldPwd">旧密码</label>
                 <input class="form-control" type="password" name="oldPwd" value="" />

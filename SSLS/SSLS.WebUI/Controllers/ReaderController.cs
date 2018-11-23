@@ -53,7 +53,51 @@ namespace SSLS.WebUI.Controllers
         }
         public ActionResult ModifyData(Reader reader)
         {
-            return View(reader);
+            return View(new ReaderModifyModel { 
+             Class=reader.Class,
+              Code=reader.Code,
+              Email=reader.Email,
+               Name=reader.Name
+            });
+        }
+        [HttpPost]
+        public ActionResult ModifyData(Reader reader,ReaderModifyModel model)
+        {
+            if (reader.Id == 0)
+            {
+                TempData["msg"] = "您还未登录！";
+                return RedirectToAction("Login", "Reader");
+            }
+            if (ModelState.IsValid)
+            {
+                reader.Name = model.Name;
+                reader.Class = model.Class;
+                reader.Email = model.Email;
+                repository.SaveReader(reader);
+                TempData["msg1"] = "修改成功！";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+        [HttpPost]
+        public ActionResult ModifyPwd(Reader reader, string oldPwd ,string newPwd)
+        {
+            if (oldPwd == reader.Password&&newPwd!=null&&newPwd.Trim()=="")
+            {
+                reader.Password = newPwd;
+                repository.SaveReader(reader);
+                HttpContext.Session["Reader"] = null;
+                TempData["msg1"] = "修改成功！请重新登录";       
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                TempData["msg"] = "密码错误！";
+                return RedirectToAction("Index");
+            }
         }
         public ActionResult Login()
         {
