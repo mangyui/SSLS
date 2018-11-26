@@ -6,6 +6,10 @@ body{
     background: #f6f6f6;
 }
 
+.allred{
+    background: linear-gradient(90deg,#f46d4c 0,#e4505d);
+}
+
 .navbar {
     border-radius: 0;
     margin-bottom: 0;
@@ -124,7 +128,8 @@ body{
     transition: all .2s ease-in-out;
     color: #444;
     margin-left:5px;
-    padding: 10px 24px;
+    width: 80px;
+    padding: 10px 8px 4px;
 }
 
 .side-bar .list-group-item.active, .side-bar .list-group-item:hover {
@@ -132,6 +137,10 @@ body{
     background: linear-gradient(90deg,#f46d4c 0,#e4505d);
     color: #fff;
     margin-bottom: 0;
+}
+.side-bar .list-group-item.active .badge, .side-bar .list-group-item:hover .badge{
+    color:#e4505d;
+    background:#fff;
 }
 
 .Myhr{
@@ -256,8 +265,8 @@ body{
     text-overflow:ellipsis;
     white-space: nowrap;
     max-width:100px;
-    height:24px;
-    line-height:24px;
+    height:20px;
+    line-height:23px;
     margin-left:5px;
     cursor:pointer;
 }
@@ -626,7 +635,7 @@ footer p{
 }
 
 .awater {
-    margin: 0 50px;
+    margin: 0 40px;
 }
 a.My_block{
     display:block;
@@ -653,6 +662,17 @@ a.My_block{
     border-radius:1px;
     border:0;
 }
+
+.Fine_table{
+    width: 100%;
+    text-align: center;
+    margin-bottom:20px;
+}
+.Fine_table th{
+    text-align: center;
+    padding: 10px 0!important;
+}
+
 
 .bggreen,.bgblue,.bggray,.bgyellow,.bgred{
     color:#fff!important
@@ -713,6 +733,9 @@ a.My_block{
     .Mylist img{
     width:100px;
    }
+    .Detail_bigimg{
+        width:50%;
+    }
     .Mybody .container{
         padding-left:0;
         padding-right:0;

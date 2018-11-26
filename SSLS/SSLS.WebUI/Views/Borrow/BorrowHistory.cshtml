@@ -20,7 +20,7 @@
                 <th>借阅详情</th>
                 <th width="">
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">是否超期(@(Model.IsOver==2?"否":(Model.IsOver==1?"是":"ALL"))) <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">是否超期(@(Model.IsOver == 2 ? "否" : (Model.IsOver == 1 ? "是" : "ALL"))) <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="@Url.Action("BorrowHistory", "Borrow", new { isOver = 0 })">全部</a></li>
                             <li role="separator" class="divider"></li>

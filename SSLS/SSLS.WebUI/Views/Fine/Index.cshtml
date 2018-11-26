@@ -59,7 +59,7 @@
                     <td>@fine.Payment￥</td> 
                     <td>@fine.State</td>                      
                     <td>
-                        <a class="btn btn-sm bgred" @(fine.State == "待缴纳" ? "" : "disabled")>@(fine.State == "待缴纳" ? "缴纳" : "已缴纳")</a>
+                        <a href="@Url.Action("PayMoney", "Fine", new { id=@fine.Id})" class="btn btn-sm @(fine.State == "待缴纳" ? "bgred" : "bggreen")">@(fine.State == "待缴纳" ? "缴纳" : "查看")</a>
                     </td>
                 </tr>
             }

@@ -113,5 +113,37 @@ namespace SSLS.Domain.Concrete
                 }
             }
         }
+       public int PayMoney(int findId)
+        {
+            using (var db = new LibraryEntities())
+            {
+                using (var dbContextTransaction = db.Database.BeginTransaction())
+                {                              //使用数据库事务
+                    try
+                    {
+                        Fine fineEntry = db.Fine.Find(findId);
+                        if (fineEntry.State=="待缴纳")
+                        {
+                            Reader readerEntity = db.Reader.Find(fineEntry.Reader_ID);
+                            if (readerEntity.Price < fineEntry.Payment)
+                            {
+                                return 0;
+                            }
+                            readerEntity.Price = readerEntity.Price - fineEntry.Payment;
+                            fineEntry.State = "已缴纳";
+                            db.SaveChanges();  //保存更改，EF框架的数据对象修改部分会同步更新到数据库
+                            dbContextTransaction.Commit();  //事务完成，提交
+                            return 1;
+                        }
+                        return -1;
+                    }
+                    catch (Exception)
+                    {
+                        dbContextTransaction.Rollback(); //出现异常，事务回滚，所有数据操作取消
+                        return -1;
+                    }
+                }
+            }
+        }
     }
 }

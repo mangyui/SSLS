@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<SSLS.Domain.Concrete.Category>
 
 <div class="list-group side-bar">
-    @Html.ActionLink("主页", "List", "Book", null, new { @class = "list-group-item" + (ViewBag.CurrentcategoryId == 0 ? " active" : "") })
+    @*@Html.ActionLink("主页", "List", "Book", null, new { @class = "list-group-item" + (ViewBag.CurrentcategoryId == 0 ? " active" : "") })*@
+    <a class="list-group-item @(ViewBag.CurrentcategoryId == 0 ? " active" : "")" href="@Url.Action("List", "Book")">主页 <span class="badge">@Model.Sum(c => c.Book.Count)</span> </a>
 
     @foreach (var category in Model)
-    {
-        @Html.RouteLink(category.Name,
+{
+    <a class="list-group-item @(category.Id == ViewBag.CurrentcategoryId ? " active" : "")" href="@Url.Action("List", "Book", new { categoryId = category.Id, Page = 1 })">@category.Name <span class="badge">@category.Book.Count()</span> </a>
+        @*@Html.RouteLink(category.Name,
         new { controller = "Book", action = "List", categoryId = category.Id, Page = 1 },
-                new { @class = "list-group-item" + (category.Id == ViewBag.CurrentcategoryId ? " active" : "") })
+                new { @class = "list-group-item" + (category.Id == ViewBag.CurrentcategoryId ? " active" : "") })*@
     }
 </div>

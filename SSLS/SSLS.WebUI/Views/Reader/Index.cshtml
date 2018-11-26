@@ -44,7 +44,7 @@
         <div class="col-sm-4 col-xs-6">
             <a href="@Url.Action("MyBorrow", "Borrow")" class="My_block bgblue">
                 <div>
-                    <h3>@Model.Borrows.Count(c => c.State == "在借")</h3>
+                    <h2>@Model.Borrows.Count(c => c.State == "在借")</h2>
                     <p>当前借阅</p>
                 </div>
                 <span class="glyphicon glyphicon-duplicate"></span>
@@ -53,7 +53,7 @@
         <div class="col-sm-4 col-xs-6">
             <a href="@Url.Action("BorrowHistory", "Borrow")" class="My_block bggray">
                 <div>
-                    <h3>@Model.Borrows.Count(c => c.State != "在借")</h3>
+                    <h2>@Model.Borrows.Count(c => c.State != "在借")</h2>
                     <p>借阅历史</p>
                 </div>
                 <span class="glyphicon glyphicon-hourglass"></span>
@@ -62,7 +62,7 @@
         <div class="col-sm-4 col-xs-6">
             <a href="@Url.Action("Index", "Fine")" class="My_block">
                 <div>
-                    <h3>@Model.Fines.Count()</h3>
+                    <h2>@Model.Fines.Count(f => f.State == "待缴纳")</h2>
                     <p>我的罚单</p>
                 </div>
                 <span class="glyphicon glyphicon-jpy"></span>

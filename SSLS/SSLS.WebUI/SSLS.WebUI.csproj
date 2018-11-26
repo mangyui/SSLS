@@ -245,6 +245,7 @@
     <Content Include="Views\Fine\Index.cshtml" />
     <Content Include="Views\Reader\Recharge.cshtml" />
     <Content Include="Views\Reader\ModifyData.cshtml" />
+    <Content Include="Views\Fine\PayMoney.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -96,6 +96,11 @@ namespace SSLS.WebUI.Controllers
                 TempData["msg"] = "您还未勾选书籍！";
                 return RedirectToAction("Index");
             }
+            if(reader.Fine.Where(f => f.State == "待缴纳").Count() > 0)
+            {
+                TempData["msg1"] = "您有未缴纳的罚金！暂时无法借阅操作";
+                return RedirectToAction("Checkout");
+            }
             List<Book> books = Session["books"] as List<Book>;
             borrowProcessor.ProcessBorrow(books, reader);
             cart.Clear();

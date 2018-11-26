@@ -70,9 +70,13 @@
                     <th>邮箱：</th>
                     <td>@Model.Reader.Email</td>
                 </tr>
+                <tr>
+                    <th>罚单：</th>
+                    <td><b class="text-danger">@(Model.Reader.Fine.Where(f=>f.State=="待缴纳").Count()>0?"有":"无")</b></td>    
+                </tr>
             </table>
             <div class="text-center">
-                <a href="javascript:history.back(-1)" class="btn bggray">返回修改</a>
+                <a href="@Url.Action("Index", "Cart")" class="btn bggray">返回修改</a>
                 <a href="@Url.Action("Completed", "Cart")" class="btn bggreen">确认借阅</a>
             </div>
         </div>

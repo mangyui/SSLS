@@ -1,0 +1,66 @@
+﻿@model SSLS.Domain.Concrete.Fine
+@{
+    ViewBag.Title = "缴纳罚金";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
+    <li><a href="@Url.Action("Index", "Fine")">我的罚单</a></li>
+    <li class="active">缴纳罚金</li>
+</ol>
+
+<div class="Cart_bg">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="Detail_bigimg">
+                <img src="@Model.Borrow.Book.ImageUrl" class="Datail_book" width="100%" xq_big="true" setting='{"pwidth":360,"pheight":360,"margin_top":0,"margin_left":0,"border":"1px solid #ccc"}' />
+            </div>
+        </div>
+        <div class="col-sm-8 text-center">
+            <table class="table table-bordered table-striped Fine_table">
+                <tr>
+                    <td colspan="2">罚单</td>  
+                </tr>  
+                <tr>
+                    <th>罚单书名:</th>
+                    <td>《@Model.Borrow.Book.Name》</td>
+                </tr>
+                <tr>
+                    <th>借阅日期:</th>
+                    <td>@Model.Borrow.BorrowDate</td>
+                </tr>
+                <tr>
+                    <th>应还日期:</th>
+                    <td>@Model.Borrow.ShouldDate</td>
+                </tr>
+                <tr>
+                    <th>归还日期:</th>
+                    <td>@Model.Borrow.ReturnDate</td>
+                </tr>
+                <tr>
+                    <th>超期天数:</th>
+                    <td>@Model.OverDays（天）</td>
+                </tr>
+                <tr>
+                    <th>应缴罚金:</th>
+                    <td class="myPrice">@Model.Payment￥</td>
+                </tr>
+                <tr>
+                    <th>缴纳账户:</th>
+                    <td>@Model.Reader.Name（@Model.Reader.Code）</td>
+                </tr>
+                <tr>
+                    <th>罚金状态:</th>
+                    <td><b>@Model.State</b></td>
+                </tr>
+            </table>
+            @if(Model.State=="待缴纳")
+            { 
+                <a onclick="layerwaring('确认缴纳罚金 @Model.Payment￥', 'ToPay?id=@Model.Id')" class="btn btn-lg bggray">立即缴纳</a>
+            }
+            <a href="@Url.Action("Index", "Fine")" class="btn bgblue pull-right">返回</a>
+        </div>
+    </div>
+</div>

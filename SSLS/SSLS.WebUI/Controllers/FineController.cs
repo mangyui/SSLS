@@ -12,10 +12,12 @@ namespace SSLS.WebUI.Controllers
     public class FineController : Controller
     {
         private IBooksRepository repository;
+        private IBorrowProcessor borrowProcessor;
         public int PageSize = 5;
-        public FineController(IBooksRepository bookRepository)
+        public FineController(IBooksRepository bookRepository, IBorrowProcessor proc)
         {
             this.repository = bookRepository;
+            this.borrowProcessor = proc;
         }
 
         public ActionResult Index(Reader reader,int isFinish=0, int page = 1)
@@ -45,6 +47,36 @@ namespace SSLS.WebUI.Controllers
                 },
                 IsFinish=isFinish
             });
+        }
+        public ActionResult PayMoney(Reader reader,int id)
+        {
+            if (reader.Id == 0)
+            {
+                TempData["msg"] = "您还未登录！";
+                return RedirectToAction("Login", "Reader");
+            }
+            Fine fine = repository.Fines.Where(f => f.Id == id).FirstOrDefault();
+            return View(fine);
+        }
+        public ActionResult ToPay(Reader reader,int id)
+        {
+            int result = borrowProcessor.PayMoney(id);
+            if(result==0)
+            {
+                TempData["msg1"] = "您的账户余额不足！";
+                return RedirectToAction("PayMoney", new { id});
+            }
+            else if(result ==1)
+            {
+                reader.Price = repository.Readers.Where(r => r.Id == reader.Id).FirstOrDefault().Price;
+                TempData["msg1"] = "缴纳成功！";
+                return RedirectToAction("PayMoney", new { id });
+            }
+            else
+            {
+                TempData["msg1"] = "缴纳失败！";
+                return RedirectToAction("PayMoney", new { id });
+            }
         }
     }
 }

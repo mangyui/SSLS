@@ -12,5 +12,6 @@ namespace SSLS.Domain.Abstract
         void ProcessBorrow(List<Book> books, Reader reader);
         bool ProcessReturn(int borrowId, Reader reader);
         bool Renew(int borrowId, Reader reader);
+        int PayMoney(int findId);
     }
 }

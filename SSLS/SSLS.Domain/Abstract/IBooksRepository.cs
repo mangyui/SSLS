@@ -19,5 +19,6 @@ namespace SSLS.Domain.Abstract
         void SaveReader(Reader reader);
 
         void Recharge(Reader reader, decimal money);
+
     }
 }

@@ -13,7 +13,7 @@ namespace SSLS.WebUI.Controllers
     {
         private IBooksRepository repository;
         private IBorrowProcessor borrowProcessor;
-        public int PageSize = 5;
+        public int PageSize = 2;
         public BorrowController(IBooksRepository bookRepository, IBorrowProcessor proc)
         {
             this.repository = bookRepository;
