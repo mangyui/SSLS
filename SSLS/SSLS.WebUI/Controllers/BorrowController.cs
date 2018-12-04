@@ -13,7 +13,7 @@ namespace SSLS.WebUI.Controllers
     {
         private IBooksRepository repository;
         private IBorrowProcessor borrowProcessor;
-        public int PageSize = 2;
+        public int PageSize = 5;
         public BorrowController(IBooksRepository bookRepository, IBorrowProcessor proc)
         {
             this.repository = bookRepository;
@@ -50,16 +50,10 @@ namespace SSLS.WebUI.Controllers
             }
             if (isOver < 0 || isOver > 2)
                 isOver = 0;
-            IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State != "在借");
-            if (isOver == 1)
-                BorrowList=BorrowList.Where(b => b.State == "超期");
-            else if (isOver == 2)
-                BorrowList=BorrowList.Where(b => b.State != "超期");
+            IQueryable<Borrow> BorrowList;
             return View(new BorrowViewModel
             {
-                Borrows = BorrowList.OrderByDescending(b => b.ReturnDate)
-                            .Skip((page - 1) * PageSize)
-                            .Take(PageSize),
+                Borrows = repository.GetBorrows(reader,isOver,page,PageSize,out BorrowList),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -69,20 +63,25 @@ namespace SSLS.WebUI.Controllers
                 IsOver = isOver
             });
         }
-        public RedirectToRouteResult ReturnBook(int id, Reader reader)
+        public ActionResult BorrowDetail(int id)
         {
-            bool f= borrowProcessor.ProcessReturn(id, reader);
-            if(f)
-                TempData["msg1"] = "归还成功！";
-            return RedirectToAction("MyBorrow");
+            Borrow borrow = repository.Borrows.Where(b => b.Id == id).FirstOrDefault();
+            return View(borrow);
         }
-        public RedirectToRouteResult Renew(int id, Reader reader)
+        [HttpPost]
+        public ActionResult Renew(int id)
         {
-            bool f= borrowProcessor.Renew(id, reader);
-            if (f)
-                TempData["msg1"] = "续借成功！";
-            return RedirectToAction("MyBorrow");
+            string Timelimit = "";
+            int result = borrowProcessor.Renew(id,out Timelimit);
+            return Json(new {
+                result = result,
+                Timelimit = Timelimit
+            });
         }
-
+        [HttpPost]
+        public ActionResult ReturnBook(int id, Reader reader)
+        {
+            return Json(borrowProcessor.ProcessReturn(id, reader));
+        }
     }
 }

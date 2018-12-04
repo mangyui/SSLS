@@ -29,16 +29,10 @@ namespace SSLS.WebUI.Controllers
             }
             if (isFinish < 0 || isFinish > 2)
                 isFinish = 0;
-            IQueryable<Fine> FineList = repository.Fines.Where(f => f.Reader_ID == reader.Id);
-            if (isFinish == 1)
-                FineList = FineList.Where(f => f.State == "待缴纳");
-            else if (isFinish == 2)
-                FineList = FineList.Where(f => f.State == "已缴纳");
+            IQueryable<Fine> FineList;
             return View(new FinesViewModel
             {
-                Fines = FineList.OrderByDescending(f => f.Id)
-                            .Skip((page - 1) * PageSize)
-                            .Take(PageSize),
+                Fines = repository.GetFines(reader,isFinish, page, PageSize, out FineList),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -48,35 +42,25 @@ namespace SSLS.WebUI.Controllers
                 IsFinish=isFinish
             });
         }
-        public ActionResult PayMoney(Reader reader,int id)
+        public ActionResult PayMoney(int id)
         {
-            if (reader.Id == 0)
-            {
-                TempData["msg"] = "您还未登录！";
-                return RedirectToAction("Login", "Reader");
-            }
             Fine fine = repository.Fines.Where(f => f.Id == id).FirstOrDefault();
             return View(fine);
         }
-        public ActionResult ToPay(Reader reader,int id)
+        [HttpPost]
+        public ActionResult PayMoney(Reader reader, int id)
         {
-            int result = borrowProcessor.PayMoney(id);
-            if(result==0)
-            {
-                TempData["msg1"] = "您的账户余额不足！";
-                return RedirectToAction("PayMoney", new { id});
-            }
-            else if(result ==1)
-            {
+            string msg;
+            int result = borrowProcessor.PayMoney(id,out msg);
+            if(result==1)
+            {  
                 reader.Price = repository.Readers.Where(r => r.Id == reader.Id).FirstOrDefault().Price;
-                TempData["msg1"] = "缴纳成功！";
-                return RedirectToAction("PayMoney", new { id });
             }
-            else
+            return Json(new
             {
-                TempData["msg1"] = "缴纳失败！";
-                return RedirectToAction("PayMoney", new { id });
-            }
+                result = result,
+                msg = msg
+            });
         }
     }
 }

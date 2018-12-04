@@ -53,9 +53,6 @@
                             <div>
                                 <span>出版社:</span><i>@cartLine.Book.Press</i>
                             </div>
-                            <div>
-                                <span>出版日期:</span><div>@cartLine.Book.PublishDate.Value.ToString("d")</div>
-                            </div>
                         </div>
                     </td>
                     <td>
@@ -71,18 +68,3 @@
     </div>
 }
 </div>
-
-
-<script>
-    $(".td_checkbox").click(function () {
-        if ($(".td_checkbox").length == $(".td_checkbox:checked").length) {
-            $("#Selecteds").prop("checked", true);
-        }
-        else {
-            $("#Selecteds").prop("checked", false);
-        }
-    })
-    $("#Selecteds").click(function () {
-        $(".td_checkbox").prop("checked", this.checked);
-    })
-</script>

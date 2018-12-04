@@ -26,16 +26,18 @@ namespace SSLS.WebUI.HtmlHelpers
                 {
                     int n = PagingInfo.CurrentPage - 1;
                     if (PagingInfo.CurrentPage == 1)
-                        n = PagingInfo.CurrentPage;
-                    tag.MergeAttribute("href", pageUrl(n));
+                        tag.MergeAttribute("href","#");
+                    else
+                      tag.MergeAttribute("href", pageUrl(n));
                     tag.InnerHtml = "&laquo;";
                 }
                 else if (i == PagingInfo.TotalPages + 1)
                 {
                     int n = PagingInfo.CurrentPage + 1;
-                    if (PagingInfo.CurrentPage == PagingInfo.TotalPages)
-                        n = PagingInfo.CurrentPage;
-                    tag.MergeAttribute("href", pageUrl(n));
+                    if (PagingInfo.CurrentPage == PagingInfo.TotalPages || PagingInfo.TotalPages==0)
+                        tag.MergeAttribute("href", "#");
+                    else
+                        tag.MergeAttribute("href", pageUrl(n));
                     tag.InnerHtml = "&raquo;";
                 }
                 else

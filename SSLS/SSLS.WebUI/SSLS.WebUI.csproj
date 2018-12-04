@@ -184,6 +184,7 @@
     <Content Include="Scripts\layer\theme\default\loading-0.gif" />
     <Content Include="Scripts\layer\theme\default\loading-1.gif" />
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\totop.js" />
     <Content Include="Web.config">
@@ -246,6 +247,7 @@
     <Content Include="Views\Reader\Recharge.cshtml" />
     <Content Include="Views\Reader\ModifyData.cshtml" />
     <Content Include="Views\Fine\PayMoney.cshtml" />
+    <Content Include="Views\Borrow\BorrowDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,81 @@
+﻿@model SSLS.Domain.Concrete.Borrow
+@{
+    ViewBag.Title = "借阅详情";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Book")">主页</a></li>
+    <li><a href="@Url.Action("Index", "Reader")">个人中心</a></li>
+    <li>@(Model.State != "在借" ? Html.ActionLink("借阅历史","BorrowHistory", "Borrow") : Html.ActionLink("当前借阅","MyBorrow", "Borrow"))</li>
+    <li class="active">借阅详情</li>
+</ol>
+
+<div class="Cart_bg">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="Detail_bigimg">
+                <img src="@Model.Book.ImageUrl" class="Datail_book" width="100%" xq_big="true" setting='{"pwidth":360,"pheight":360,"margin_top":0,"margin_left":0,"border":"1px solid #ccc"}' />
+            </div>
+        </div>
+        <div class="col-sm-8 text-center">
+            <table class="table table-bordered table-striped Fine_table">
+                <tr>
+                    <td colspan="2">借阅详情</td>
+                </tr>
+                <tr>
+                    <th>借阅书名:</th>
+                    <td>《@Model.Book.Name》</td>
+                </tr>
+                <tr>
+                    <th>借阅日期:</th>
+                    <td>@Model.BorrowDate</td>
+                </tr>
+                <tr>
+                    <th>应还日期:</th>
+                    <td>@Model.ShouldDate</td>
+                </tr>
+                <tr>
+                    <th>是否续借:</th>
+                    <td>@Model.Renew</td>
+                </tr>
+                @if (Model.State == "在借") {
+                <tr>
+                    <th>超期情况:</th>               
+                     <td>@(Model.ShouldDate < DateTime.Now ? "超期" + (DateTime.Now - Model.ShouldDate).Days + "天" : (Model.ShouldDate - DateTime.Now).Days + "天到期")</td>
+                </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>归还日期:</th>
+                        <td>@Model.ReturnDate</td>
+                    </tr>                    
+                    <tr>
+                        <th>超期情况:</th>
+                        <td>@(Model.ShouldDate < Model.ReturnDate ? "超期" : "未超期")</td>
+                    </tr>
+                    
+                }
+                <tr>
+                    <th>借阅账户:</th>
+                    <td>@Model.Reader.Name（@Model.Reader.Code）</td>
+                </tr>
+                <tr>
+                    <th>借阅状态:</th>
+                    <td><b class="borrow_state">@(Model.State != "在借" ? "已归还" : "在借")</b></td>
+                </tr>
+            </table>
+            @if (Model.State == "在借")
+            {
+                <a onclick="layerReturm('确定要归还《 @Model.Book.Name 》吗', '@Model.Id',this)" class="btn btn-lg bggray">立即归还</a>
+
+                @*<a class="btn btn-lg bgblue @(Model.Renew == "是" ? "disabled" : "")" onclick="layerwaring('确定要续借《 @Model.Book.Name 》吗', 'Renew?id=@Model.Id')">
+                     @(Model.Renew == "是" ? "已经续借" : "立即续借")</a>*@
+            }
+            <a href="@(Model.State != "在借" ? Url.Action("BorrowHistory", "Borrow") : Url.Action("MyBorrow", "Borrow"))" class="btn bgblue pull-right">返回</a>
+        </div>
+    </div>
+</div>
+
+

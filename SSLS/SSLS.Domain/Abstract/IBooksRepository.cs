@@ -20,5 +20,8 @@ namespace SSLS.Domain.Abstract
 
         void Recharge(Reader reader, decimal money);
 
+        IQueryable<Borrow> GetBorrows(Reader reader, int isOver, int page, int PageSize, out IQueryable<Borrow> BorrowList);
+        IQueryable<Fine> GetFines(Reader reader, int isFinish, int page, int PageSize,out IQueryable<Fine> FineList);
+
     }
 }

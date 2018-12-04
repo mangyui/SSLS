@@ -66,5 +66,30 @@ namespace SSLS.Domain.Concrete
             dbEntry.Price = dbEntry.Price + money;
             db.SaveChanges();
         }
+
+        public IQueryable<Borrow> GetBorrows(Reader reader,int isOver, int page, int PageSize,out IQueryable<Borrow> BorrowList)
+        {
+            BorrowList = Borrows.Where(b => b.Reader_ID == reader.Id && b.State != "在借");
+            if (isOver == 1)
+                BorrowList = BorrowList.Where(b => b.State == "超期");
+            else if (isOver == 2)
+                BorrowList = BorrowList.Where(b => b.State != "超期");
+
+            return BorrowList.OrderByDescending(b => b.ReturnDate)
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize);
+        }
+        public IQueryable<Fine> GetFines(Reader reader, int isFinish, int page, int PageSize,out IQueryable<Fine> FineList)
+        {
+            FineList = Fines.Where(f => f.Reader_ID == reader.Id);
+            if (isFinish == 1)
+                FineList = FineList.Where(f => f.State == "待缴纳");
+            else if (isFinish == 2)
+                FineList = FineList.Where(f => f.State == "已缴纳");
+
+            return FineList.OrderByDescending(f => f.Id)
+                            .Skip((page - 1) * PageSize)
+                            .Take(PageSize);
+        }
     }
 }

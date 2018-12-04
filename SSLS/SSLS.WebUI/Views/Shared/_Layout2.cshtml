@@ -59,22 +59,9 @@
     <script src="~/Scripts/jqZoom/xq_bigimg.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script src="~/Scripts/totop.js"></script>
+    <script src="~/Scripts/main.js"></script>
     <script>
-        layer.ready(function () {
-            if ($("#msg").text()!="")
-                layer.msg($("#msg").text(), { anim: 6 });
-            if ($("#msg1").text() != "")
-                layer.alert($("#msg1").text(), { anim: 1 });
-            layerwaring= function(mess, url) {
-                layer.confirm(mess, {         //询问框
-                    icon: 7,
-                    btn: ['确定', '取消'], //按钮
-                    anim: 3
-                }, function () {
-                    window.location.href = url;
-                });
-            }
-    })
+
     </script>
 </body>
 </html>

@@ -6,6 +6,10 @@ body{
     background: #f6f6f6;
 }
 
+.btn.disabled{
+    cursor: not-allowed!important; 
+}
+
 .allred{
     background: linear-gradient(90deg,#f46d4c 0,#e4505d);
 }
@@ -247,19 +251,19 @@ body{
     align-items:center;
 }
 .hub_author .glyphicon{
-     background: #ec5353;
+     background: #777;
     width: 20px;
     height: 20px;
     color: #fff;
     border-radius: 50%;
     text-align: center;
     line-height: 20px;
-    font-size:12px;
+    font-size:11px;
 }
 .hub_author a{
     display:inline-block;
     text-decoration:none;
-    color:#e4505d;
+    color:#777;
     font-size:11px;
         overflow: hidden;
     text-overflow:ellipsis;
@@ -609,7 +613,7 @@ footer p{
         text-align: left;
     }
     .Cart_book img{
-        width:75%;
+        width:55%;
     }
     .Cart_bg .btn{
         font-size:12px;

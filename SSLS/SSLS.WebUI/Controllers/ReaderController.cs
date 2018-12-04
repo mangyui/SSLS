@@ -63,11 +63,6 @@ namespace SSLS.WebUI.Controllers
         [HttpPost]
         public ActionResult ModifyData(Reader reader,ReaderModifyModel model)
         {
-            if (reader.Id == 0)
-            {
-                TempData["msg"] = "您还未登录！";
-                return RedirectToAction("Login", "Reader");
-            }
             if (ModelState.IsValid)
             {
                 reader.Name = model.Name;
@@ -85,18 +80,16 @@ namespace SSLS.WebUI.Controllers
         [HttpPost]
         public ActionResult ModifyPwd(Reader reader, string oldPwd ,string newPwd)
         {
-            if (oldPwd == reader.Password&&newPwd!=null&&newPwd.Trim()=="")
+            if (oldPwd == reader.Password)
             {
                 reader.Password = newPwd;
                 repository.SaveReader(reader);
                 HttpContext.Session["Reader"] = null;
-                TempData["msg1"] = "修改成功！请重新登录";       
-                return RedirectToAction("Login");
+                return Json(true);
             }
             else
             {
-                TempData["msg"] = "密码错误！";
-                return RedirectToAction("Index");
+                return Json(false);
             }
         }
         public ActionResult Login()

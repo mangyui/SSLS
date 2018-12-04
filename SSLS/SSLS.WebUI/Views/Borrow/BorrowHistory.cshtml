@@ -30,6 +30,7 @@
                         </ul>
                     </div>
                 </th>
+                <th>操作</th>  
             </tr>
         </thead>
         <tbody>
@@ -52,9 +53,6 @@
                             <div>
                                 <span>出版社:</span><i>@borrow.Book.Press</i>
                             </div>
-                            <div>
-                                <span>出版日期:</span><div>@borrow.Book.PublishDate.Value.ToString("d")</div>
-                            </div>
                         </div>
                     </td>
                     <td>
@@ -73,6 +71,9 @@
                     <td>
                         <span class="label @(borrow.State == "超期" ? "bgred" : "bggreen")">@(borrow.State == "超期" ? "是" : "否")</span>
                     </td>
+                    <td>
+                        <a class="btn btn-sm bggray" href="@Url.Action("BorrowDetail", "Borrow", new { id = @borrow.Id })">查看详情</a>
+                    </td>  
                 </tr>
             }
         </tbody>

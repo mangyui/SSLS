@@ -36,7 +36,7 @@ namespace SSLS.WebUI.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
-        public ViewResult Index(Cart cart, string returnUrl)
+        public ViewResult Index(Cart cart, string returnUrl="/")
         {
             return View(new CartIndexViewModel
             {
@@ -50,7 +50,7 @@ namespace SSLS.WebUI.Controllers
             return PartialView(cart);
         }
         [HttpPost]
-        public RedirectToRouteResult Confirm(Cart cart, int[] Selected, Reader reader)
+        public ActionResult Confirm(Cart cart, int[] Selected, Reader reader)
         {
             if (cart.Lines.Count() == 0)
             {
@@ -89,14 +89,14 @@ namespace SSLS.WebUI.Controllers
             });
         }
 
-        public ActionResult Completed(Cart cart, Reader reader)   //ActionResult  可以RedirectToAction
+        public ActionResult Completed(Cart cart, Reader reader)  
         {
             if(Session["books"]==null)
             {
                 TempData["msg"] = "您还未勾选书籍！";
                 return RedirectToAction("Index");
             }
-            if(reader.Fine.Where(f => f.State == "待缴纳").Count() > 0)
+            if (repository.Fines.Where(f =>f.Reader_ID==reader.Id&&f.State == "待缴纳").Count() > 0)
             {
                 TempData["msg1"] = "您有未缴纳的罚金！暂时无法借阅操作";
                 return RedirectToAction("Checkout");
