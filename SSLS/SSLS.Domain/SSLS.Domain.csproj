@@ -51,6 +51,9 @@
     <Compile Include="Abstract\IBooksRepository.cs" />
     <Compile Include="Abstract\IBorrowProcessor.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Concrete\Admin.cs">
+      <DependentUpon>Library.tt</DependentUpon>
+    </Compile>
     <Compile Include="Concrete\Book.cs">
       <DependentUpon>Library.tt</DependentUpon>
     </Compile>

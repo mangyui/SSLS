@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin_main.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="navbar navbar-default">
+        <div class="mycontainer">
+            <a href="{:url('index/index')}" class="navbar-brand" id="mylogo">MANGYU</a>
+            <h4>后台管理</h4>
+            <section class="logout">
+                <a class="admin-aset" href="{:url('admin/info')}">
+                    <span class="glyphicon glyphicon-user"></span>管理员
+                </a>
+
+                <!--下拉更多分类开始-->
+                <div class="dropdown admin-aset">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        设置
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="#">设置1</a>
+                        </li>
+                        <li>
+                            <a href="#">设置2</a>
+                        </li>
+                        <li>
+                            <a href="#">设置3</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--下拉更多分类结束-->
+
+                <a class="admin-aset" href="#">
+                    <span class="glyphicon glyphicon-log-out"></span>登出
+                </a>
+            </section>
+        </div>
+    </header>
+    <!--页面内容开始-->
+    <div class="mycontainer">
+        <!--取消使用默认的container样式-->
+        <div class="clearfix">
+
+            <!--菜单列表开始-->
+            <label id="toggle-label" class="visible-xs-inline-block" for="toggle-checkbox">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </label>
+            <input class="hidden" id="toggle-checkbox" type="checkbox">
+            <nav class="column leftul">
+                <div class="nav_box">
+                    <div class="top-hidden"></div>
+                    <div class="search">
+                        <span class="glyphicon glyphicon-search"></span>
+                        <input type="text" class="form-control">
+                    </div>
+                    <ul id="ulNav">
+                        <li>
+                            <a>
+                                <span class="glyphicon glyphicon-user left-icon"></span>图书管理
+                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                            </a>
+                            <ul class="two-ul">
+                                <li>
+                                    <a href="@Url.Action("BookList", "Admin")">
+                                        图书列表
+                                        <!--   <span class="glyphicon glyphicon-menu-right right-icon"></span> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("BookCreate", "Admin")">
+                                        添加图书
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="glyphicon glyphicon-bookmark left-icon"></span>类别管理
+                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                            </a>
+                            <ul class="two-ul">
+                                <li>
+                                    <a href="@Url.Action("CategoryList", "Admin")">
+                                        类别列表
+                                        <!--   <span class="glyphicon glyphicon-menu-right right-icon"></span> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("CategoryCreate", "Admin")">
+                                        添加类别
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="glyphicon glyphicon-list-alt left-icon"></span>借阅统计
+                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                            </a>
+                            <ul class="two-ul">
+                                <li>
+                                    <a href="{:url('post/lst')}">
+                                        博文列表
+                                        <!--   <span class="glyphicon glyphicon-menu-right right-icon"></span> -->
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:url('post/add')}">
+                                        添加博文
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="glyphicon glyphicon-link left-icon"></span>罚款统计
+                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                            </a>
+                            <ul class="two-ul">
+                                <li>
+                                    <a href="{:url('links/lst')}">
+                                        链接列表
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:url('links/add')}">
+                                        添加链接
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="glyphicon glyphicon-cog left-icon"></span>系统
+                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                            </a>
+                            <ul class="two-ul">
+                                <li>
+                                    <a href="{:url('admin/info')}">
+                                        系统信息
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--菜单列表结束-->
+
+            <!--右侧主内容开始-->
+            <div id="Content">
+                @RenderBody()
+            </div>
+            <!--右侧主内容结束-->
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/admin_main.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+
+    <script>
+    layer.ready(function () {
+        if (@(TempData["msg_warning"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg_warning"]', {icon: 0});
+    }
+          if (@(TempData["msg_success"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg_success"]', {icon: 1});
+        }
+          if (@(TempData["msg_error"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg_error"]', {icon: 2});
+        }
+          if (@(TempData["msg"] == null ? "false" : "true")) {
+      layer.alert('@TempData["msg"]', {icon: 3});
+    }
+
+    })
+
+    </script>
+
+</body>
+</html>

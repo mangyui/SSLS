@@ -91,5 +91,75 @@ namespace SSLS.Domain.Concrete
                             .Skip((page - 1) * PageSize)
                             .Take(PageSize);
         }
+
+        public void SaveBook(Book book)
+        {
+            if (book.Id == 0)
+            {
+                db.Book.Add(book);
+            }
+            else
+            {
+                //Find,通过主键来查找对应实体。对比FirstOrDefault方法效率要高一些。
+                //Find,如果相应的实体已经被ObjectContent缓存,EF会在缓存中直接返回对应实体，而不会执行数据库访问。
+                Book dbEntry = db.Book.Find(book.Id);
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = book.Name;
+                    dbEntry.Category_ID = book.Category_ID;
+                    dbEntry.Price = book.Price;
+                    dbEntry.Description = book.Description;
+                    dbEntry.Code = book.Code;
+                    dbEntry.ImageUrl = book.ImageUrl;
+                    dbEntry.Authors = book.Authors;
+                    dbEntry.Press = book.Press;
+                    dbEntry.Status = book.Status;
+                    dbEntry.PublishDate = book.PublishDate;
+                }
+            }
+            db.SaveChanges();
+        }
+
+        public Book DeleteBook(int id)
+        {
+            Book dbEntry = db.Book.Find(id);
+            if (dbEntry != null)
+            {
+                db.Book.Remove(dbEntry);
+                db.SaveChanges();
+            }
+            return dbEntry;
+        }
+        public void SaveCategory(Category category)
+        {
+            if (category.Id == 0)
+            {
+                db.Category.Add(category);
+            }
+            else
+            {
+                //Find,通过主键来查找对应实体。对比FirstOrDefault方法效率要高一些。
+                //Find,如果相应的实体已经被ObjectContent缓存,EF会在缓存中直接返回对应实体，而不会执行数据库访问。
+                Category dbEntry = db.Category.Find(category.Id);
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = category.Name;
+                    dbEntry.Code = category.Code;
+                    dbEntry.Description = category.Description;
+                }
+            }
+            db.SaveChanges();
+        }
+
+        public Category DeleteCategory(int id)
+        {
+            Category dbEntry = db.Category.Find(id);
+            if (dbEntry != null)
+            {
+                db.Category.Remove(dbEntry);
+                db.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

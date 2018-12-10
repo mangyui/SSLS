@@ -157,5 +157,14 @@
       <End Role="Reader" EntitySet="Reader" />
       <End Role="Fine" EntitySet="Fine" />
     </AssociationSet>
+    <EntitySet Name="Admin" EntityType="LibraryModel.Admin" />
   </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

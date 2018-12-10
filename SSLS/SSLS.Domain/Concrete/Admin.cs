@@ -11,21 +11,11 @@ namespace SSLS.Domain.Concrete
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    public partial class Category
+    
+    public partial class Admin
     {
-        public Category()
-        {
-            this.Book = new HashSet<Book>();
-        }
-    
         public int Id { get; set; }
-        [Required(ErrorMessage = "请输入分类编号")]
-        public string Code { get; set; }
-        [Required(ErrorMessage = "请输入分类名称")]
-        public string Name { get; set; }
-        public string Description { get; set; }
-    
-        public virtual ICollection<Book> Book { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }

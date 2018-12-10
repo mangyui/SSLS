@@ -31,7 +31,10 @@
                 @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 <br>
-                <input class="btn bggray" type="submit" value="修改" />
+                <div class="text-center">
+                    <input class="btn bggray" type="submit" value="修改" />
+                </div>
+
             }
         </div>
         <div class="col-xs-offset-3 col-sm-offset-4 col-xs-6 col-sm-4 Modify_form" style="display:none">
@@ -41,7 +44,10 @@
             <label class="control-label" form="newPwd">新密码</label>
             <input class="form-control" type="password" name="newPwd" id="NewPwd" value="" />
             <br>
-            <a class="btn bggray" id="ModifyPwd_btn">修改</a>
+            <div class="text-center">
+                <a class="btn bggray" id="ModifyPwd_btn">修改</a>
+            </div>
+
         </div>
     </div>
 </div>

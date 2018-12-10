@@ -11,6 +11,7 @@ namespace SSLS.Domain.Concrete
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Book
     {
@@ -20,13 +21,21 @@ namespace SSLS.Domain.Concrete
         }
     
         public int Id { get; set; }
+        [Required(ErrorMessage = "请输入图书编码")]
         public string Code { get; set; }
+        [Required(ErrorMessage = "请输入图书名称")]
         public string Name { get; set; }
+         [Required(ErrorMessage = "请输入作者名称")]
         public string Authors { get; set; }
+        [Required(ErrorMessage = "请输入出版社")]
         public string Press { get; set; }
         public string ImageUrl { get; set; }
+        [Required(ErrorMessage = "请输入简介")]
         public string Description { get; set; }
+         [Required(ErrorMessage = "请输入出版日期")]
         public Nullable<System.DateTime> PublishDate { get; set; }
+        [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "图书价格必须大于0")]
         public Nullable<decimal> Price { get; set; }
         public string Status { get; set; }
         public int Category_ID { get; set; }

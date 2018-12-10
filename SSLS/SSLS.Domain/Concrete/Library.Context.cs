@@ -31,5 +31,6 @@ namespace SSLS.Domain.Concrete
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Fine> Fine { get; set; }
         public virtual DbSet<Reader> Reader { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
     }
 }

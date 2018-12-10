@@ -17,7 +17,7 @@ namespace SSLS.WebUI.Controllers
             this.repository = productsRepository;
         }
 
-        public ActionResult Index(Reader reader)   //待完成
+        public ActionResult Index(Reader reader)  
         {
             if (reader.Id == 0)
             {

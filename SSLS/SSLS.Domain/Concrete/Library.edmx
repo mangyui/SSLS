@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="Id" />
@@ -66,7 +74,7 @@
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Book__Category_I__7F60ED59">
+        <Association Name="FK__Book__Category_I__164452B1">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -78,7 +86,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Borrow__Book_ID__0519C6AF">
+        <Association Name="FK__Borrow__Book_ID__1273C1CD">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="Borrow" Type="Self.Borrow" Multiplicity="*" />
           <ReferentialConstraint>
@@ -90,7 +98,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Borrow__Reader_I__0425A276">
+        <Association Name="FK__Borrow__Reader_I__1367E606">
           <End Role="Reader" Type="Self.Reader" Multiplicity="1" />
           <End Role="Borrow" Type="Self.Borrow" Multiplicity="*" />
           <ReferentialConstraint>
@@ -102,7 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Fine__Borrow_ID__08EA5793">
+        <Association Name="FK__Fine__Borrow_ID__145C0A3F">
           <End Role="Borrow" Type="Self.Borrow" Multiplicity="1" />
           <End Role="Fine" Type="Self.Fine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -114,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Fine__Reader_ID__09DE7BCC">
+        <Association Name="FK__Fine__Reader_ID__15502E78">
           <End Role="Reader" Type="Self.Reader" Multiplicity="1" />
           <End Role="Fine" Type="Self.Fine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -127,28 +135,29 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LibraryModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Borrow" EntityType="Self.Borrow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fine" EntityType="Self.Fine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reader" EntityType="Self.Reader" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Book__Category_I__7F60ED59" Association="Self.FK__Book__Category_I__7F60ED59">
+          <AssociationSet Name="FK__Book__Category_I__164452B1" Association="Self.FK__Book__Category_I__164452B1">
             <End Role="Category" EntitySet="Category" />
             <End Role="Book" EntitySet="Book" />
           </AssociationSet>
-          <AssociationSet Name="FK__Borrow__Book_ID__0519C6AF" Association="Self.FK__Borrow__Book_ID__0519C6AF">
+          <AssociationSet Name="FK__Borrow__Book_ID__1273C1CD" Association="Self.FK__Borrow__Book_ID__1273C1CD">
             <End Role="Book" EntitySet="Book" />
             <End Role="Borrow" EntitySet="Borrow" />
           </AssociationSet>
-          <AssociationSet Name="FK__Borrow__Reader_I__0425A276" Association="Self.FK__Borrow__Reader_I__0425A276">
+          <AssociationSet Name="FK__Borrow__Reader_I__1367E606" Association="Self.FK__Borrow__Reader_I__1367E606">
             <End Role="Reader" EntitySet="Reader" />
             <End Role="Borrow" EntitySet="Borrow" />
           </AssociationSet>
-          <AssociationSet Name="FK__Fine__Borrow_ID__08EA5793" Association="Self.FK__Fine__Borrow_ID__08EA5793">
+          <AssociationSet Name="FK__Fine__Borrow_ID__145C0A3F" Association="Self.FK__Fine__Borrow_ID__145C0A3F">
             <End Role="Borrow" EntitySet="Borrow" />
             <End Role="Fine" EntitySet="Fine" />
           </AssociationSet>
-          <AssociationSet Name="FK__Fine__Reader_ID__09DE7BCC" Association="Self.FK__Fine__Reader_ID__09DE7BCC">
+          <AssociationSet Name="FK__Fine__Reader_ID__15502E78" Association="Self.FK__Fine__Reader_ID__15502E78">
             <End Role="Reader" EntitySet="Reader" />
             <End Role="Fine" EntitySet="Fine" />
           </AssociationSet>
@@ -314,7 +323,16 @@
             <End Role="Reader" EntitySet="Reader" />
             <End Role="Fine" EntitySet="Fine" />
           </AssociationSet>
+          <EntitySet Name="Admin" EntityType="LibraryModel.Admin" />
         </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -384,6 +402,15 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="LibraryModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

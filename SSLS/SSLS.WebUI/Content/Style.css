@@ -132,7 +132,7 @@ body{
     transition: all .2s ease-in-out;
     color: #444;
     margin-left:5px;
-    width: 80px;
+    width: 100px;
     padding: 10px 8px 4px;
 }
 
@@ -145,6 +145,12 @@ body{
 .side-bar .list-group-item.active .badge, .side-bar .list-group-item:hover .badge{
     color:#e4505d;
     background:#fff;
+}
+.side-bar .list-group-item .badge
+{
+    position: absolute;
+    top: 1px;
+    right: 1px;
 }
 
 .Myhr{
@@ -233,6 +239,12 @@ body{
     overflow: hidden;
     box-shadow: 0 1px 2px 0 #cecece;
     border-radius:2px;
+    margin: 8px 6px;
+
+}
+.Mythub > a {
+    display:inline-block;
+    height:175px;
 }
 .Mythub  img {
     padding: 5px 45px;
@@ -725,6 +737,12 @@ a.My_block{
     #mySearch p button[type='submit']{
         width:25%;
         height:40px;
+    }
+    .Mythub{
+        margin:0 0 10px 0;
+    }
+    .Mythub > a {
+        height:152px;
     }
     .Mythub  img {
       padding:5px 14px;

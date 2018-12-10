@@ -1,0 +1,482 @@
+﻿body{
+    background: #f2f2f2;
+}
+.navbar {
+    background-color: #22262e;
+    border-radius: 0;
+    margin-bottom: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+}
+#mylogo{
+    background:-webkit-linear-gradient(left,#147B96,#E6D205 25%,#147B96 50%,#E6D205 75%,#147B96);
+    color:transparent;
+    -webkit-background-clip:text;
+    background-size:200% 100%;
+    animation:masked-animation 1.5s infinite linear;
+}
+@-webkit-keyframes masked-animation {
+    0% {
+    background-position:0 0;
+    }
+    100% {
+        background-position:-100% 0;
+    }
+}
+.navbar h4 {
+    margin: 0;
+    line-height: 50px;
+    color: #fff;
+    float: left
+}
+
+.navbar .logout{
+    float: right;
+}
+.navbar .logout .admin-aset{
+    color: #fff;
+    line-height: 50px;
+    font-size: 12px;
+    margin-right: 36px;
+}
+.navbar .logout .glyphicon{
+    margin-right: 5px;
+}      
+
+.navbar .dropdown{
+    display: inline-block;
+}
+.navbar .dropdown a{
+    text-decoration: none;
+    color: #fff;
+    line-height: 40px;
+    font-size:13px;
+}
+.navbar .dropdown .dropdown-menu{
+    background-color: #22262e;  
+}
+/*页头样式结束*/
+
+.leftul {
+    padding: 0;
+    box-shadow: 1px 0 2px 0 rgba(0,0,0,.05);
+    position: fixed;
+    height: 100%;
+    top: 10px;
+    transition:0.3s;
+    left:0;
+    z-index: 8889;
+    background-color: #20222A ;
+    overflow-x:hidden;
+    width:220px;
+}
+
+.nav_box{
+    height: 100%;
+    overflow-x: hidden;
+    width: 242px;
+}
+.leftul .top-hidden {
+    height: 40px;
+}
+
+.leftul .search input {
+    border: 0;
+    border-bottom: 1px solid #f3f3f3;
+    border-radius: 0;
+    padding: 20px 0 20px 40px;
+    height: 40px;
+}
+
+.leftul .search input:focus {
+    box-shadow: none;
+}
+
+.leftul .search {
+    position: relative;
+    z-index: 5;
+}
+
+.leftul .search .glyphicon {
+    position: absolute;
+    line-height: 38px;
+    left: 20px;
+    color: #2dc3e8;
+    cursor: pointer;
+}
+
+.leftul ul {
+    list-style: none;
+    width: 220px;
+    padding: 0;
+}
+
+.leftul ul a {
+    color: #fff;
+    padding: 18px;
+    display: inline-block;
+    width: 100%;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+#ulNav li {
+    padding: 0;
+    cursor: pointer;
+}
+
+#ulNav>li:hover>a {
+    background-color: #393D49;
+}
+
+#ulNav li .left-icon {
+    margin-right: 10px;
+}
+
+#ulNav li .right-icon {
+    float: right;
+    transition: all 0.1s ease-in-out;
+}
+
+#ulNav li .right-icon::before {
+    font-size: 1px;
+}
+
+#ulNav .two-ul {
+    width: 100%;
+    /* box-shadow: inset 0 4px 4px -2px rgba(0, 0, 0, .15), inset 0 -4px 4px -2px rgba(0, 0, 0, .15); */
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    background-color: #16181d;
+}
+
+
+#ulNav .two-ul a {
+    padding-left: 55px;
+}
+
+#ulNav .active-liNav {     /*一级级导航列表选中效果*/ 
+    border-top: 1px solid #337ab7;
+}
+
+#ulNav .active-liNav>a .right-icon {
+    transform: rotate(90deg);
+}
+
+#ulNav .active-liNav .two-ul {
+    height: auto;
+}
+
+#ulNav .active-two-li{     /*二级导航列表选中效果*/       
+    background-color: #fff;
+
+}
+#ulNav .active-two-li a{
+    color: #000;
+}
+ 
+#toggle-label {                     /*响应式导航列表显示和隐藏*/
+    display: inline-block!important;
+    position: fixed;
+    left:240px;
+    top: 13px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #666;
+    z-index: 10000;
+    cursor:pointer;
+}
+
+#toggle-label .glyphicon {
+    color: #fff;
+    font-size: 20px;
+}
+#toggle-label:hover .glyphicon{
+    color:#01AAED;
+}
+#toggle-checkbox:checked~.leftul {
+    left:-250px;
+}
+
+/* 右侧主内容主模板样式*/
+#Content{
+    transition:0.3s;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    position:fixed;
+    left: 220px;
+    width: auto;
+    right: 0;
+    bottom: 0;
+    top:90px;
+}
+.top-title {
+    /*margin-left: 210px;*/
+}
+
+.rightbody {
+    margin: 15px 20px 15px 20px;
+    /*padding: 20px;*/
+    transition:0.3s;
+    overflow-x: hidden;
+}
+.box-wrap{
+    border-radius: 2px;
+    background-color: #fff;
+    padding:55px 20px 20px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+    position:relative;
+}
+.box-title{
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    border-bottom: 1px solid #f6f6f6;
+    color: #333;
+    font-size: 15px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+.top-title {
+    background-color: #fcfcfc;
+    min-height: 40px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+    line-height: 40px;
+    position: fixed;
+    width: 100%;
+    top: 50px;
+    height: 40.5px;
+    z-index: 8888;
+    transition:0.3s;
+}
+
+.top-title .breadcrumb{
+    margin-bottom: 0px; 
+    list-style: none;
+    background-color:transparent; 
+    border-radius: 4px;
+    padding:0 0 0 10px;
+    font-size:13px;
+}
+#ueditor{
+    width: 80%;
+}
+
+/*myform*/
+
+.myform-form {
+    margin: 20px 0 0 10px;
+    width: 100%;
+    font-size: 14px;
+}
+
+
+.myform-form .myform-line {
+    margin-bottom: 24px;
+    clear: both;
+}
+
+.myform-form .myform-left {
+    float: left;
+    display: block;
+    padding: 12px 15px;
+    width: 150px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+    margin-bottom: 0;
+}
+
+.myform-form .myform-right {
+    margin-left: 150px;
+    min-height: 36px;
+}
+.myform-form .myform-input,
+.myform-form .myform-textarea{
+    border:1px solid #e6e6e6;
+    background-color: #fff;
+    border-radius: 2px;
+    display: block;
+    padding: 10px;
+}
+select.myform-input{
+    padding-top:8px;
+}
+.myform-form .myform-input{
+    width: 300px;
+}
+.myform-form .myform-textarea{
+    width: 600px;
+    height: 100px;
+}
+.myform-form .myform-btn {
+    width: 100px;
+    text-align: center;
+    color: #fff;
+    background-color: #22262e;
+    border-radius: 5px;
+    padding: 10px;
+    border: 0;
+}
+.myform-form input[type=file]{
+    display: inline-block;
+    margin-right: 24px;
+}
+
+
+    /*开关样式*/
+.myform-switch .myform-switch-label {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    height: 36px;
+    line-height: 36px;
+    padding: 5px;
+    color: #fff;
+    border-radius: 50px;
+    margin: 0;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.myform-switch .myform-switch-ring {
+    position: absolute;
+    top: 0px;
+    right: 34px;
+    height: 34px;
+    width: 34px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: all .1s ease-in-out;
+}
+
+#switch-checkbox:checked+.myform-switch-label {
+    background-color: #64bd63;
+    border: 1px solid #64bd63;
+}
+
+#switch-checkbox:checked+.myform-switch-label .myform-switch-ring {
+    right: 1px;
+}
+
+
+/*列表表格样式开始*/
+
+.btn-add{
+    border-radius:0;
+}
+.btn-add .glyphicon {
+    margin-right:10px;
+    transition:.3s linear;
+    transform:rotate(0deg);
+}
+.btn-add:hover .glyphicon{
+    transform:rotate(360deg);
+}
+.rightbody .mytable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.mytable th,
+.mytable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.mytable th {
+    background-color: #eee;
+}
+
+.mytable tr:not(:first-child):hover {
+    background-color: rgb(250, 250, 250);
+}
+
+.mytable .label {
+    font-size: 13px;
+    font-weight: normal;
+    padding-top: 5px;
+    margin: 2px;
+    display: inline-block;
+    padding: 0 .6em 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+.mytable .label .glyphicon {
+    margin-right: 5px;
+}
+
+.mytable .wd20 {
+    /*列占宽*/
+    width: 20%;
+}
+
+.admin_bookimg{
+    width:100px;
+}
+
+/*列表表格样式结束*/
+
+.fenye {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+@media (min-width: 768px) {
+    #toggle-checkbox:checked ~ #Content {
+         left: 0;
+    }
+    .top-title .breadcrumb{
+        padding-left:30px;
+    }
+}
+
+@media (max-width: 767px) {       /*响应式*/
+    .rightbody {
+        margin-left: 5px;
+        margin-right:5px;
+    }
+    #Content{
+       left:0px;
+    }
+    #toggle-label{
+        left:auto;
+        right:15px;
+    }
+    .navbar .logout{
+        display: none;
+    }
+    #ulNav .hidden{
+        display: block !important;
+    }
+    .myform-form{
+        margin: 0;
+    }
+    .myform-form .myform-left{
+        text-align: left;
+    }
+    .myform-form .myform-right {
+        margin-left: 0;
+    }
+    .myform-form .myform-input,
+    .myform-form .myform-textarea{
+        width: 100%;
+    }
+    #ueditor{
+        width: 100%;
+    }
+    .admin_bookimg{
+       width:0px;
+    }
+}

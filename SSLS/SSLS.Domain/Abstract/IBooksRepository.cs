@@ -23,5 +23,11 @@ namespace SSLS.Domain.Abstract
         IQueryable<Borrow> GetBorrows(Reader reader, int isOver, int page, int PageSize, out IQueryable<Borrow> BorrowList);
         IQueryable<Fine> GetFines(Reader reader, int isFinish, int page, int PageSize,out IQueryable<Fine> FineList);
 
+
+        void SaveBook(Book book);
+        Book DeleteBook(int id);
+        void SaveCategory(Category category);
+        Category DeleteCategory(int id);
+
     }
 }

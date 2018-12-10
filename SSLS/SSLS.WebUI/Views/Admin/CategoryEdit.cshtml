@@ -1,0 +1,52 @@
+﻿@model SSLS.Domain.Concrete.Category
+@{
+    ViewBag.Title = "CategoryEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="top-title">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")">后台主页</a></li>
+        <li><a href="@Url.Action("CategoryList", "Admin")">类别列表</a></li>
+        <li class="active">类别编辑</li>
+    </ol>
+</section>
+<div class="rightbody">
+    <div class="box-wrap">
+        <h6 class="box-title">类别编辑</h6>
+        <div class="myform-form">
+            @using (Html.BeginForm("CategoryEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                
+                @Html.HiddenFor(model => model.Id)
+                <div class="myform-line">
+                    <label class="myform-left">类别编号：</label>
+                    <div class="myform-right">
+                        @Html.TextBoxFor(model => model.Code, new { @class = "myform-input" })
+                        @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="myform-line">
+                    <label class="myform-left">类别名称：</label>
+                    <div class="myform-right">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "myform-input" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="myform-line">
+                    <label class="myform-left">类别说明：</label>
+                    <div class="myform-right">
+                        <textarea class="myform-textarea" name="Description">@Model.Description</textarea>
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="myform-line">
+                    <div class="myform-right">
+                        <input class="myform-btn" type="submit" value="保存">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
