@@ -54,17 +54,17 @@ namespace SSLS.WebUI.Controllers
         {
             if (cart.Lines.Count() == 0)
             {
-                TempData["msg"] = "您的暂存架为空！";
+                TempData["msg_warning"] = "您的暂存架为空！";
                 return RedirectToAction("Index");
             }
             if (reader.Id == 0)
             {
-                TempData["msg"] = "抱歉，请先登录！";
+                TempData["msg_warning"] = "抱歉，请先登录！";
                 return RedirectToAction("Index");
             }
             if (Selected==null || Selected.Length == 0)
             {
-                TempData["msg"] = "您还未勾选书籍！";
+                TempData["msg_warning"] = "您还未勾选书籍！";
                return RedirectToAction("Index");
             }
             List<Book> books=new List<Book>();
@@ -93,12 +93,12 @@ namespace SSLS.WebUI.Controllers
         {
             if(Session["books"]==null)
             {
-                TempData["msg"] = "您还未勾选书籍！";
+                TempData["msg_warning"] = "您还未勾选书籍！";
                 return RedirectToAction("Index");
             }
             if (repository.Fines.Where(f =>f.Reader_ID==reader.Id&&f.State == "待缴纳").Count() > 0)
             {
-                TempData["msg1"] = "您有未缴纳的罚金！暂时无法借阅操作";
+                TempData["msg_error"] = "您有未缴纳的罚金！暂时无法借阅操作";
                 return RedirectToAction("Checkout");
             }
             List<Book> books = Session["books"] as List<Book>;

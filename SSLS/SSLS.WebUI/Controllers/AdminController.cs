@@ -21,7 +21,13 @@ namespace SSLS.WebUI.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            return View(new AdminAllModel { 
+               Books=repository.Books,
+               Categorys=repository.Categories,
+               Borrows=repository.Borrows,
+               Fines=repository.Fines,
+               Readers=repository.Readers
+            });
         }
 
 
@@ -102,13 +108,13 @@ namespace SSLS.WebUI.Controllers
 
         [HttpPost]
         public ActionResult BookDelete(int id)
-        {
-            Book deleteBook = repository.DeleteBook(id);
-            if(deleteBook!=null)
+        {    
+            string msg;
+            return Json(new
             {
-                TempData["msg_success"] = string.Format("{0}删除成功", deleteBook.Name);
-            }
-            return RedirectToAction("BookList");
+                result = repository.DeleteBook(id, out msg),
+                msg = msg
+            }); 
         }
 
         public ActionResult CategoryList()
@@ -141,12 +147,36 @@ namespace SSLS.WebUI.Controllers
         [HttpPost]
         public ActionResult CategoryDelete(int id)
         {
-            Category deleteCategory = repository.DeleteCategory(id);
-            if (deleteCategory != null)
+            string msg;
+            return Json(new {
+                result=repository.DeleteCategory(id,out msg),
+                msg=msg
+            }); 
+        }
+
+        public ActionResult ReaderList(int page = 1)
+        {
+            IQueryable<Reader> ReadersList = repository.Readers;
+
+            ReadersListModel viewModel = new ReadersListModel
             {
-                TempData["msg_success"] = string.Format("{0}删除成功", deleteCategory.Name);
-            }
-            return RedirectToAction("CategoryList");
+                Readers = ReadersList
+                        .OrderBy(p => p.Id)
+                        .Skip((page - 1) * PageSize)
+                        .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = ReadersList.Count()
+                }
+            };
+            return View(viewModel);
+        }
+        public ActionResult ReaderDetail(int id)
+        {
+            Reader reader = repository.Readers.Where(r => r.Id == id).FirstOrDefault();
+            return View(reader);
         }
 	}
 }

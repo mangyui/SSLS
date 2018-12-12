@@ -120,15 +120,29 @@ namespace SSLS.Domain.Concrete
             db.SaveChanges();
         }
 
-        public Book DeleteBook(int id)
+        public bool DeleteBook(int id,out string msg)
         {
             Book dbEntry = db.Book.Find(id);
-            if (dbEntry != null)
+            if (dbEntry == null)
             {
-                db.Book.Remove(dbEntry);
-                db.SaveChanges();
+                msg = "不存在《" + dbEntry.Name + "》图书！";
+                return false;
             }
-            return dbEntry;
+            else
+            {
+                if (dbEntry.Status=="外借")
+                {
+                    msg ="《" + dbEntry.Name + "》图书外借，不能删除！";
+                    return false;
+                }
+                else
+                {
+                    db.Book.Remove(dbEntry);
+                    db.SaveChanges();
+                    msg = "《" +dbEntry.Name + "》删除成功";
+                    return true;
+                }
+            }
         }
         public void SaveCategory(Category category)
         {
@@ -151,15 +165,30 @@ namespace SSLS.Domain.Concrete
             db.SaveChanges();
         }
 
-        public Category DeleteCategory(int id)
+        public bool DeleteCategory(int id,out string msg)
         {
             Category dbEntry = db.Category.Find(id);
-            if (dbEntry != null)
+            if (dbEntry == null)
             {
-                db.Category.Remove(dbEntry);
-                db.SaveChanges();
+                msg = "不存在 " + dbEntry.Name + " 类别！";
+                return false;
             }
-            return dbEntry;
+            else
+            {
+                if (dbEntry.Book.Count() > 0)
+                {
+                    msg = "存在 " + dbEntry.Name + " 类别图书，不能删除！";
+                    return false;
+                }
+                else
+                {
+                    db.Category.Remove(dbEntry);
+                    db.SaveChanges();
+                    msg = dbEntry.Name + "删除成功";
+                    return true;
+                }
+            }
+           
         }
     }
 }

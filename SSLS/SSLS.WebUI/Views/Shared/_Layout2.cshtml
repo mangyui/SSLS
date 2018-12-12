@@ -6,10 +6,9 @@
     <meta name="referrer" content="no-referrer" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    @*<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />*@
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/error.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <style>
     </style>
 </head>
@@ -46,14 +45,6 @@
     <footer class="text-center">
         <p>&copy; @DateTime.Now.Year - MANGYU</p>
     </footer>
-    @if (TempData["msg"] != null)
-    {
-        <div id="msg" class="hidden">@TempData["msg"]</div>
-    }
-    @if (TempData["msg1"] != null)
-    {
-        <div id="msg1" class="hidden">@TempData["msg1"]</div>
-    }
     <script src="~/Scripts/bootstrap.min.js"></script>
 
     <script src="~/Scripts/jqZoom/xq_bigimg.js"></script>
@@ -61,7 +52,21 @@
     <script src="~/Scripts/totop.js"></script>
     <script src="~/Scripts/main.js"></script>
     <script>
+        layer.ready(function () {
+            if (@(TempData["msg_warning"] == null ? "false" : "true")) {
+                layer.alert('@TempData["msg_warning"]', {icon: 0});
+            }
+            if (@(TempData["msg_success"] == null ? "false" : "true")) {
+                layer.alert('@TempData["msg_success"]', {icon: 1});
+            }
+            if (@(TempData["msg_error"] == null ? "false" : "true")) {
+                layer.alert('@TempData["msg_error"]', {icon: 2});
+            }
+            if (@(TempData["msg"] == null ? "false" : "true")) {
+                layer.alert('@TempData["msg"]');
+            }
 
+        })
     </script>
 </body>
 </html>

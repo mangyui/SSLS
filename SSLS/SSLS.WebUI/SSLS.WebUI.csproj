@@ -211,6 +211,7 @@
     <Compile Include="Infrastructure\Binders\ReaderModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\Utils.cs" />
+    <Compile Include="Models\AdminAllModel.cs" />
     <Compile Include="Models\BooksListViewModel.cs" />
     <Compile Include="Models\BorrowViewModel.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
@@ -218,8 +219,8 @@
     <Compile Include="Models\FinesViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
-    <Compile Include="Models\ReaderModel.cs" />
     <Compile Include="Models\ReaderModifyModel.cs" />
+    <Compile Include="Models\ReadersListModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ValidataCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -258,6 +259,8 @@
     <Content Include="Views\Admin\BookEdit.cshtml" />
     <Content Include="Views\Admin\CategoryList.cshtml" />
     <Content Include="Views\Admin\CategoryEdit.cshtml" />
+    <Content Include="Views\Admin\ReaderList.cshtml" />
+    <Content Include="Views\Admin\ReaderDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

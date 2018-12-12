@@ -1,0 +1,90 @@
+﻿@model SSLS.Domain.Concrete.Reader
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>读者信息</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+        <div class="Cart_bg">
+            <div class="row">
+                <div class="user">
+                    <div class="awater text-center">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div>
+                        <table class="Checkout_reader">
+                            <tr>
+                                <th>账户：</th>
+                                <td>@Model.Code</td>
+                            </tr>
+                            <tr>
+                                <th>昵称：</th>
+                                <td>@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <th>班级：</th>
+                            <td>@Model.Class</td>
+                        </tr>
+
+                        <tr>
+                            <th>邮箱：</th>
+                            <td>@Model.Email</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <table id="cartTable" class="table">
+            <caption class="text-center">TA的借阅</caption>
+            <thead>
+                <tr>
+                    <th width="20%">图书</th>
+                    <th>图书详情</th>
+                    <th>借阅日期</th>
+                    <th>应还日期</th>
+                    <th>是否超期</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var borrow in Model.Borrow.Where(b => b.State == "在借"))
+                {
+                    <tr>
+                        <td class="Cart_book">
+                            <a href="@Url.Action("Detail", "Book", new { id = borrow.Book.Id })">
+                                <img src="@borrow.Book.ImageUrl" alt="@borrow.Book.Name" width="100%">
+                            </a>
+                        </td>
+                        <td style="text-align:left">
+                            <div class="Cart_datail">
+                                <div>
+                                    <span>书名:</span><div>《@borrow.Book.Name》</div>
+                                </div>
+                                <div>
+                                    <span>作者:</span><div>@borrow.Book.Authors</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <b>@borrow.BorrowDate</b>
+                        </td>
+                        <td>
+                            <b>@borrow.ShouldDate</b>
+                        </td>
+                        <td>
+                            <span class="label @(borrow.ShouldDate <DateTime.Now ? "bgred" : "bggreen")">@(borrow.ShouldDate < DateTime.Now ? "超期" + (DateTime.Now - borrow.ShouldDate).Days + "天" : (borrow.ShouldDate - DateTime.Now).Days + "天到期")</span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

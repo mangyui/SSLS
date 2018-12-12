@@ -62,8 +62,13 @@
                     </div>
                     <ul id="ulNav">
                         <li>
+                            <a href="@Url.Action("Index", "Admin")">
+                                <span class="glyphicon glyphicon-home left-icon"></span>主页
+                            </a>
+                        </li>
+                        <li>
                             <a>
-                                <span class="glyphicon glyphicon-user left-icon"></span>图书管理
+                                <span class="glyphicon glyphicon-tasks left-icon"></span>图书管理
                                 <span class="glyphicon glyphicon-triangle-right right-icon"></span>
                             </a>
                             <ul class="two-ul">
@@ -100,54 +105,24 @@
                             </ul>
                         </li>
                         <li>
-                            <a>
-                                <span class="glyphicon glyphicon-list-alt left-icon"></span>借阅统计
-                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                            <a href="@Url.Action("ReaderList", "Admin")">
+                                <span class="glyphicon glyphicon-user left-icon"></span>读者管理
                             </a>
-                            <ul class="two-ul">
-                                <li>
-                                    <a href="{:url('post/lst')}">
-                                        博文列表
-                                        <!--   <span class="glyphicon glyphicon-menu-right right-icon"></span> -->
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{:url('post/add')}">
-                                        添加博文
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a>
-                                <span class="glyphicon glyphicon-link left-icon"></span>罚款统计
-                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                                <span class="glyphicon glyphicon-signal left-icon"></span>借阅统计
                             </a>
-                            <ul class="two-ul">
-                                <li>
-                                    <a href="{:url('links/lst')}">
-                                        链接列表
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{:url('links/add')}">
-                                        添加链接
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a>
-                                <span class="glyphicon glyphicon-cog left-icon"></span>系统
-                                <span class="glyphicon glyphicon-triangle-right right-icon"></span>
+                                <span class="glyphicon glyphicon-list-alt left-icon"></span>罚款统计
                             </a>
-                            <ul class="two-ul">
-                                <li>
-                                    <a href="{:url('admin/info')}">
-                                        系统信息
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="glyphicon glyphicon-cog left-icon"></span>系统信息
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -163,9 +138,8 @@
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/admin_main.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
-
+    <script src="~/Scripts/admin_main.js"></script>
     <script>
     layer.ready(function () {
         if (@(TempData["msg_warning"] == null ? "false" : "true")) {

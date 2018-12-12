@@ -73,10 +73,21 @@
     <script src="~/Scripts/totop.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script>
-        @*@if(TempData["msg"]!=null)
-        {
-            layer.msg(@TempData["msg"], {icon: 1});
-        }*@
+    layer.ready(function () {
+        if (@(TempData["msg_warning"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg_warning"]', {icon: 0});
+        }
+        if (@(TempData["msg_success"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg_success"]', {icon: 1});
+        }
+        if (@(TempData["msg_error"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg_error"]', {icon: 2});
+        }
+        if (@(TempData["msg"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg"]', {icon: 3});
+        }
+
+    })
     </script>
 </body>
 </html>

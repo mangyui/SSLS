@@ -127,7 +127,7 @@
     cursor: pointer;
 }
 
-#ulNav>li:hover>a {
+#ulNav>li>a:hover {
     background-color: #393D49;
 }
 
@@ -137,6 +137,7 @@
 
 #ulNav li .right-icon {
     float: right;
+    transform:rotate(90deg);
     transition: all 0.1s ease-in-out;
 }
 
@@ -147,36 +148,39 @@
 #ulNav .two-ul {
     width: 100%;
     /* box-shadow: inset 0 4px 4px -2px rgba(0, 0, 0, .15), inset 0 -4px 4px -2px rgba(0, 0, 0, .15); */
-    height: 0;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     background-color: #16181d;
+    height: auto;
+    padding-top:5px;
+    padding-bottom:5px;
 }
 
 
-#ulNav .two-ul a {
+.two-ul li a{
+    padding:13px;
     padding-left: 55px;
 }
-
-#ulNav .active-liNav {     /*一级级导航列表选中效果*/ 
+/*#ulNav .active-liNav {    
     border-top: 1px solid #337ab7;
-}
+}*/
 
 #ulNav .active-liNav>a .right-icon {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
 }
 
 #ulNav .active-liNav .two-ul {
-    height: auto;
+    display:none;
 }
 
-#ulNav .active-two-li{     /*二级导航列表选中效果*/       
-    background-color: #fff;
+#ulNav .active-li  a{     /*二级导航列表选中效果*/       
+    background-color: #009688!important;
+    color:#fff;
 
 }
-#ulNav .active-two-li a{
+/*#ulNav .active-two-li a{
     color: #000;
-}
+}*/
  
 #toggle-label {                     /*响应式导航列表显示和隐藏*/
     display: inline-block!important;
@@ -205,7 +209,7 @@
 #Content{
     transition:0.3s;
     overflow-x:hidden;
-    overflow-y:scroll;
+    overflow-y:auto;
     position:fixed;
     left: 220px;
     width: auto;
@@ -219,16 +223,19 @@
 
 .rightbody {
     margin: 15px 20px 15px 20px;
-    /*padding: 20px;*/
+    padding: 15px 0;
     transition:0.3s;
     overflow-x: hidden;
 }
 .box-wrap{
+    display:block;
+    color:#000;
     border-radius: 2px;
     background-color: #fff;
     padding:55px 20px 20px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
     position:relative;
+    margin-bottom:10px;
 }
 .box-title{
     position: absolute;
@@ -267,7 +274,25 @@
 #ueditor{
     width: 80%;
 }
+.box-wrap-top{
+    display:flex;
+    padding-top:20px;
+    align-items:center;
+    justify-content:space-between;
+}
+.box-wrap-top b{
+    font-size:30px;
+}
+.box-wrap-top i.glyphicon{
+    font-size:40px;
+}
+a.box-wrap:hover{ 
+   transition:0.2s;
+    color:#20222A;
+    text-decoration:none;
+    box-shadow:0 2px 5px #ccc;
 
+}
 /*myform*/
 
 .myform-form {
@@ -394,7 +419,7 @@ select.myform-input{
 }
 
 .mytable th {
-    background-color: #eee;
+    background-color: #f9f9f9;
 }
 
 .mytable tr:not(:first-child):hover {
@@ -480,3 +505,6 @@ select.myform-input{
        width:0px;
     }
 }
+
+
+

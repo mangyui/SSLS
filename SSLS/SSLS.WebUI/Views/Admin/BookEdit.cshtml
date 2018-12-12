@@ -57,7 +57,13 @@
                 <div class="myform-line">
                     <label class="myform-left">出版日期：</label>
                     <div class="myform-right">
-                        @Html.TextBoxFor(model => model.PublishDate, new { @class = "myform-input",Type="date",Value=Model.PublishDate.Value.ToString("yyyy-MM-dd") })
+                        @if (Model.PublishDate != null) { 
+                           @Html.TextBoxFor(model => model.PublishDate, new { @class = "myform-input",Type="date", Value=Model.PublishDate.Value.ToString("yyyy-MM-dd") })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => model.PublishDate, new { @class = "myform-input", Type = "date" })
+                        }
                         @Html.ValidationMessageFor(model => model.PublishDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -97,7 +103,7 @@
                 </div>
                 
                 <div class="myform-line">
-                    <label class="myform-left">博文正文：</label>
+                    <label class="myform-left">图书简介：</label>
                     <div class="myform-right">
                         <textarea class="myform-textarea" name="Description">@Model.Description</textarea>
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })

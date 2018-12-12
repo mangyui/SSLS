@@ -25,9 +25,9 @@ namespace SSLS.Domain.Abstract
 
 
         void SaveBook(Book book);
-        Book DeleteBook(int id);
+        bool DeleteBook(int id, out string msg);
         void SaveCategory(Category category);
-        Category DeleteCategory(int id);
+        bool DeleteCategory(int id, out string msg);
 
     }
 }

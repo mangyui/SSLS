@@ -23,7 +23,7 @@ namespace SSLS.WebUI.Controllers
         {
             if (reader.Id == 0)
             {
-                TempData["msg"] = "您还未登录！";
+                TempData["msg_warning"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
             IQueryable<Borrow> BorrowList = repository.Borrows.Where(b => b.Reader_ID == reader.Id && b.State == "在借");
@@ -45,7 +45,7 @@ namespace SSLS.WebUI.Controllers
         {
             if (reader.Id == 0)
             {
-                TempData["msg"] = "您还未登录！";
+                TempData["msg_warning"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
             if (isOver < 0 || isOver > 2)

@@ -1,4 +1,4 @@
-﻿
+﻿@model SSLS.WebUI.Models.AdminAllModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -10,6 +10,41 @@
     </ol>
 </section>
 <div class="rightbody">
-    <h1>index</h1>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+        <a href="@Url.Action("BookList", "Admin")" class="box-wrap box-wrap-top">
+            <div>
+                <b>@Model.Books.Count()</b>
+                <h6>图书</h6>
+            </div>
+            <i class="glyphicon glyphicon-book"></i>
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+        <a href="@Url.Action("CategoryList", "Admin")"  class="box-wrap box-wrap-top">
+            <div>
+                <b>@Model.Categorys.Count()</b>
+                <h6>类别</h6>
+            </div>
+            <i class="glyphicon glyphicon-bookmark"></i>
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+        <a href="@Url.Action("ReaderList", "Admin")" class="box-wrap box-wrap-top">
+            <div>
+                <b>@Model.Readers.Count()</b>
+                <h6>读者</h6>
+            </div>
+            <i class="glyphicon glyphicon-user"></i>
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+        <a href="#" class="box-wrap box-wrap-top">
+            <div>
+                <b>@Model.Borrows.Count()</b>
+                <h6>借阅单</h6>
+            </div>
+            <i class="glyphicon glyphicon-file"></i>
+        </a>
+    </div>
 </div>
 

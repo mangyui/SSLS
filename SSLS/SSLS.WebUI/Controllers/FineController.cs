@@ -24,7 +24,7 @@ namespace SSLS.WebUI.Controllers
         {
             if (reader.Id == 0)
             {
-                TempData["msg"] = "您还未登录！";
+                TempData["msg_warning"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
             if (isFinish < 0 || isFinish > 2)

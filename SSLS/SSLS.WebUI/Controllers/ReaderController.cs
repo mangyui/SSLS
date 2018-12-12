@@ -21,16 +21,10 @@ namespace SSLS.WebUI.Controllers
         {
             if (reader.Id == 0)
             {
-                TempData["msg"] = "您还未登录！";
+                TempData["msg_error"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
-            ReaderModel RM = new ReaderModel
-            {
-                Reader = reader,
-                Borrows = repository.Borrows.Where(b => b.Reader_ID == reader.Id),
-                Fines = repository.Fines.Where(f => f.Reader_ID == reader.Id)
-            };
-            return View(RM);
+            return View(reader);
         }
         public ActionResult Recharge(Reader reader)
         {
@@ -41,13 +35,13 @@ namespace SSLS.WebUI.Controllers
         {
             if(money==0)
             {
-                TempData["msg1"] = "充值失败！";
+                TempData["msg_error"] = "请输入正确金额！！";
             }
             else
             {
                repository.Recharge(reader, money);
                reader.Price += money;
-               TempData["msg1"] = "充值成功！";
+               TempData["msg_success"] = "充值成功！";
             }
             return View(reader);
         }
@@ -69,7 +63,7 @@ namespace SSLS.WebUI.Controllers
                 reader.Class = model.Class;
                 reader.Email = model.Email;
                 repository.SaveReader(reader);
-                TempData["msg1"] = "修改成功！";
+                TempData["msg_success"] = "修改成功！";
                 return RedirectToAction("Index");
             }
             else
@@ -103,7 +97,7 @@ namespace SSLS.WebUI.Controllers
             {
                 //if(model.Vcode!=Session["vcode"].ToString())
                 //{
-                //    TempData["msg"] = "验证码不正确";
+                //    TempData["msg_error"] = "验证码不正确";
                 //    return View();
                 //}
                 Reader ReaderEntry = repository.Readers.FirstOrDefault(c =>
@@ -116,7 +110,7 @@ namespace SSLS.WebUI.Controllers
                 else
                 {
                     //ModelState.AddModelError("", "用户名或密码不正确！");
-                    TempData["msg"] = "用户名或密码不正确";
+                    TempData["msg_error"] = "用户名或密码不正确";
                     return View();
                 }
             }
@@ -147,18 +141,18 @@ namespace SSLS.WebUI.Controllers
                         Password = registerModel.Password,
                     };
                     repository.SaveReader(reader);
-                    TempData["msg1"] = string.Format("{0}注册成功", reader.Name);
+                    TempData["msg_success"] = string.Format("{0}注册成功", reader.Name);
                     return RedirectToAction("Login");
                 }
                 else
                 {
-                    TempData["msg1"] = string.Format("{0} 账号已占用", registerModel.Code);
+                    TempData["msg_error"] = string.Format("{0} 账号已占用", registerModel.Code);
                     return View();
                 }
             }
             else
             {
-                TempData["msg"] = "填写错误";
+                TempData["msg_error"] = "填写错误";
                 return View();
             }
 
@@ -171,13 +165,7 @@ namespace SSLS.WebUI.Controllers
         }
         public PartialViewResult Summary(Reader reader)
         {
-            ReaderModel RM = new ReaderModel
-            {
-                Reader = reader,
-                Borrows = repository.Borrows.Where(b => b.Reader_ID == reader.Id),
-                Fines = repository.Fines.Where(f => f.Reader_ID == reader.Id)
-            };
-            return PartialView(RM);
+            return PartialView(reader);
         }
 
         #region 验证码

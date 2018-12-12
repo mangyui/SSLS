@@ -1,19 +1,19 @@
-﻿@model SSLS.WebUI.Models.ReaderModel
+﻿@model SSLS.Domain.Concrete.Reader
 
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user">@Model.Reader.Name</span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user">@Model.Name</span></a>
     <ul class="dropdown-menu">
-        @if (Model.Reader.Id == 0)
+        @if (Model.Id == 0)
         {
             <li>@Html.ActionLink("登录", "Login", "Reader")</li>
             <li>@Html.ActionLink("注册", "Register", "Reader")</li>
         }
         else
         {
-            <li><a href="@Url.Action("Index", "Reader")">个人中心(<b>@Model.Reader.Name</b>)</a></li>
-            <li><a href="@Url.Action("MyBorrow", "Borrow")">我的借阅<span class="badge cart_badge">@Model.Borrows.Count(c => c.State == "在借")</span></a></li>
-            <li><a href="@Url.Action("Index", "Fine")">我的罚单<span class="badge cart_badge">@Model.Fines.Count(f=>f.State=="待缴纳")</span></a></li>
-            <li><a href="@Url.Action("BorrowHistory", "Borrow")">借阅历史<span class="badge cart_badge">@Model.Borrows.Count(c => c.State != "在借")</span></a></li>
+            <li><a href="@Url.Action("Index", "Reader")">个人中心(<b>@Model.Name</b>)</a></li>
+            <li><a href="@Url.Action("MyBorrow", "Borrow")">我的借阅<span class="badge cart_badge">@Model.Borrow.Count(c => c.State == "在借")</span></a></li>
+            <li><a href="@Url.Action("Index", "Fine")">我的罚单<span class="badge cart_badge">@Model.Fine.Count(f=>f.State=="待缴纳")</span></a></li>
+            <li><a href="@Url.Action("BorrowHistory", "Borrow")">借阅历史<span class="badge cart_badge">@Model.Borrow.Count(c => c.State != "在借")</span></a></li>
             <li>@Html.ActionLink("登出", "Logout", "Reader")</li>
         }
     </ul>
