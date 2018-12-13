@@ -178,5 +178,40 @@ namespace SSLS.WebUI.Controllers
             Reader reader = repository.Readers.Where(r => r.Id == id).FirstOrDefault();
             return View(reader);
         }
+
+        public ActionResult BorrowStatistics()
+        {
+            return View(repository.Borrows);
+        }
+        public ActionResult FineStatistics()
+        {
+            return View(repository.Fines);
+        }
+
+        [HttpPost]
+        public ActionResult GetBCChart()
+        {
+           return Json(repository.GetCatogoryChart());     
+        }
+        [HttpPost]
+        public ActionResult GetBorrowChart()
+        {
+            return Json(repository.GetBorrowChart());
+        }
+        [HttpPost]
+        public ActionResult GetBookTop()
+        {
+            return Json(repository.GetBookTop());
+        }
+        [HttpPost]
+        public ActionResult GetReaderTop()
+        {
+            return Json(repository.GetReaderTop());
+        }
+        [HttpPost]
+        public ActionResult GetFineChart()
+        {
+            return Json(repository.GetFineChart());
+        }
 	}
 }

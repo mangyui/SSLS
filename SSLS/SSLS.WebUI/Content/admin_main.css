@@ -174,7 +174,8 @@
 }
 
 #ulNav .active-li  a{     /*二级导航列表选中效果*/       
-    background-color: #009688!important;
+    /*background-color: #009688!important;*/
+    background-color: #337ab7!important;
     color:#fff;
 
 }
@@ -222,7 +223,7 @@
 }
 
 .rightbody {
-    margin: 15px 20px 15px 20px;
+    margin: 8px 20px 15px 20px;
     padding: 15px 0;
     transition:0.3s;
     overflow-x: hidden;
@@ -235,7 +236,8 @@
     padding:55px 20px 20px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
     position:relative;
-    margin-bottom:10px;
+    margin-bottom:15px;
+    overflow: auto;
 }
 .box-title{
     position: absolute;
@@ -458,6 +460,9 @@ select.myform-input{
     margin: 20px 0;
 }
 
+#layui-layer1{
+    max-width:100%;
+}
 @media (min-width: 768px) {
     #toggle-checkbox:checked ~ #Content {
          left: 0;
@@ -505,6 +510,5 @@ select.myform-input{
        width:0px;
     }
 }
-
 
 

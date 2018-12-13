@@ -188,7 +188,108 @@ namespace SSLS.Domain.Concrete
                     return true;
                 }
             }
-           
+        }
+
+        public object[] GetCatogoryChart()
+        {
+            int count = db.Category.Count();
+            object[] obj = new object[count];
+            int i = 0;
+            foreach(var c in db.Category)
+            {
+                obj[i] = new
+                {
+                    value = c.Book.Count(),
+                    name = c.Name
+                };
+                i++;
+            }
+            return obj;
+        }
+        public object[] GetBorrowChart()
+        {
+            string[] dates=new string[7];
+            int[] values=new int[7];
+            int i = 0;
+            DateTime dt = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+            DateTime dt2 = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
+            foreach (var c in db.Borrow)
+            {
+                dates[i]=dt.ToShortDateString().ToString();     
+                values[i] = db.Borrow.Where(b => b.BorrowDate>=dt && b.BorrowDate<dt2).Count();
+                dt = dt.AddDays(-1);
+                dt2 = dt2.AddDays(-1);
+                i++;
+                if (i >= 7) break;
+            }
+            object[] obj = new object[]{
+              dates.Reverse(),
+              values.Reverse()
+            };
+            return obj;
+        }
+        public object[] GetBookTop()
+        {
+            string[] books=new string[6];
+            int[] values=new int[6];
+            int i = 0;
+            var booksEntry = db.Book.OrderByDescending(b => b.Borrow.Count).Take(6);
+            foreach (var c in booksEntry)
+            {
+                books[i] = c.Name;     
+                values[i] = c.Borrow.Count();
+                i++;
+                if (i >= 6) break;
+            }
+            object[] obj = new object[]{
+              books,
+              values
+            };
+            return obj;
+        }
+        public object[] GetReaderTop()
+        {
+            string[] readers=new string[5];
+            int[] values=new int[5];
+            int[] values2 = new int[5];
+            int i = 0;
+            var readersEntry = db.Reader.OrderByDescending(b => b.Borrow.Count).Take(5);
+            foreach (var c in readersEntry)
+            {
+                readers[i] = c.Name;     
+                values[i] = c.Borrow.Count(b=>b.State=="在借");
+                values2[i] = c.Borrow.Count(b => b.State != "在借");
+                i++;
+                if (i >= 5) break;
+            }
+            object[] obj = new object[]{
+              readers.Reverse(),
+              values.Reverse(),
+              values2.Reverse()
+            };
+            return obj;
+        }
+        public object[] GetFineChart()
+        {
+            string[] readers=new string[5];
+            int[] values=new int[5];
+            int[] values2 = new int[5];
+            int i = 0;
+            var readersEntry = db.Reader.OrderByDescending(b => b.Fine.Count).Take(5);
+            foreach (var c in readersEntry)
+            {
+                readers[i] = c.Name;     
+                values[i] = c.Fine.Count(b=>b.State=="待缴纳");
+                values2[i] = c.Fine.Count(b => b.State == "已缴纳");
+                i++;
+                if (i >= 5) break;
+            }
+            object[] obj = new object[]{
+              readers.Reverse(),
+              values.Reverse(),
+              values2.Reverse()
+            };
+            return obj;
         }
     }
 }

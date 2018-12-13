@@ -29,5 +29,12 @@ namespace SSLS.Domain.Abstract
         void SaveCategory(Category category);
         bool DeleteCategory(int id, out string msg);
 
+
+        object[] GetCatogoryChart();
+        object[] GetBorrowChart();
+        object[] GetBookTop();
+        object[] GetReaderTop();
+        object[] GetFineChart();
+
     }
 }

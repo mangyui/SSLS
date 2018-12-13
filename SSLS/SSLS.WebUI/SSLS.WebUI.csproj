@@ -115,7 +115,6 @@
     <Content Include="Content\Style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -123,6 +122,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\echarts.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="PImages\img\book2.jpg" />
     <Content Include="PImages\img\logo.png" />
@@ -261,6 +262,8 @@
     <Content Include="Views\Admin\CategoryEdit.cshtml" />
     <Content Include="Views\Admin\ReaderList.cshtml" />
     <Content Include="Views\Admin\ReaderDetail.cshtml" />
+    <Content Include="Views\Admin\BorrowStatistics.cshtml" />
+    <Content Include="Views\Admin\FineStatistics.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

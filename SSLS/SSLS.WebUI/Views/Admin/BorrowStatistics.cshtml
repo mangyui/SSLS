@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SSLS.Domain.Concrete.Borrow>
+@{
+    ViewBag.Title = "BorrowStatistics";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="top-title">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")">控制面板</a></li>
+        <li class="active">借阅统计</li>
+    </ol>
+</section>
+<div class="rightbody">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="box-wrap box-wrap-top">
+                <div>
+                    <b>@Model.Count(b => b.State == "在借")</b>
+                    <h6>在借</h6>
+                </div>
+                <i class="glyphicon glyphicon-hourglass" style="font-family:'Adobe Arabic'; "></i>
+            </div>
+            </div>
+        <div class="col-xs-6">
+            <div class="box-wrap box-wrap-top">
+                <div>
+                    <b>@Model.Count(b => b.State != "在借")</b>
+                    <h6>已还</h6>
+                </div>
+                <i class="glyphicon glyphicon-saved"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-wrap">
+        <h6 class="box-title">借阅统计</h6>
+        <div id="Borrow_Chart" style="height:420px;"></div>
+    </div>
+
+    <div class="box-wrap">
+        <h6 class="box-title">图书借阅TOP6</h6>
+        <div id="Reader_Chart" style="height:420px;"></div>
+    </div>
+    <div class="box-wrap">
+        <h6 class="box-title">读者借阅TOP5</h6>
+        <div id="Book_Chart" style="height:450px;"></div>
+    </div>
+</div>
+

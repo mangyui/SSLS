@@ -110,13 +110,13 @@
                             </a>
                         </li>
                         <li>
-                            <a>
+                            <a href="@Url.Action("BorrowStatistics", "Admin")">
                                 <span class="glyphicon glyphicon-signal left-icon"></span>借阅统计
                             </a>
                         </li>
                         <li>
-                            <a>
-                                <span class="glyphicon glyphicon-list-alt left-icon"></span>罚款统计
+                            <a href="@Url.Action("FineStatistics", "Admin")">
+                                <span class="glyphicon glyphicon-stats left-icon"></span>罚款统计
                             </a>
                         </li>
                         <li>
@@ -139,6 +139,7 @@
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
+    <script src="~/Scripts/echarts.min.js"></script>
     <script src="~/Scripts/admin_main.js"></script>
     <script>
     layer.ready(function () {

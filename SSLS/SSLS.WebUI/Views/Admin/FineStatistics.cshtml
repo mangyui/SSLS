@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SSLS.Domain.Concrete.Fine>
+@{
+    ViewBag.Title = "BorrowStatistics";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="top-title">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")">控制面板</a></li>
+        <li class="active">罚款统计</li>
+    </ol>
+</section>
+<div class="rightbody">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="box-wrap box-wrap-top">
+                <div>
+                    <b>@Model.Count(f=>f.State == "待缴纳")</b>
+                    <h6>待缴纳</h6>
+                </div>
+                <i class="glyphicon glyphicon-hourglass"></i>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="box-wrap box-wrap-top">
+                <div>
+                    <b>@Model.Count(b => b.State == "已缴纳")</b>
+                    <h6>已缴纳</h6>
+                </div>
+                <i class="glyphicon glyphicon-saved"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-wrap">
+        <h6 class="box-title">罚款统计</h6>
+        <div id="Fine_Chart" style="height:450px;"></div>
+    </div>
+</div>
+
+
+

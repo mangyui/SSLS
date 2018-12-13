@@ -6,7 +6,7 @@
 
 <section class="top-title">
     <ol class="breadcrumb">
-        <li><a href="@Url.Action("Index", "Admin")">后台主页</a></li>
+        <li><a href="@Url.Action("Index", "Admin")">控制面板</a></li>
         <li class="active">读者列表</li>
     </ol>
 </section>
@@ -33,8 +33,8 @@
                     <td>@item.Email</td>
                     <td>@item.Borrow.Count()</td>
                     <td>
-                        <a onclick="layerReader('/Admin/ReaderDetail?id=@item.Id')" class="label label-warning">
-                            <span class="glyphicon glyphicon-edit"></span>查看
+                        <a onclick="layerReader('/Admin/ReaderDetail?id=@item.Id')" class="label label-primary">
+                            <span class="glyphicon glyphicon-eye-open"></span>查看
                         </a>
                     </td>
                 </tr>
