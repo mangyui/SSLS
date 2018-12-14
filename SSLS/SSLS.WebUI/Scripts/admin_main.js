@@ -52,6 +52,20 @@ $(function () {
             $(this).parent().addClass('active-li');
         }
     })
+    $("#toggle-label").click(function () {
+        if ($("#navLeft").css('left') == "0px") {
+            $("#navLeft").css('left', '-250px');
+            $("#toggle-label .glyphicon").addClass("glyphicon-menu-hamburger").removeClass("glyphicon-remove");
+        }
+        else if ($("#navLeft").css('left') == "-250px") {
+            $("#navLeft").css('left', '0px');
+            $("#toggle-label .glyphicon").addClass("glyphicon-remove").removeClass("glyphicon-menu-hamburger");
+        }
+
+    });
+    if ($(window).width() < 767) {
+        $("#toggle-label").click();
+    }
     $(".two-ul a").click(function (event) {
         event.stopPropagation();
     })
@@ -191,10 +205,12 @@ $(function () {
                 containLabel: true
             },
             xAxis: {
+                name: '数量（n）',
                 type: 'value',
                 boundaryGap: [0,0.5]
             },
             yAxis: {
+                name: '读者名',
                 type: 'category',
                 data: ['读者1', '读者2', '读者3', '读者4', '读者5']
             },
@@ -258,6 +274,7 @@ $(function () {
             },
             xAxis: [
                 {
+                    name: '书名',
                     type: 'category',
                     data: ['图书1', '图书2', '图书3', '图书4', '图书5', '图书6'],
                     axisTick: {
@@ -267,6 +284,7 @@ $(function () {
             ],
             yAxis: [
                 {
+                    name: '数量（n）',
                     type: 'value',
                     boundaryGap: [0, 0.5]
                 }
@@ -320,10 +338,12 @@ $(function () {
                 containLabel: true
             },
             xAxis: {
+                name: '数量（n）',
                 type: 'value',
                 boundaryGap: [0, 0.5]
             },
             yAxis: {
+                name: '读者名',
                 type: 'category',
                 data: ['读者1', '读者2', '读者3', '读者4', '读者5']
             },

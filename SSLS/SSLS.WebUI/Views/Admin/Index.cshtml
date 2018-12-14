@@ -51,8 +51,28 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="box-wrap">
-                <h6 class="box-title">类别图书</h6>
+                <h6 class="box-title">类别-图书</h6>
                 <div id="BC_Chart" style="height:360px;"></div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="box-wrap">
+                <h6 class="box-title">最新借阅消息</h6>
+                <ul class="myul">
+                    @foreach(var b in @Model.Borrows.OrderByDescending(b=>b.Id).Take(5))
+                    {
+                        <li>@b.BorrowDate.ToString("yyyy/MM/dd HH:mm:ss") <b class="tip" onclick="layerReader('/Admin/ReaderDetail?id=@b.Reader.Id')">@b.Reader.Name</b> 借阅 《<b>@b.Book.Name</b>》 图书</li>
+                    }
+                </ul>
+            </div>
+            <div class="box-wrap">
+                <h6 class="box-title">最新还书消息</h6>
+                <ul class="myul">
+                    @foreach (var b in @Model.Borrows.Where(b=>b.ReturnDate!=null).OrderByDescending(b => b.ReturnDate).Take(5))
+                    {
+                        <li>@b.BorrowDate.ToString("yyyy/MM/dd HH:mm:ss") <b class="tip" onclick="layerReader('/Admin/ReaderDetail?id=@b.Reader.Id')">@b.Reader.Name</b> 归还 《<b>@b.Book.Name</b>》  图书</li>
+                    }
+                </ul>
             </div>
         </div>
     </div>

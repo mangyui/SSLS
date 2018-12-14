@@ -50,10 +50,10 @@
 
             <!--菜单列表开始-->
             <label id="toggle-label" class="visible-xs-inline-block" for="toggle-checkbox">
-                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                <span class="glyphicon glyphicon-remove"></span>
             </label>
             <input class="hidden" id="toggle-checkbox" type="checkbox">
-            <nav class="column leftul">
+            <nav class="column leftul" id="navLeft">
                 <div class="nav_box">
                     <div class="top-hidden"></div>
                     <div class="search">
@@ -122,6 +122,11 @@
                         <li>
                             <a>
                                 <span class="glyphicon glyphicon-cog left-icon"></span>系统信息
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a>
+                                <span class="glyphicon glyphicon-log-out left-icon"></span>登出
                             </a>
                         </li>
                     </ul>
