@@ -1,4 +1,5 @@
-﻿@model SSLS.Domain.Concrete.Reader
+﻿@model SSLS.WebUI.Models.ReaderModel
+
 @{
     ViewBag.Title = "个人中心";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -15,21 +16,21 @@
         <div class="user">
             <div class="awater text-center">
                 <span class="glyphicon glyphicon-user"></span>
-                <p>@Model.Name (@Model.Code)</p>
+                <p>@Model.Reader.Name (@Model.Reader.Code)</p>
             </div>
             <div>
                 <table class="Checkout_reader">
                     <tr>
                         <th>班级：</th>
-                        <td>@Model.Class</td>
+                        <td>@Model.Reader.Class</td>
                     </tr>
                     <tr>
                         <th>邮箱：</th>
-                        <td>@Model.Email</td>
+                        <td>@Model.Reader.Email</td>
                     </tr>
                     <tr>
                         <th>余额：</th>
-                        <td>@Model.Price￥</td>
+                        <td>@Model.Reader.Price￥</td>
                     </tr>
                 </table>
                 <div class="text-left">
@@ -44,7 +45,7 @@
         <div class="col-sm-4 col-xs-6">
             <a href="@Url.Action("MyBorrow", "Borrow")" class="My_block bgblue">
                 <div>
-                    <h2>@Model.Borrow.Count(c => c.State == "在借")</h2>
+                    <h2>@Model.Borrows.Count(c => c.State == "在借")</h2>
                     <p>当前借阅</p>
                 </div>
                 <span class="glyphicon glyphicon-duplicate"></span>
@@ -53,7 +54,7 @@
         <div class="col-sm-4 col-xs-6">
             <a href="@Url.Action("BorrowHistory", "Borrow")" class="My_block bggray">
                 <div>
-                    <h2>@Model.Borrow.Count(c => c.State != "在借")</h2>
+                    <h2>@Model.Borrows.Count(c => c.State != "在借")</h2>
                     <p>借阅历史</p>
                 </div>
                 <span class="glyphicon glyphicon-hourglass"></span>
@@ -62,7 +63,7 @@
         <div class="col-sm-4 col-xs-6">
             <a href="@Url.Action("Index", "Fine")" class="My_block">
                 <div>
-                    <h2>@Model.Fine.Count(f => f.State == "待缴纳")</h2>
+                    <h2>@Model.Fines.Count(f => f.State == "待缴纳")</h2>
                     <p>我的罚单</p>
                 </div>
                 <span class="glyphicon glyphicon-jpy"></span>

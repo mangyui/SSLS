@@ -66,6 +66,22 @@ $(function () {
     if ($(window).width() < 767) {
         $("#toggle-label").click();
     }
+    $("#file").change(function () {
+        var file=$(this)[0].files[0];
+        if ((file.type).indexOf("image/") == -1) {
+            layer.alert("图片格式不正确，请重新上传！", {         //询问框
+                icon: 2,
+                title: '错误',
+            });
+            $(this).val("");
+            $("#file_img").attr("src","").css("visibility", "hidden");
+        }
+        else {
+           $("#file_img").attr("src", URL.createObjectURL(file)).css("visibility","visible");
+        }
+
+    })
+
     $(".two-ul a").click(function (event) {
         event.stopPropagation();
     })
@@ -129,8 +145,6 @@ $(function () {
 
     if (window.location.pathname == "/Admin/BorrowStatistics") {
         var Borrow_Chart = echarts.init(document.getElementById('Borrow_Chart'));
-        var Book_Chart = echarts.init(document.getElementById('Book_Chart'));
-        var Reader_Chart = echarts.init(document.getElementById('Reader_Chart'));
 
         var option2 = {
             title: {
@@ -184,6 +198,11 @@ $(function () {
                 }]
             });
         });
+    }
+
+    if (window.location.pathname == "/Admin/Analyze") {
+        var Book_Chart = echarts.init(document.getElementById('Book_Chart'));
+        var Reader_Chart = echarts.init(document.getElementById('Reader_Chart'));
 
         var option3 = {
             title: {

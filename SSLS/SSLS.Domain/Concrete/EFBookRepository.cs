@@ -31,6 +31,10 @@ namespace SSLS.Domain.Concrete
         {
             get { return db.Fine; }
         }
+        public IQueryable<Admin> Admins
+        {
+            get { return db.Admin; }
+        }
         public bool hasCode(string code)
         {
             if (db.Reader.Any(r => r.Code == code))

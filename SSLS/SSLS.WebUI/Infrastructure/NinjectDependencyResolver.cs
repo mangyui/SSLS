@@ -6,7 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using SSLS.Domain.Abstract;
 using SSLS.Domain.Concrete;
-
+using SSLS.WebUI.Infrastructure.Abstract;
+using SSLS.WebUI.Infrastructure.Concrete;
 
 namespace SSLS.WebUI.Infrastructure
 {
@@ -34,6 +35,7 @@ namespace SSLS.WebUI.Infrastructure
         {
             kernel.Bind<IBooksRepository>().To<EFBookRepository>();
             kernel.Bind<IBorrowProcessor>().To<DatabaseBorrowProcessor>();
+            kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
         }
     }
 }

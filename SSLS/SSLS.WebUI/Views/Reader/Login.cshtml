@@ -17,14 +17,20 @@
            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 <label>UserCode</label>
-                @Html.TextBoxFor(c => c.Code,"", new { Value="123456",@class = "form-control" })
-                @Html.ValidationMessageFor(c => c.Code, "", new { @class = "text-danger" })
-            </div>
+                <div class="input-warp">
+                    <i class="glyphicon glyphicon-user"></i>
+                    @Html.TextBoxFor(c => c.Code,"", new { Value= (TempData["Register_code"]!=null?TempData["Register_code"]:"123456"),@class = "form-control" })
+                </div>
+                    @Html.ValidationMessageFor(c => c.Code, "", new { @class = "text-danger" })
+                </div>
             <div class="form-group">
                 <label>Password</label>
-                @Html.PasswordFor(c => c.Password, new {Value="123456", @class = "form-control" })
-                @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
-            </div>
+                <div class="input-warp">
+                    <i class="glyphicon glyphicon-lock"></i>
+                    @Html.PasswordFor(c => c.Password, new {Value="123456", @class = "form-control" })
+                </div>
+                    @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+                </div>
             <div class="form-group myCode">
                 <div>
                     <label>ValidataCode</label>

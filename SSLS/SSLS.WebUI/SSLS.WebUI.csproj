@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin_login.css" />
     <Content Include="Content\admin_main.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -197,6 +198,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BorrowController.cs" />
@@ -208,8 +210,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
     <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\Binders\ReaderModelBinder.cs" />
+    <Compile Include="Infrastructure\Concrete\FormAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\Utils.cs" />
     <Compile Include="Models\AdminAllModel.cs" />
@@ -220,6 +224,7 @@
     <Compile Include="Models\FinesViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\ReaderModel.cs" />
     <Compile Include="Models\ReaderModifyModel.cs" />
     <Compile Include="Models\ReadersListModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -264,6 +269,9 @@
     <Content Include="Views\Admin\ReaderDetail.cshtml" />
     <Content Include="Views\Admin\BorrowStatistics.cshtml" />
     <Content Include="Views\Admin\FineStatistics.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Summary.cshtml" />
+    <Content Include="Views\Admin\Analyze.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

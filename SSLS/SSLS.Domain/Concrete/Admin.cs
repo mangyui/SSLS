@@ -11,11 +11,14 @@ namespace SSLS.Domain.Concrete
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Admin
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "请输入管理员名称")]
         public string UserName { get; set; }
+        [Required(ErrorMessage = "请输入密码")]
         public string Password { get; set; }
     }
 }

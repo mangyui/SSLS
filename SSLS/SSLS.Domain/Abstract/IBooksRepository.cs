@@ -15,6 +15,8 @@ namespace SSLS.Domain.Abstract
         IQueryable<Borrow> Borrows { get; }
         IQueryable<Fine> Fines { get; }
 
+        IQueryable<Admin> Admins { get; }
+
         bool hasCode(string code);
         void SaveReader(Reader reader);
 

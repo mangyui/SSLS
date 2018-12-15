@@ -24,7 +24,13 @@ namespace SSLS.WebUI.Controllers
                 TempData["msg_error"] = "您还未登录！";
                 return RedirectToAction("Login", "Reader");
             }
-            return View(reader);
+            ReaderModel RM = new ReaderModel
+            {
+                Reader = reader,
+                Borrows = repository.Borrows.Where(b => b.Reader_ID == reader.Id),
+                Fines = repository.Fines.Where(f => f.Reader_ID == reader.Id)
+            };
+            return View(RM);
         }
         public ActionResult Recharge(Reader reader)
         {
@@ -141,7 +147,8 @@ namespace SSLS.WebUI.Controllers
                         Password = registerModel.Password,
                     };
                     repository.SaveReader(reader);
-                    TempData["msg_success"] = string.Format("{0}注册成功", reader.Name);
+                    TempData["msg_success"] = string.Format("{0}({1}) 注册成功", reader.Name,reader.Code);
+                    TempData["Register_code"] = registerModel.Code;
                     return RedirectToAction("Login");
                 }
                 else
@@ -165,7 +172,13 @@ namespace SSLS.WebUI.Controllers
         }
         public PartialViewResult Summary(Reader reader)
         {
-            return PartialView(reader);
+            ReaderModel RM = new ReaderModel
+            {
+                Reader = reader,
+                Borrows = repository.Borrows.Where(b => b.Reader_ID == reader.Id),
+                Fines = repository.Fines.Where(f => f.Reader_ID == reader.Id)
+            };
+            return PartialView(RM);
         }
 
         #region 验证码

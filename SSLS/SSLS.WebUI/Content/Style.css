@@ -19,6 +19,8 @@ body{
     margin-bottom: 0;
     background: #202d40;
     background: linear-gradient(90deg,#f46d4c 0,#e4505d);
+    background: linear-gradient(to right, #004066, #006c8a, #009999);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
     border: 0;
 }
 .navbar .navbar-brand {
@@ -139,11 +141,12 @@ body{
 .side-bar .list-group-item.active, .side-bar .list-group-item:hover {
     background-color: #202d40;
     background: linear-gradient(90deg,#f46d4c 0,#e4505d);
+    background: linear-gradient(to right top, #004066, #006c8a, #009999);
     color: #fff;
     margin-bottom: 0;
 }
 .side-bar .list-group-item.active .badge, .side-bar .list-group-item:hover .badge{
-    color:#e4505d;
+    color:#004066;
     background:#fff;
 }
 .side-bar .list-group-item .badge
@@ -159,13 +162,14 @@ body{
 
 .Myh1{
     position:relative;
-    margin-top:10px;
+    margin-top:0px;
     font-size:4.5em;
     color:#fff;
     font-weight:bold;
     text-align:center;
     font: 700 70px/50px Tahoma;
     text-shadow: -1px 1px 1px #fff;
+    margin-bottom:30px;
 }
 .Myh1 span:nth-child(1)
 {
@@ -205,6 +209,7 @@ body{
     right:0;
     bottom:0;
     background:rgba(0,0,0,.24);
+    background: linear-gradient(to right, #004066, #006c8a, #009999);
 }
 
 #mySearch p{
@@ -263,7 +268,7 @@ body{
     align-items:center;
 }
 .hub_author .glyphicon{
-     background: #777;
+     background: #006c8a;
     width: 20px;
     height: 20px;
     color: #fff;
@@ -275,7 +280,7 @@ body{
 .hub_author a{
     display:inline-block;
     text-decoration:none;
-    color:#777;
+    color:#006c8a;
     font-size:11px;
         overflow: hidden;
     text-overflow:ellipsis;
@@ -296,12 +301,12 @@ body{
 
 .addto{
     display:inline-block;
-    border:1px solid #FF6160;
+    border:1px solid #006c8a;
     width:70px;
     height: 30px;
     text-align: center;
     border-radius:1px;
-    color: #FF6160;
+    color: #006c8a;
     line-height: 30px;
     font-weight: bold;
     background: transparent;
@@ -309,7 +314,7 @@ body{
     padding-top: 0;
 }
 .addto:not([disabled]):hover{
-   background: #FF6160;
+   background: #006c8a;
    color:#fff;
    text-decoration:none;
 }
@@ -354,7 +359,7 @@ body{
     position: fixed;
     display:none;
     right: 15px;
-    bottom: 70px;
+    bottom: 60px;
     width: 50px;
     height: 50px;
     line-height:50px;
@@ -385,7 +390,7 @@ footer p{
 .cart_total{
     background:#fff;
     border-radius:50%;
-    color:#e4505d;
+    color:#004066;
     position: relative;
     top: -8px;
     display: inline-block;
@@ -394,11 +399,11 @@ footer p{
     line-height: 20px;
     text-align: center;
     font-weight: bold;
-    font-size:13px;
+    font-size:11px;
 }
 .cart_badge{
     background:#f5f5f5;
-    color:#e4505d;
+    color:#006c8a;
     margin-left:5px;
 }
 .navbar-nav .glyphicon{
@@ -408,6 +413,7 @@ footer p{
 .navbar-nav>li>.dropdown-menu{
     border:0;
     background: linear-gradient(90deg,#f46d4c 0,#e4505d);
+    background: linear-gradient(to right top, #004066, #006c8a, #009999);
 }
 .navbar-nav>li>.dropdown-menu>li>a{
         padding-top: 10px;
@@ -428,18 +434,20 @@ footer p{
 
 /*登录页样式*/
     .Mypanel {
-        max-width: 350px;
+        max-width: 100%;
         margin: 100px auto 0;
         padding: 80px 10px 10px;
         position: relative;
         border-color: #eee;
         background: rgba(255,255,255,0.9);
+        width:350px;
     }
     .login_logo{
         width:150px;
         height:150px;
         /*background-image: linear-gradient(to bottom right,#202d40,#2a68c3,#202d40);*/
         background-image:linear-gradient(to bottom right,#e4505d,#f46d4c,#e4505d);
+         background-image: linear-gradient(to bottom right,#004066,#009999,#004066);
         border-radius:50%;
         position:absolute;
         top:0;
@@ -460,6 +468,7 @@ footer p{
         color:#fff;
         /*background-image: linear-gradient(to bottom right,#202d40,#2a68c3,#202d40);*/
         background-image:linear-gradient(to bottom right,#e4505d,#f46d4c,#e4505d);
+        background-image: linear-gradient(to bottom right,#004066,#009999,#004066);
         font-weight:bold;
         border:0;
     }
@@ -487,6 +496,23 @@ footer p{
         left:0;
         background:url('/Pimages/img/book2.jpg') center no-repeat;
         height:100%;
+    }
+    .input-warp{
+       display: flex;
+    }
+    .input-warp i{
+        display: block;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        width: 20%;
+        text-align: center;
+        top: 0;
+        padding: 13px;
+        border-radius: 2px 0 0 2px;
+    }
+     .input-warp>input.form-control{
+        border-radius: 0 2px 2px 0;
+         border-left:0;
     }
     .myCode{
         display:flex;
@@ -607,8 +633,8 @@ footer p{
         border: 1px solid #5FB878;
      }
     .Cart_select input[type=checkbox]:checked + label{
-        background: #5FB878;
-        border: 1px solid #5FB878;
+        background: #006c8a;
+        border: 1px solid #006c8a;
     }
     .Cart_datail{
         margin: 0 auto;
@@ -690,7 +716,7 @@ a.My_block{
 }
 
 
-.bggreen,.bgblue,.bggray,.bgyellow,.bgred{
+.bggreen,.bgblue,.bggray,.bgyellow,.bgred,.bgtheme{
     color:#fff!important
 }
 .bggreen{
@@ -709,7 +735,9 @@ a.My_block{
 .bgred{
     background:#e4505d!important;
 }
-
+.bgtheme{
+    background:#006c8a!important;
+}
 
 @media (max-width: 768px){
     #bs-example-navbar-collapse-1{
@@ -717,6 +745,7 @@ a.My_block{
         z-index:999;
         background: #202d40;
         background: linear-gradient(90deg,#f46d4c 0,#e4505d);
+        background: linear-gradient(to right top, #004066, #006c8a, #009999);
         right: 15px;
         width: 40%;
         text-align: center;
@@ -725,9 +754,10 @@ a.My_block{
     .Myh1{
         display:block!important;
         font-size:3.0em;
+        margin-bottom:10px;
     }
     .Mybank{
-        height:180px;
+        height:160px;
         padding-top:5px!important;
     }
     #mySearch{

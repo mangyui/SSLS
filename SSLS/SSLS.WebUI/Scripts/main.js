@@ -1,7 +1,7 @@
 ﻿$(function () {
     $(".Modify .btn").click(function () {
-        $(".Modify .btn").removeClass("bgblue").addClass("btn-default");
-        $(this).addClass("bgblue");
+        $(".Modify .btn").removeClass("bgtheme").addClass("btn-default");
+        $(this).addClass("bgtheme");
         $(".Modify_form").hide();
         $(".Modify_form").eq($(this).index()).show();
     });

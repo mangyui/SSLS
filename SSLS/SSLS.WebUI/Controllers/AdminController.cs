@@ -10,10 +10,11 @@ using SSLS.WebUI.Infrastructure;
 
 namespace SSLS.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IBooksRepository repository;
-        public int PageSize = 10;
+        public int PageSize = 6;
         public AdminController(IBooksRepository bookRepository)
         {
             this.repository = bookRepository;;
@@ -42,7 +43,7 @@ namespace SSLS.WebUI.Controllers
             BooksListViewModel viewModel = new BooksListViewModel
             {
                 Books = BooksList
-                        .OrderBy(p => p.Id)
+                        .OrderByDescending(p => p.Id)
                         .Skip((page - 1) * PageSize)
                         .Take(PageSize),
                 PagingInfo = new PagingInfo
@@ -187,7 +188,10 @@ namespace SSLS.WebUI.Controllers
         {
             return View(repository.Fines);
         }
-
+        public ActionResult Analyze()
+        {
+            return View(repository.Borrows);
+        }
         [HttpPost]
         public ActionResult GetBCChart()
         {

@@ -415,6 +415,13 @@ select.myform-input{
     right: 1px;
 }
 
+#file_img{
+    display: block;
+    margin-top: 10px;
+    padding: 4px;
+    border: 1px solid #e6e6e6;
+    visibility:hidden;
+}
 
 /*列表表格样式开始*/
 

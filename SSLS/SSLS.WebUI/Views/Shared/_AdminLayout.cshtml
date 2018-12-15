@@ -13,9 +13,7 @@
             <a href="{:url('index/index')}" class="navbar-brand" id="mylogo">MANGYU</a>
             <h4>后台管理</h4>
             <section class="logout">
-                <a class="admin-aset" href="{:url('admin/info')}">
-                    <span class="glyphicon glyphicon-user"></span>管理员
-                </a>
+                @Html.Action("Summary", "Account")
 
                 <!--下拉更多分类开始-->
                 <div class="dropdown admin-aset">
@@ -36,8 +34,10 @@
                     </ul>
                 </div>
                 <!--下拉更多分类结束-->
-
-                <a class="admin-aset" href="#">
+                <a class="admin-aset" href="@Url.Action("List", "Book")" target="_blank">
+                    <span class="glyphicon glyphicon-send"></span>前台
+                </a>
+                <a class="admin-aset" href="@Url.Action("Logout", "Account")">
                     <span class="glyphicon glyphicon-log-out"></span>登出
                 </a>
             </section>
@@ -120,12 +120,12 @@
                             </a>
                         </li>
                         <li>
-                            <a>
-                                <span class="glyphicon glyphicon-cog left-icon"></span>系统信息
+                            <a href="@Url.Action("Analyze", "Admin")">
+                                <span class="glyphicon glyphicon-blackboard left-icon"></span>借阅分析
                             </a>
                         </li>
                         <li class="hidden">
-                            <a>
+                            <a href="@Url.Action("Logout", "Account")">
                                 <span class="glyphicon glyphicon-log-out left-icon"></span>登出
                             </a>
                         </li>

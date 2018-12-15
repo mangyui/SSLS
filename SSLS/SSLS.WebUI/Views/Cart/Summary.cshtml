@@ -1,19 +1,8 @@
 ﻿@model SSLS.Domain.Concrete.Cart
 
 
-@*<div class="" style="float:right">
-    @Html.ActionLink("结算", "Index", "Cart",
-    new { returnUrl = Request.Url.PathAndQuery },
-    new { @class = "btn btn-default navbar-btn" })
-</div>
 
-<div class="navbar-text">
-    <b>购物车：</b>
-    @Model.Lines.Sum(x => x.Quantity)件,
-    @Model.ComputeTotalValue().ToString("c")
-</div>*@
-
-<li><a href="@Url.Action("Index", "Cart")"><span class="glyphicon glyphicon-shopping-cart"><span class="cart_total">@Model.Lines.Count()</span></span></a></li>
+<li title="暂存架"><a href="@Url.Action("Index", "Cart")"><span class="glyphicon glyphicon-shopping-cart"><span class="cart_total">@Model.Lines.Count()</span></span></a></li>
 
 @*<li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

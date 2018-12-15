@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SSLS.Domain.Concrete.Borrow>
+@{
+    ViewBag.Title = "借阅分析";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="top-title">
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")">控制面板</a></li>
+        <li class="active">借阅分析</li>
+    </ol>
+</section>
+<div class="rightbody">
+    <div class="box-wrap">
+        <h6 class="box-title">图书借阅TOP6</h6>
+        <div id="Reader_Chart" style="height:420px;"></div>
+    </div>
+    <div class="box-wrap">
+        <h6 class="box-title">读者借阅TOP5</h6>
+        <div id="Book_Chart" style="height:450px;"></div>
+    </div>
+</div>
+

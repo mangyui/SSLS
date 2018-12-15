@@ -1,0 +1,48 @@
+﻿@model SSLS.Domain.Concrete.Admin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>管理员登录</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin_login.css" rel="stylesheet" />
+    <link href="~/Content/error.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="login_bg"></div>
+    <div class="Mypanel panel panel-info">
+        <div class="login_logo">
+            <a href="#"><img src="/PImages/img/logo.png" alt="" /></a>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="input-warp">
+                        <i class="glyphicon glyphicon-user"></i>
+                        @Html.TextBoxFor(c => c.UserName, "", new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(c => c.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="input-warp">
+                        <i class="glyphicon glyphicon-lock"></i>
+                        @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
+                    </div>
+                        @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+                    </div>
+                <div class="text-center">
+                    <input type="submit" value="LOGIN" class="btn login_btn" />
+                    <span class="login_to">登录到后台管理...</span>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
