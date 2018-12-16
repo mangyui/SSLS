@@ -232,6 +232,25 @@ namespace SSLS.Domain.Concrete
             };
             return obj;
         }
+        public object[] GetBorrowCategory()
+        {
+            int count = db.Category.Count();
+            string[] dates = new string[count];
+            int[] values = new int[count];
+            int i = 0;
+
+            foreach (var c in db.Category)
+            {
+                dates[i] = c.Name;
+                values[i] = db.Borrow.Count(b => b.Book.Category_ID == c.Id);
+                i++;
+            }
+            object[] obj = new object[]{
+              dates,
+              values
+            };
+            return obj;
+        }
         public object[] GetBookTop()
         {
             string[] books=new string[6];

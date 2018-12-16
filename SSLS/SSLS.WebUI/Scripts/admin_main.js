@@ -145,6 +145,7 @@ $(function () {
 
     if (window.location.pathname == "/Admin/BorrowStatistics") {
         var Borrow_Chart = echarts.init(document.getElementById('Borrow_Chart'));
+        var Borrow_Category = echarts.init(document.getElementById('Borrow_Category'));
 
         var option2 = {
             title: {
@@ -154,6 +155,15 @@ $(function () {
             color: ['#337ab7'],
             tooltip: {
                 trigger: 'axis'
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
             },
             xAxis: {
                 name: '时间（t）',
@@ -198,6 +208,73 @@ $(function () {
                 }]
             });
         });
+
+        var option6 = {
+            title: {
+                text: '图书类别借阅总量',
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['借阅量']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            calculable: true,
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '借阅量',
+                    type: 'bar',
+                    data: [2, 4, 7, 13, 14, 15, 6,6, 2, 0, 4, 3],
+                    markPoint: {
+                        data: [
+                            { type: 'max', name: '最大值' },
+                            { type: 'min', name: '最小值' }
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            { type: 'average', name: '平均值' }
+                        ]
+                    }
+                }
+            ]
+        };
+        Borrow_Category.setOption(option6);
+
+        Borrow_Category.showLoading();
+        $.post('/Admin/GetBorrowCategory').done(function (data) {
+            // 填入数据
+            Borrow_Category.hideLoading();
+            Borrow_Category.setOption({
+                xAxis: {
+                    data: data[0]
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    data: data[1]
+                }]
+            });
+        });
     }
 
     if (window.location.pathname == "/Admin/Analyze") {
@@ -212,6 +289,15 @@ $(function () {
                 trigger: 'axis',
                 axisPointer: {
                     type: 'shadow'
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
                 }
             },
             legend: {
@@ -280,6 +366,15 @@ $(function () {
                 trigger: 'axis',
                 axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                     type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
                 }
             },
             legend: {

@@ -35,7 +35,7 @@
                 </table>
                 <div class="text-left">
                     <a href="@Url.Action("ModifyData", "Reader")" class="btn bggray">修改资料</a>
-                    <a href="@Url.Action("Recharge", "Reader")" class="btn bggreen">充值余额</a>
+                    <a href="@Url.Action("Recharge", "Reader")" class="btn bgtheme">充值余额</a>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
     <hr />
     <div class="row">
         <div class="col-sm-4 col-xs-6">
-            <a href="@Url.Action("MyBorrow", "Borrow")" class="My_block bgblue">
+            <a href="@Url.Action("MyBorrow", "Borrow")" class="My_block bgtheme">
                 <div>
                     <h2>@Model.Borrows.Count(c => c.State == "在借")</h2>
                     <p>当前借阅</p>

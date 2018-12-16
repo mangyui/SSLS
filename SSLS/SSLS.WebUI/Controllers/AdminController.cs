@@ -90,7 +90,7 @@ namespace SSLS.WebUI.Controllers
 
                 }
                 repository.SaveBook(book);
-                TempData["msg_success"] = string.Format("{0}保存成功", book.Name);
+                TempData["msg_success"] = string.Format("《{0}》保存成功", book.Name);
 
                 return RedirectToAction("BookList");
             }
@@ -137,7 +137,7 @@ namespace SSLS.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repository.SaveCategory(category);
-                TempData["msg_success"] = string.Format("{0}保存成功", category.Name);
+                TempData["msg_success"] = string.Format("{0} 类别保存成功", category.Name);
                 return RedirectToAction("CategoryList");
             }
             else
@@ -201,6 +201,11 @@ namespace SSLS.WebUI.Controllers
         public ActionResult GetBorrowChart()
         {
             return Json(repository.GetBorrowChart());
+        }
+        [HttpPost]
+        public ActionResult GetBorrowCategory()
+        {
+            return Json(repository.GetBorrowCategory());
         }
         [HttpPost]
         public ActionResult GetBookTop()

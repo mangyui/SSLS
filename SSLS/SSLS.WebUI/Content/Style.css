@@ -345,6 +345,7 @@ body{
 .Mylist .Mylist_body{
     flex-grow: 1;
     padding-right:10px;
+    margin-left:5px;
 }
 .Mylist img{
     width:180px;
