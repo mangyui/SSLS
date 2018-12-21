@@ -232,11 +232,6 @@ body{
 }
 
 
-.Mythub:hover,.Mylist:hover{
-   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-   transition: .3s;
-}
-
 .Mythub{
     position:relative;
     border:0;
@@ -245,7 +240,13 @@ body{
     box-shadow: 0 1px 2px 0 #cecece;
     border-radius:2px;
     margin: 8px 6px;
+    top:0;
+    transition: .2s;
+}
 
+.Mythub:hover{
+    top:-6px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 }
 .Mythub > a {
     display:inline-block;
@@ -341,6 +342,10 @@ body{
     border-radius:5px;
     align-items: center;
     box-shadow: 0 1px 2px 0 #cecece;
+    transition: .3s;
+}
+.Mylist:hover{
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 }
 .Mylist .Mylist_body{
     flex-grow: 1;

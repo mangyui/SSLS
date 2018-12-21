@@ -212,8 +212,8 @@ namespace SSLS.Domain.Concrete
         }
         public object[] GetBorrowChart()
         {
-            string[] dates=new string[7];
-            int[] values=new int[7];
+            string[] dates=new string[15];
+            int[] values=new int[15];
             int i = 0;
             DateTime dt = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
             DateTime dt2 = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
@@ -224,7 +224,7 @@ namespace SSLS.Domain.Concrete
                 dt = dt.AddDays(-1);
                 dt2 = dt2.AddDays(-1);
                 i++;
-                if (i >= 7) break;
+                if (i >= 15) break;
             }
             object[] obj = new object[]{
               dates.Reverse(),
@@ -245,11 +245,11 @@ namespace SSLS.Domain.Concrete
                 values[i] = db.Borrow.Count(b => b.Book.Category_ID == c.Id);
                 i++;
             }
-            object[] obj = new object[]{
+
+            return new object[]{
               dates,
               values
             };
-            return obj;
         }
         public object[] GetBookTop()
         {

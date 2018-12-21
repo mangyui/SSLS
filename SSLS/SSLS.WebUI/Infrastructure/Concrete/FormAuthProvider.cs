@@ -29,7 +29,7 @@ namespace SSLS.WebUI.Infrastructure.Concrete
         {
             FormsAuthentication.SignOut();
         }
-        public string GetName()
+        public string GetName()      //xxx
         {
             return FormsAuthentication.CookieDomain;
         }

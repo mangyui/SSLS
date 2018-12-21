@@ -19,103 +19,111 @@
             {
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.Id)
-                <div class="myform-line">
-                    <label class="myform-left">图书名称：</label>
-                    <div class="myform-right">
-                        @Html.TextBoxFor(model => model.Name, new { @class = "myform-input" })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                    </div>
+    <div class="" style="max-width: 1200px;margin:0 auto">
+        <div class="col-lg-6">
+            <div class="myform-line">
+                <label class="myform-left">图书名称：</label>
+                <div class="myform-right">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "myform-input" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
-                <div class="myform-line">
-                    <label class="myform-left">图书编号：</label>
-                    <div class="myform-right">
-                        @Html.TextBoxFor(model => model.Code, new { @class = "myform-input" })
-                        @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="myform-line">
+                <label class="myform-left">图书编号：</label>
+                <div class="myform-right">
+                    @Html.TextBoxFor(model => model.Code, new { @class = "myform-input" })
+                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
                 </div>
-                <div class="myform-line">
-                    <label class="myform-left">图书分类：</label>
-                    <div class="myform-right">
-                        @Html.DropDownListFor(model => model.Category_ID, ViewBag.CategoryList as IEnumerable<SelectListItem>, new { @class = "myform-input" })
-                    </div>
+            </div>
+            <div class="myform-line">
+                <label class="myform-left">图书作者：</label>
+                <div class="myform-right">
+                    @Html.TextBoxFor(model => model.Authors, new { @class = "myform-input" })
+                    @Html.ValidationMessageFor(model => model.Authors, "", new { @class = "text-danger" })
                 </div>
-                <div class="myform-line">
-                    <label class="myform-left">图书作者：</label>
-                    <div class="myform-right">
-                        @Html.TextBoxFor(model => model.Authors, new { @class = "myform-input" })
-                        @Html.ValidationMessageFor(model => model.Authors, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+            </div>
 
-                <div class="myform-line">
-                    <label class="myform-left">图书出版社：</label>
-                    <div class="myform-right">
-                        @Html.TextBoxFor(model => model.Press, new { @class = "myform-input" })
-                        @Html.ValidationMessageFor(model => model.Press, "", new { @class = "text-danger" })
-                    </div>
+            <div class="myform-line">
+                <label class="myform-left">图书出版社：</label>
+                <div class="myform-right">
+                    @Html.TextBoxFor(model => model.Press, new { @class = "myform-input" })
+                    @Html.ValidationMessageFor(model => model.Press, "", new { @class = "text-danger" })
                 </div>
-                <div class="myform-line">
-                    <label class="myform-left">出版日期：</label>
-                    <div class="myform-right">
-                        @if (Model.PublishDate != null) { 
-                           @Html.TextBoxFor(model => model.PublishDate, new { @class = "myform-input",Type="date", Value=Model.PublishDate.Value.ToString("yyyy-MM-dd") })
-                        }
-                        else
-                        {
-                            @Html.TextBoxFor(model => model.PublishDate, new { @class = "myform-input", Type = "date" })
-                        }
-                        @Html.ValidationMessageFor(model => model.PublishDate, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="myform-line">
+                <label class="myform-left">出版日期：</label>
+                <div class="myform-right">
+                    @if (Model.PublishDate != null)
+                    {
+                        @Html.TextBoxFor(model => model.PublishDate, new { @class = "myform-input", Type = "date", Value = Model.PublishDate.Value.ToString("yyyy-MM-dd") })
+                    }
+                    else
+                    {
+                        @Html.TextBoxFor(model => model.PublishDate, new { @class = "myform-input", Type = "date" })
+                    }
+                    @Html.ValidationMessageFor(model => model.PublishDate, "", new { @class = "text-danger" })
                 </div>
-
-                <div class="myform-line">
-                    <label class="myform-left">图书价格：</label>
-                    <div class="myform-right">
-                        @Html.TextBoxFor(model => model.Price, new { @class = "myform-input" })
-                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="myform-line">
+                <label class="myform-left">图书分类：</label>
+                <div class="myform-right">
+                    @Html.DropDownListFor(model => model.Category_ID, ViewBag.CategoryList as IEnumerable<SelectListItem>, new { @class = "myform-input" })
                 </div>
-                <div class="myform-line">
-                    <label class="myform-left">图书状态：</label>
-                    <div class="myform-right">
-                        <select class="myform-input" name="Status">
-                            <option value="在库">在库</option>
-                            <option value="未在库">未在库</option>
-                        </select>
-                    </div>
+            </div>
+            <div class="myform-line">
+                <label class="myform-left">图书价格：</label>
+                <div class="myform-right">
+                    @Html.TextBoxFor(model => model.Price, new { @class = "myform-input" })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                 </div>
-                if (Model.ImageUrl != null)
-                {
-                    <div class="myform-line">
-                        <label class="myform-left">原缩略图：</label>
-                        <div class="myform-right">
-                            <img src="@Model.ImageUrl" height="100">
-                            @Html.HiddenFor(model => model.ImageUrl)
-                        </div>
-                    </div>        
-                }
-
-                <div class="myform-line">
-                    <label class="myform-left">设置缩略图：</label>
-                    <div class="myform-right">
-                        <input id="file" class="myform-input" name="file" type="file">
-                        <img id="file_img" src="" height="100" />
-                    </div>                 
+            </div>
+            <div class="myform-line">
+                <label class="myform-left">图书状态：</label>
+                <div class="myform-right">
+                    <select class="myform-input" name="Status">
+                        <option value="在库" @(Model.Status == "在库" ? "selected" : "")>在库</option>
+                        <option value="未在库" @(Model.Status == "未在库" ? "selected" : "")>未在库</option>
+                    </select>
                 </div>
-                
+            </div>
+            @if (Model.ImageUrl != null)
+            {
                 <div class="myform-line">
-                    <label class="myform-left">图书简介：</label>
+                    <label class="myform-left">原缩略图：</label>
                     <div class="myform-right">
-                        <textarea class="myform-textarea" name="Description">@Model.Description</textarea>
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="myform-line">
-                    <div class="myform-right">
-                        <input class="myform-btn" type="submit" value="保存">
+                        <img src="@Model.ImageUrl" height="100">
+                        @Html.HiddenFor(model => model.ImageUrl)
                     </div>
                 </div>
             }
+
+            <div class="myform-line">
+                <label class="myform-left">设置缩略图：</label>
+                <div class="myform-right">
+                    <input id="file" class="myform-input" name="file" type="file">
+                    <img id="file_img" src="" height="100" />
+                </div>
+            </div>
         </div>
+
+        <div class="col-xs-12">
+            <div class="myform-line">
+                <label class="myform-left">图书简介：</label>
+                <div class="myform-right">
+                    <textarea class="myform-textarea" name="Description">@Model.Description</textarea>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="myform-line">
+                <div class="myform-right">
+                    <input class="myform-btn" type="submit" value="保存">
+                </div>
+            </div>
+        </div>
+    </div>
+            }
+    </div>
     </div>
 </div>

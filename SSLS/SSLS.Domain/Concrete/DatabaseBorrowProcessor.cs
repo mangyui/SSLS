@@ -23,7 +23,7 @@ namespace SSLS.Domain.Concrete
                         borrow.Book_ID = b.Id;
                         borrow.Reader_ID = reader.Id;
                         borrow.BorrowDate = DateTime.Now;
-                        borrow.ShouldDate = DateTime.Now.AddMonths(1);
+                        borrow.ShouldDate = DateTime.Now.AddDays(30);     //30天
                         borrow.Renew = "否";
                         borrow.State = "在借";
                         db.Borrow.Add(borrow);   //添加订单对象到EF框架
@@ -86,7 +86,7 @@ namespace SSLS.Domain.Concrete
             Borrow borrowEntry = db.Borrow.Find(borrowId);
             if (borrowEntry.State == "在借" && borrowEntry.Renew=="否")
             {
-                borrowEntry.ShouldDate = borrowEntry.ShouldDate.AddMonths(1);
+                borrowEntry.ShouldDate = borrowEntry.ShouldDate.AddDays(30);
                 borrowEntry.Renew = "是";
                 db.SaveChanges();  //保存更改，EF框架的数据对象修改部分会同步更新到数据库
                 int days = (borrowEntry.ShouldDate - DateTime.Now).Days;

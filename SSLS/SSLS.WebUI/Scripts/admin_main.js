@@ -144,12 +144,13 @@ $(function () {
     };
 
     if (window.location.pathname == "/Admin/BorrowStatistics") {
+
         var Borrow_Chart = echarts.init(document.getElementById('Borrow_Chart'));
         var Borrow_Category = echarts.init(document.getElementById('Borrow_Category'));
 
         var option2 = {
             title: {
-                text: '最近 7 天借阅量曲线',
+                text: '近半个月借阅情况',
                 subtext: '数据同步'
             },
             color: ['#337ab7'],
@@ -278,6 +279,7 @@ $(function () {
     }
 
     if (window.location.pathname == "/Admin/Analyze") {
+
         var Book_Chart = echarts.init(document.getElementById('Book_Chart'));
         var Reader_Chart = echarts.init(document.getElementById('Reader_Chart'));
 
@@ -430,6 +432,7 @@ $(function () {
        });
     }
     if (window.location.pathname == "/Admin/FineStatistics") {
+
         var Fine_Chart = echarts.init(document.getElementById('Fine_Chart'));
         var option5 = {
             title: {

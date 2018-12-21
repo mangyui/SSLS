@@ -61,10 +61,6 @@ namespace SSLS.WebUI.Controllers
         {
             Book book = repository.Books.FirstOrDefault(p => p.Id == id);
 
-            //IEnumerable<SelectListItem> selectListItem =
-            //    repository.Categories.ToList().Select(
-            //    c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name });
-
             ViewBag.CategoryList = Utils.GetCategorySelectListItem(repository);
             return View(book);
         }

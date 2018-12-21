@@ -376,7 +376,9 @@ select.myform-input{
     display: inline-block;
     margin-right: 24px;
 }
-
+.myform-form [class*='col-']{
+    padding:0;
+}
 
     /*开关样式*/
 .myform-switch .myform-switch-label {
@@ -539,6 +541,9 @@ select.myform-input{
     }
     .myul{
         padding-left: 15px;
+    }
+    .leftul{
+        opacity:0.97;
     }
 }
 
