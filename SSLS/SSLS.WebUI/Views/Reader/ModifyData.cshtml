@@ -16,33 +16,34 @@
             <div class="btn btn-lg bgtheme">修改基本资料</div>
             <div class="btn btn-lg btn-default">修改密码 </div>
         </div>
-        <div class="col-xs-offset-3 col-sm-offset-4 col-xs-6 col-sm-4 Modify_form">
+        <div class="col-xs-offset-3 col-sm-offset-4 col-xs-6 col-sm-4 Modify_form layui-form">
             @using (Html.BeginForm())
             {
                 <label class="control-label" form="Name">名称</label>
-                @Html.TextBoxFor(model => model.Name,  new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @lay_verify = "required" })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 <br>
                 <label class="control-label" form="Name">班级</label>
-                @Html.TextBoxFor(model => model.Class, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Class, new { @class = "form-control", @lay_verify = "required" })
                 @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
                 <br>
                 <label class="control-label" form="Name">邮箱</label>
-                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @lay_verify = "required" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 <br>
                 <div class="text-center">
-                    <input class="btn bggray" type="submit" value="修改" />
+                    <input class="btn bggray" lay-submit type="submit" value="修改" />
                 </div>
 
             }
         </div>
+
         <div class="col-xs-offset-3 col-sm-offset-4 col-xs-6 col-sm-4 Modify_form" style="display:none">
             <label class="control-label" form="oldPwd">旧密码</label>
             <input class="form-control" type="password" name="oldPwd" id="OldPwd" value="" />
             <br>
             <label class="control-label" form="newPwd">新密码</label>
-            <input class="form-control" type="password" name="newPwd" id="NewPwd" value="" />
+            <input class="form-control" type="password" name="newPwd" id="NewPwd" value=""  />
             <br>
             <div class="text-center">
                 <a class="btn bggray" id="ModifyPwd_btn">修改</a>

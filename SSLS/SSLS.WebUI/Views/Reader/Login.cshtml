@@ -11,39 +11,47 @@
     <div class="login_logo">
         <a href="#"><img src="/PImages/img/logo.png" alt="" /></a>
     </div>
-    <div class="panel-body">
+    <div class="panel-body layui-form">
         @using (Html.BeginForm())
         {
-           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 <label>UserCode</label>
                 <div class="input-warp">
                     <i class="glyphicon glyphicon-user"></i>
-                    @Html.TextBoxFor(c => c.Code,"", new { Value= (TempData["Register_code"]!=null?TempData["Register_code"]:"123456"),@class = "form-control" })
+                    @if (TempData["Register_code"] != null)
+                    {
+                        @Html.TextBoxFor(c => c.Code, "", new { Value = TempData["Register_code"], @class = "form-control", @lay_verify = "required" })
+                    }
+                    else
+                    {
+                        @Html.TextBoxFor(c => c.Code, "", new { @class = "form-control",@lay_verify="required" })
+                    }
                 </div>
-                    @Html.ValidationMessageFor(c => c.Code, "", new { @class = "text-danger" })
-                </div>
+                @Html.ValidationMessageFor(c => c.Code, "", new { @class = "text-danger" })
+            </div>
             <div class="form-group">
                 <label>Password</label>
                 <div class="input-warp">
                     <i class="glyphicon glyphicon-lock"></i>
-                    @Html.PasswordFor(c => c.Password, new {Value="123456", @class = "form-control" })
+                    @Html.PasswordFor(c => c.Password, new { @class = "form-control", @lay_verify = "required" })
                 </div>
-                    @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
-                </div>
+                @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+            </div>
             <div class="form-group myCode">
                 <div>
                     <label>ValidataCode</label>
-                    <input class="form-control" type="text" name="Vcode" id="Vcode" />
+                    @Html.TextBoxFor(c => c.Vcode, new { @class = "form-control", @lay_verify = "required" })
                     @Html.ValidationMessageFor(c => c.Vcode, "", new { @class = "text-danger" })
                 </div>
                 <img src="/Reader/VCode" onclick="this.src=this.src+'?'" alt="验证码" style="cursor:pointer" />
             </div>
             <div class="text-center">
-                <input type="submit" value="LOGIN" class="btn login_btn" />
+                <input type="submit" lay-submit value="LOGIN" class="btn login_btn"  />
                 <a href="@Url.Action("Register", "Reader")" class="login_to">还没有账号？前往注册....</a>
             </div>
         }
     </div>
+
 </div>
 

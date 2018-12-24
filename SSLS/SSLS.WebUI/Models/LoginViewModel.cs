@@ -12,7 +12,7 @@ namespace SSLS.WebUI.Models
         public string Code { get; set; }
         [Required(ErrorMessage = "请输入密码")]
         public string Password { get; set; }
-        //[Required(ErrorMessage = "请输入验证码")]
+        [Required(ErrorMessage = "请输入验证码")]
         public string Vcode { get; set; }
     }
 }

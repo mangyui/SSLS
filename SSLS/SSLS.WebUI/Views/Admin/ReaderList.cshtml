@@ -13,36 +13,38 @@
 <div class="rightbody">
     <div class="box-wrap">
         <h6 class="box-title">读者列表</h6>
-        <table class="mytable">
-            <tr>
-                <th class="">读者ID</th>
-                <th class="">读者编号</th>
-                <th>读者昵称</th>
-                <th>读者班级</th>
-                <th class="">读者邮箱</th>
-                <th class="">借阅次数</th>
-                <th class="wd20">操作</th>
-            </tr>
-            @foreach (var item in Model.Readers)
-            {
+        <div class="touch-wrap">
+            <table class="mytable">
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Code</td>
-                    <td>@item.Name</td>
-                    <td>@item.Class</td>
-                    <td>@item.Email</td>
-                    <td>@item.Borrow.Count()</td>
-                    <td>
-                        <a onclick="layerReader('/Admin/ReaderDetail?id=@item.Id')" class="label label-primary">
-                            <span class="glyphicon glyphicon-eye-open"></span>查看
-                        </a>
-                    </td>
+                    <th class="">读者ID</th>
+                    <th class="">读者编号</th>
+                    <th>读者昵称</th>
+                    <th>读者班级</th>
+                    <th class="">读者邮箱</th>
+                    <th class="">借阅次数</th>
+                    <th class="">操作</th>
                 </tr>
-            }
-        </table>
+                @foreach (var item in Model.Readers)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Code</td>
+                        <td>@item.Name</td>
+                        <td>@item.Class</td>
+                        <td>@item.Email</td>
+                        <td>@item.Borrow.Count()</td>
+                        <td>
+                            <a onclick="layerReader('/Admin/ReaderDetail?id=@item.Id')" class="label label-primary">
+                                <span class="glyphicon glyphicon-eye-open"></span>查看
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
         <div class="text-right">
             @Html.PageLinks(Model.PagingInfo,
-   x => Url.Action("BookList", new { page = x }))
+   x => Url.Action("ReaderList", new { page = x }))
         </div>
     </div>
 </div>

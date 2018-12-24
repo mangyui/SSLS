@@ -8,6 +8,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/error.css" rel="stylesheet" />
+    <link href="~/Scripts/layui/css/layui.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <style>
     </style>
@@ -49,25 +50,27 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 
     <script src="~/Scripts/jqZoom/xq_bigimg.js"></script>
+
+    <script src="~/Scripts/layui/layui.all.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script src="~/Scripts/totop.js"></script>
     <script src="~/Scripts/main.js"></script>
     <script>
-        layer.ready(function () {
-            if (@(TempData["msg_warning"] == null ? "false" : "true")) {
-                layer.alert('@TempData["msg_warning"]', {icon: 0});
-            }
-            if (@(TempData["msg_success"] == null ? "false" : "true")) {
-                layer.alert('@TempData["msg_success"]', {icon: 1});
-            }
-            if (@(TempData["msg_error"] == null ? "false" : "true")) {
-                layer.alert('@TempData["msg_error"]', {icon: 2});
-            }
-            if (@(TempData["msg"] == null ? "false" : "true")) {
-                layer.alert('@TempData["msg"]');
-            }
+    layer.ready(function () {
+        if (@(TempData["msg_warning"] == null ? "false" : "true")) {
+            layer.alert('@TempData["msg_warning"]', {icon: 0});
+    }
+        if (@(TempData["msg_success"] == null ? "false" : "true")) {
+            layer.msg('@TempData["msg_success"]', {icon: 1});
+    }
+    if (@(TempData["msg_error"] == null ? "false" : "true")) {
+        layer.alert('@TempData["msg_error"]', {icon: 2});
+    }
+    if (@(TempData["msg"] == null ? "false" : "true")) {
+        layer.alert('@TempData["msg"]');
+    }
 
-        })
+    })
     </script>
 </body>
 </html>

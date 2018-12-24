@@ -107,6 +107,19 @@ body{
 .state-warning::before{
     border-bottom: 39px solid #f0ad4e;
 }
+/*.book_state::after{
+    border: 41px solid #ccc;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    transform: rotate(180deg) translateY(-39px);
+    width: 0;
+    height: 0;
+}*/
 .book_state span{
     left: 0;
     position: absolute;
@@ -171,23 +184,69 @@ body{
     text-shadow: -1px 1px 1px #fff;
     margin-bottom:30px;
 }
+.Myh1 span{
+    position:relative;
+    transform:translateY(-200px) rotate(30deg);
+    display:inline-block;
+    animation-name: down;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
 .Myh1 span:nth-child(1)
 {
-    color:#009688;
+    animation-delay:.1s;
 }
 .Myh1 span:nth-child(2)
 {
-    color:#2F4056;
+    color:#009688;
+    animation-delay:.3s;
 }
 .Myh1 span:nth-child(3)
 {
+    animation-delay:.5s;
+}
+.Myh1 span:nth-child(4)
+{
+    color:#2F4056;
+    animation-delay:.7s;
+}
+.Myh1 span:nth-child(5)
+{
+    animation-delay:.1s;
+}
+.Myh1 span:nth-child(6)
+{
     color:#e4505d;
+    animation-delay:.9s;
+}
+
+@keyframes down {
+    0% {
+        transform:translateY(-200px) rotate(30deg);
+    }
+    60%{
+        transform:translateY(0px) rotate(30deg);
+    }
+    70%{
+        transform:translateY(-20px) rotate(10deg);
+    }
+    80%{
+        transform:translateY(0px) rotate(0deg);
+    }
+    90%{
+        transform:translateY(-10px) rotate(-10deg);
+    }
+    100%{
+        transform:translateY(0px) rotate(0deg);
+    }
 }
 .Mybank{
     width:100%;
     height: 240px;
     padding-top: 24px;
-    background:url('/Pimages/img/topbg.jpg') center;
+    /*background:url('/Pimages/img/topbg.jpg') center;*/
     background-size: cover;
     position:relative;
 }
@@ -251,15 +310,17 @@ body{
 .Mythub > a {
     display:inline-block;
     height:175px;
+    overflow:hidden;
 }
 .Mythub  img {
     padding: 5px 45px;
+    width:100%;
 }
-.Mythub  img:hover {
+/*.Mythub  img:hover {
    transition: .5s;
    transform:scale(1.05);
 
-}
+}*/
 .Mythub .caption
 {
     padding-top:0;
@@ -377,6 +438,7 @@ body{
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
     opacity:0.6;
+        z-index: 9999;
 }
 
 .push{
@@ -567,10 +629,10 @@ footer p{
     }
 
     .myDesc {
-        border-left: 5px solid #e4505d;
+        border-left: 5px solid #006c8a;
         padding: 10px;
         margin: 20px 0;
-        background-color: #ffd7d7;
+        background-color: #effcff;
         padding-bottom: 50px;
     }
 
@@ -612,7 +674,7 @@ footer p{
     .Cart_bg{
         background:#fff;
         padding:20px;
-        border-top: 5px solid #e4505d;
+        border-top: 5px solid #006c8a;
         box-shadow: 0 1px 2px 0 #cecece;
     }
     .Cart_select{
@@ -744,6 +806,13 @@ a.My_block{
 .bgtheme{
     background:#006c8a!important;
 }
+/*@media (max-width: 769px)
+{
+    .Mythub > a {
+    height:175px;
+}
+}*/
+
 
 @media (max-width: 768px){
     #bs-example-navbar-collapse-1{

@@ -244,7 +244,6 @@
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
     position:relative;
     margin-bottom:15px;
-    overflow: auto;
 }
 .box-title{
     position: absolute;
@@ -356,8 +355,11 @@ a.box-wrap:hover{
 select.myform-input{
     padding-top:8px;
 }
-.myform-form .myform-input{
+.myform-form .myform-input,.myform-form .layui-form-select{
     width: 300px;
+}
+.myform-form .layui-form-select input{
+    padding: 20px 0 20px 10px;
 }
 .myform-form .myform-textarea{
     width: 600px;
@@ -432,16 +434,17 @@ select.myform-input{
 }
 .btn-add .glyphicon {
     margin-right:10px;
-    transition:.3s linear;
+    transition:.2s linear;
     transform:rotate(0deg);
 }
 .btn-add:hover .glyphicon{
-    transform:rotate(360deg);
+    transform:rotate(90deg);
 }
 .rightbody .mytable {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
+    min-width: 645px;
 }
 
 .mytable th,
@@ -490,8 +493,19 @@ select.myform-input{
     margin: 20px 0;
 }
 
-#layui-layer1{
-    max-width:100%;
+.layui-layer.layui-layer-iframe{
+    max-width:98%;
+}
+
+.touch-wrap{
+    overflow: auto;
+    display: block;
+    position: relative;
+}
+.form-wrap::after{
+    content:'';
+    display:block;
+    clear:both;
 }
 @media (min-width: 768px) {
     #toggle-checkbox:checked ~ #Content {
@@ -530,8 +544,11 @@ select.myform-input{
         margin-left: 0;
     }
     .myform-form .myform-input,
-    .myform-form .myform-textarea{
+    .myform-form .myform-textarea,.myform-form .layui-form-select{
         width: 100%;
+    }
+    .layui-form-select .layui-edge{
+        top: 75%;
     }
     #ueditor{
         width: 100%;

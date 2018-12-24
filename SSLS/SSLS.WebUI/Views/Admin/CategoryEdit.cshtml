@@ -14,36 +14,36 @@
 <div class="rightbody">
     <div class="box-wrap">
         <h6 class="box-title">类别编辑</h6>
-        <div class="myform-form">
+        <div class="myform-form layui-form">
             @using (Html.BeginForm("CategoryEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                
+
                 @Html.HiddenFor(model => model.Id)
                 <div class="myform-line">
                     <label class="myform-left">类别编号：</label>
                     <div class="myform-right">
-                        @Html.TextBoxFor(model => model.Code, new { @class = "myform-input" })
+                        @Html.TextBoxFor(model => model.Code, new { @class = "myform-input", @lay_verify = "required|number" })
                         @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="myform-line">
                     <label class="myform-left">类别名称：</label>
                     <div class="myform-right">
-                        @Html.TextBoxFor(model => model.Name, new { @class = "myform-input" })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.Name, new { @class = "myform-input", @lay_verify = "required" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger"})
                     </div>
                 </div>
                 <div class="myform-line">
                     <label class="myform-left">类别说明：</label>
                     <div class="myform-right">
-                        <textarea class="myform-textarea" name="Description">@Model.Description</textarea>
+                        <textarea class="myform-textarea" name="Description" , lay-verify="required">@Model.Description</textarea>
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="myform-line">
                     <div class="myform-right">
-                        <input class="myform-btn" type="submit" value="保存">
+                        <input class="myform-btn" type="submit"lay-submit value="保存">
                     </div>
                 </div>
             }

@@ -63,3 +63,14 @@ E:\11_19\SSLS\SSLS.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
 E:\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
 E:\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb
 E:\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll.config
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.pdb
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\EntityFramework.dll
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.dll
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\EntityFramework.xml
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.xml
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
+F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb

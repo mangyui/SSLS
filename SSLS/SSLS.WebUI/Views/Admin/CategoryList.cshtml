@@ -14,34 +14,36 @@
     <div class="box-wrap">
         <h6 class="box-title">类别列表</h6>
         <a href="@Url.Action("CategoryCreate", "Admin")" class="btn btn-primary btn-add"><i class="glyphicon glyphicon-plus"></i>添加</a>
-        <table class="mytable">
-            <tr>
-                <th class="">类别ID</th>
-                <th>类别编号</th>
-                <th>类别名称</th>
-                <th>图书数量</th>
-                <th class="wd20">操作</th>
-            </tr>
-            @foreach (var item in Model)
-            {
+        <div class="touch-wrap">
+            <table class="mytable">
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Code</td>
-                    <td>@item.Name</td>
-                    <td><b>@item.Book.Count()</b></td>
-                    <td>
-                        <a href="@Url.Action("CategoryEdit", "Admin", new { id =@item.Id})" class="label label-warning">
-                            <span class="glyphicon glyphicon-edit"></span>编辑
-                        </a>
-                        <a onclick="Layerdelete('确定要删除‘ @item.Name ’类别吗', '/Admin/CategoryDelete', '@item.Id')" class="label label-danger">
-                            <span class="glyphicon glyphicon-trash"></span>删除
-                        </a>
-                    </td>
+                    <th class="">类别ID</th>
+                    <th>类别编号</th>
+                    <th>类别名称</th>
+                    <th>图书数量</th>
+                    <th class="wd20">操作</th>
                 </tr>
-            }
-        </table>
-        <div class="text-right">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Code</td>
+                        <td>@item.Name</td>
+                        <td><b>@item.Book.Count()</b></td>
+                        <td>
+                            <a href="@Url.Action("CategoryEdit", "Admin", new { id =@item.Id})" class="label label-warning">
+                                <span class="glyphicon glyphicon-edit"></span>编辑
+                            </a>
+                            <a onclick="Layerdelete('确定要删除‘ @item.Name ’类别吗', '/Admin/CategoryDelete', '@item.Id')" class="label label-danger">
+                                <span class="glyphicon glyphicon-trash"></span>删除
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            </div>
+            <div class="text-right">
+            </div>
         </div>
-    </div>
 </div>
 

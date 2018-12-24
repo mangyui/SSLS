@@ -402,7 +402,7 @@ $(function () {
                 {
                     name: '数量（n）',
                     type: 'value',
-                    boundaryGap: [0, 0.5]
+                    boundaryGap: [0, 0.6]
                 }
             ],
             series: [

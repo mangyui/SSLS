@@ -23,9 +23,6 @@
             <p class="Myact">【@Model.Category.Name】不读此书，后悔一辈子...</p>
             <div class="myMess">
                 <div>
-                    <span>售价</span><p class="myPrice">@Model.Price.Value.ToString("c")</p>
-                </div>
-                <div>
                     <span>作者</span><p>@Model.Authors</p>
                 </div>
                 <div>
@@ -33,6 +30,9 @@
                 </div>
                 <div>
                     <span>出版日期</span><p>@Model.PublishDate.Value.ToString("d")</p>
+                </div>
+                <div>
+                    <span>售价</span><p>@Model.Price.Value.ToString("c")</p>
                 </div>
             </div>
             <div class="mySize">

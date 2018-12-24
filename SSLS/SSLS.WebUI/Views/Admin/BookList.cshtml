@@ -14,49 +14,51 @@
     <div class="box-wrap">
         <h6 class="box-title">图书列表</h6>
         <a href="@Url.Action("BookCreate", "Admin")" class="btn btn-primary btn-add"><i class="glyphicon glyphicon-plus"></i>添加</a>
-        <table class="mytable">
-            <tr>
-                <th class="">图书ID</th>
-                <th class="">缩略图</th>
-                <th>图书名称</th>
-                <th>图书作者</th>
-                <th class="">当前状态</th>
-                <th class="">所属类别</th>
-                <th class="wd20">操作</th>
-            </tr>
-            @foreach (var item in Model.Books)
-            {
+        <div class="touch-wrap">
+            <table class="mytable">
                 <tr>
-                    <td>@item.Id</td>
-                    <td><img class="admin_bookimg" src="@item.ImageUrl" alt="@item.Name" /></td>
-                    <td>《@item.Name》</td>
-                    <td>@item.Authors</td>
-                    <td>@item.Status</td>
-                    <td>@item.Category.Name</td>
-                    <td>
-                        @if (item.Status == "外借")
-                        {
-                            <a onclick="layernot('图书《@item.Name》外借，不能修改！')" class="label label-warning">
-                                <span class="glyphicon glyphicon-edit"></span>编辑
-                            </a>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("BookEdit", "Admin", new { id =@item.Id})" class="label label-warning">
-                                <span class="glyphicon glyphicon-edit"></span>编辑
-                            </a>
-                        }
-                        <a onclick="Layerdelete('确定要删除《@item.Name》吗','/Admin/BookDelete','@item.Id')" class="label label-danger">
-                            <span class="glyphicon glyphicon-trash"></span>删除
-                        </a>
-                    </td>
+                    <th class="">图书ID</th>
+                    <th class="">缩略图</th>
+                    <th>图书名称</th>
+                    <th>图书作者</th>
+                    <th class="">当前状态</th>
+                    <th class="">所属类别</th>
+                    <th class="">操作</th>
                 </tr>
-            }
-        </table>
-        <div class="text-right">
-            @Html.PageLinks(Model.PagingInfo,
+                @foreach (var item in Model.Books)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td><img class="admin_bookimg" src="@item.ImageUrl" alt="@item.Name" /></td>
+                        <td>《@item.Name》</td>
+                        <td>@item.Authors</td>
+                        <td>@item.Status</td>
+                        <td>@item.Category.Name</td>
+                        <td>
+                            @if (item.Status == "外借")
+                            {
+                                <a onclick="layernot('图书《@item.Name》外借，不能修改！')" class="label label-warning">
+                                    <span class="glyphicon glyphicon-edit"></span>编辑
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("BookEdit", "Admin", new { id =@item.Id})" class="label label-warning">
+                                    <span class="glyphicon glyphicon-edit"></span>编辑
+                                </a>
+                            }
+                            <a onclick="Layerdelete('确定要删除《@item.Name》吗','/Admin/BookDelete','@item.Id')" class="label label-danger">
+                                <span class="glyphicon glyphicon-trash"></span>删除
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            </div>
+            <div class="text-right">
+                @Html.PageLinks(Model.PagingInfo,
    x => Url.Action("BookList", new { categoryId = Model.CurrentCategoryId, page = x }))
+            </div>
         </div>
-    </div>
 </div>
 

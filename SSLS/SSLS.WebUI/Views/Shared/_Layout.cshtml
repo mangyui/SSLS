@@ -37,7 +37,7 @@
         </nav>
         <div class="Mybank">
             <div class="Mybank_mark"></div>
-            <h1 class="Myh1">M<span>A</span>N<span>G</span>Y<span>U</span></h1>
+            <h1 class="Myh1"><span>M</span><span>A</span><span>N</span><span>G</span><span>Y</span><span>U</span></h1>
             @using (Html.BeginForm("Search", "Book", FormMethod.Get, new { @id = "mySearch" }))
             {
                 <p>
@@ -72,6 +72,8 @@
     <script src="~/Scripts/totop.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script>
+        if (window.location.pathname != "/"&&window.location.pathname != "/Book/List"&&window.location.pathname != "/Book/Search")
+            window.location.hash = 'categories';
     layer.ready(function () {
         if (@(TempData["msg_warning"] == null ? "false" : "true")) {
             layer.alert('@TempData["msg_warning"]', {icon: 0});

@@ -1,4 +1,14 @@
-﻿$(function () {
+﻿
+
+$(function () {
+
+    //var form = layui.form, layer = layui.layer;
+    //form.on('submit(formDemo)', function (data) {
+    //    //layer.msg(JSON.stringify(data.field));
+    //    //alert("123");
+    //    return false;
+    //});
+
     $(".Modify .btn").click(function () {
         $(".Modify .btn").removeClass("bgtheme").addClass("btn-default");
         $(this).addClass("bgtheme");

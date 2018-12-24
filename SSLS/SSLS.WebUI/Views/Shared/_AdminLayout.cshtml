@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/layui/css/layui.css" rel="stylesheet" />
     <link href="~/Content/admin_main.css" rel="stylesheet" />
 </head>
 <body>
@@ -149,6 +150,7 @@
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/layui/layui.all.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script src="~/Scripts/echarts.min.js"></script>
     <script src="~/Scripts/admin_main.js"></script>
@@ -158,7 +160,7 @@
             layer.alert('@TempData["msg_warning"]', {icon: 0});
     }
           if (@(TempData["msg_success"] == null ? "false" : "true")) {
-            layer.alert('@TempData["msg_success"]', {icon: 1});
+            layer.msg('@TempData["msg_success"]', {icon: 1});
         }
           if (@(TempData["msg_error"] == null ? "false" : "true")) {
             layer.alert('@TempData["msg_error"]', {icon: 2});
