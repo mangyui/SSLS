@@ -19,6 +19,8 @@ namespace SSLS.WebUI
             ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
             //设置Reader类  使用ReaderModelBinder进行绑定
             ModelBinders.Binders.Add(typeof(Reader), new ReaderModelBinder());
+            //设置Admin类  使用AdminModelBinder进行绑定
+            ModelBinders.Binders.Add(typeof(Admin), new AdminModelBinder());
         }
     }
 }

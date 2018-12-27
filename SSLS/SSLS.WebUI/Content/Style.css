@@ -733,6 +733,12 @@ footer p{
    padding: 10px 20px 10px 0;
 }
 
+.touch-wrap{
+    overflow:auto;
+}
+.touch_table{
+    min-width: 720px;
+}
 /*个人中心样式*/
 .user {
     display: flex;
@@ -892,6 +898,12 @@ a.My_block{
         padding:0!important;
     }
     .Cart_book img{
-        width:120%;
+        width:100%;
+    }
+    .touch_table{
+       font-size: 11px;
+   }
+    .touch_table  .Cart_book img{
+        width:50%;
     }
 }

@@ -12,63 +12,65 @@
 </ol>
 
 <div class="Cart_bg">
-    <table id="cartTable" class="table">
-        <caption class="text-center">我的借阅</caption>
-        <thead>
-            <tr>
-                <th width="20%">图书</th>
-                <th>图书详情</th>
-                <th>借阅详情</th>
-                <th>是否超期</th>
-                <th width="">操作</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var borrow in Model.Borrows)
-            {
+    <div class="touch-wrap">
+        <table id="cartTable" class="table touch_table">
+            <caption class="text-center">我的借阅</caption>
+            <thead>
                 <tr>
-                    <td class="Cart_book">
-                        <a href="@Url.Action("Detail", "Book", new { id = borrow.Book.Id })">
-                            <img src="@borrow.Book.ImageUrl" alt="@borrow.Book.Name" width="100%">
-                        </a>
-                    </td>
-                    <td style="text-align:left">
-                        <div class="Cart_datail">
-                            <div>
-                                <span>书名:</span><div>《@borrow.Book.Name》</div>
-                            </div>
-                            <div>
-                                <span>作者:</span><div>@borrow.Book.Authors</div>
-                            </div>
-                            <div>
-                                <span>出版社:</span><i>@borrow.Book.Press</i>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="Cart_datail">
-                            <div>
-                                <span>借书日期:</span><div>@borrow.BorrowDate</div>
-                            </div>
-                            <div>
-                                <span>应还日期:</span><b>@borrow.ShouldDate</b>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="label @(borrow.ShouldDate <DateTime.Now ? "bgred" : "bggreen")">@(borrow.ShouldDate < DateTime.Now ? "超期" + (DateTime.Now - borrow.ShouldDate).Days + "天" : (borrow.ShouldDate - DateTime.Now).Days + "天到期")</span>
-                    </td>
-                    <td>
-                        <a class="btn btn-sm bggray" href="@Url.Action("BorrowDetail", "Borrow", new { id = @borrow.Id })">@(borrow.State != "在借" ? "已归还" : "归还")</a>
-                        <a class="btn btn-sm bgblue @(borrow.Renew == "是" ? "disabled" : "")" onclick="layerRenew('确定要续借《 @borrow.Book.Name 》吗', '@borrow.Id',this)">@(borrow.Renew == "是" ? "已续借" : "续借")</a>
-                    </td>
+                    <th width="20%">图书</th>
+                    <th>图书详情</th>
+                    <th>借阅详情</th>
+                    <th>是否超期</th>
+                    <th width="">操作</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-    <div class="text-center">
-        @Html.PageLinks(Model.PagingInfo,
+            </thead>
+            <tbody>
+                @foreach (var borrow in Model.Borrows)
+                {
+                    <tr>
+                        <td class="Cart_book">
+                            <a href="@Url.Action("Detail", "Book", new { id = borrow.Book.Id })">
+                                <img src="@borrow.Book.ImageUrl" alt="@borrow.Book.Name" width="100%">
+                            </a>
+                        </td>
+                        <td style="text-align:left">
+                            <div class="Cart_datail">
+                                <div>
+                                    <span>书名:</span><div>《@borrow.Book.Name》</div>
+                                </div>
+                                <div>
+                                    <span>作者:</span><div>@borrow.Book.Authors</div>
+                                </div>
+                                <div>
+                                    <span>出版社:</span><i>@borrow.Book.Press</i>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="Cart_datail">
+                                <div>
+                                    <span>借书日期:</span><div>@borrow.BorrowDate</div>
+                                </div>
+                                <div>
+                                    <span>应还日期:</span><b>@borrow.ShouldDate</b>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="label @(borrow.ShouldDate <DateTime.Now ? "bgred" : "bggreen")">@(borrow.ShouldDate < DateTime.Now ? "超期" + (DateTime.Now - borrow.ShouldDate).Days + "天" : (borrow.ShouldDate - DateTime.Now).Days + "天到期")</span>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm bggray" href="@Url.Action("BorrowDetail", "Borrow", new { id = @borrow.Id })">@(borrow.State != "在借" ? "已归还" : "归还")</a>
+                            <a class="btn btn-sm bgblue @(borrow.Renew == "是" ? "disabled" : "")" onclick="layerRenew('确定要续借《 @borrow.Book.Name 》吗', '@borrow.Id',this)">@(borrow.Renew == "是" ? "已续借" : "续借")</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+        <div class="text-center">
+            @Html.PageLinks(Model.PagingInfo,
                     x => Url.Action("MyBorrow", new { page = x }))
+        </div>
     </div>
-</div>
 

@@ -13,25 +13,32 @@ namespace SSLS.WebUI.Controllers
     public class AccountController : Controller
     {
         IAuthProvider authProvider;
-        public AccountController(IAuthProvider auth)
+        private IBooksRepository repository;
+        public AccountController(IAuthProvider auth, IBooksRepository productsRepository)
         {
             this.authProvider = auth;
+            this.repository = productsRepository;
         }
         public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Login(Admin model, string returnUrl)
+        public ActionResult Login(AdminLoginModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                if (authProvider.Authenticate(model.UserName, model.Password))
+                Admin AdminEntry = repository.Admins.FirstOrDefault(c =>
+                    c.UserName == model.UserName && c.Password == model.Password);
+                if (AdminEntry != null)
                 {
+                    authProvider.Authenticate(model.UserName,true);
+                    HttpContext.Session["Admin"] = AdminEntry;
                     return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
                 }
                 else
                 {
+                    authProvider.Authenticate(model.UserName,false);
                     ModelState.AddModelError("", "用户名或密码错误！");
                     return View();
                 }
@@ -45,11 +52,12 @@ namespace SSLS.WebUI.Controllers
         public ActionResult Logout()
         {
             authProvider.ToOut();
+            HttpContext.Session["Admin"] = null;
             return RedirectToAction("Login");
         }
-        public PartialViewResult Summary()
+        public PartialViewResult Summary(Admin admin)
         {
-            ViewBag.AdminName = authProvider.GetName();
+            ViewBag.AdminName = admin.UserName;
             return PartialView();
         }
     }

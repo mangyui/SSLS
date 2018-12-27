@@ -49,7 +49,6 @@ G:\2018_MVC\11_19\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.dll
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\bin\Debug\EntityFramework.xml
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.xml
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
-G:\2018_MVC\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
 G:\2018_MVC\11_19\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb
 E:\11_19\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll.config
@@ -74,3 +73,14 @@ F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\bin\Debug
 F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
 F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
 F:\2018_MVC\11_19\16136235余会明\16136235余会明\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll.config
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.dll
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\SSLS.Domain.pdb
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\EntityFramework.dll
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.dll
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\EntityFramework.xml
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\EntityFramework.SqlServer.xml
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.csprojResolveAssemblyReference.cache
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.dll
+E:\11_19\16136235余会明\src\SSLS\SSLS.Domain\obj\Debug\SSLS.Domain.pdb

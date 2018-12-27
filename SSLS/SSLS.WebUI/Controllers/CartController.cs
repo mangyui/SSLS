@@ -23,7 +23,10 @@ namespace SSLS.WebUI.Controllers
             Book book = repository.Books.FirstOrDefault(p => p.Id == id);
             if (book != null)
             {
-                cart.AddItem(book);
+                if(cart.AddItem(book))
+                    TempData["msg_success"] = "添加成功！";
+                else
+                    TempData["msg_success"] = "已在暂存架！";
             }
             return RedirectToAction("Index", new { returnUrl });
         }
@@ -33,6 +36,7 @@ namespace SSLS.WebUI.Controllers
             if (book != null)
             {
                 cart.Removeline(book);
+                TempData["msg_success"] = "移除成功！";
             }
             return RedirectToAction("Index", new { returnUrl });
         }

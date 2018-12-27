@@ -7,8 +7,7 @@ namespace SSLS.WebUI.Infrastructure.Abstract
 {
     public interface IAuthProvider
     {
-        bool Authenticate(string userName, string password);
+        bool Authenticate(string userName, bool result);
         void ToOut();
-        string GetName();
     }
 }

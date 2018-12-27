@@ -9,7 +9,7 @@ namespace SSLS.Domain.Concrete
     public class Cart
     {
         private List<CartLine> lineCollection = new List<CartLine>();
-        public void AddItem(Book book)
+        public bool AddItem(Book book)
         {
             CartLine line = lineCollection.Where(e => e.Book.Id == book.Id).FirstOrDefault();
             if (line == null)
@@ -20,10 +20,13 @@ namespace SSLS.Domain.Concrete
                     if (bookEntry.Status == "在库")
                     {
                         lineCollection.Add(new CartLine { Book = book });
+                        return true;
                     }
 
                 }
+                return false;
             }
+            return false;
         }
         
         public IEnumerable<CartLine> Lines

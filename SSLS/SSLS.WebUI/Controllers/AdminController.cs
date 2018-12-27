@@ -65,8 +65,14 @@ namespace SSLS.WebUI.Controllers
             return View(book);
         }
         [HttpPost]
-        public ActionResult BookEdit(Book book,HttpPostedFileBase file)
+        public ActionResult BookEdit(Book book,HttpPostedFileBase file,Admin admin)
         {
+            if(admin.UserName!="mangyu")
+            {
+                TempData["msg_error"] = "你没有该权限！";
+                ViewBag.CategoryList = Utils.GetCategorySelectListItem(repository);
+                return View(book);
+            }
             string imageFileName = string.Empty;
             if(ModelState.IsValid)
             {
@@ -104,9 +110,17 @@ namespace SSLS.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult BookDelete(int id)
-        {    
+        public ActionResult BookDelete(int id,Admin admin)
+        {
             string msg;
+            if (admin.UserName != "mangyu")
+            {
+                return Json(new
+                {
+                    result = false,
+                    msg = "你没有该权限！"
+                }); 
+            }
             return Json(new
             {
                 result = repository.DeleteBook(id, out msg),
@@ -128,8 +142,13 @@ namespace SSLS.WebUI.Controllers
             return View(category);
         }
         [HttpPost]
-        public ActionResult CategoryEdit(Category category)
+        public ActionResult CategoryEdit(Category category,Admin admin)
         {
+            if (admin.UserName != "mangyu")
+            {
+                TempData["msg_error"] = "你没有该权限！";
+                return View(category);
+            }
             if (ModelState.IsValid)
             {
                 repository.SaveCategory(category);
@@ -142,9 +161,17 @@ namespace SSLS.WebUI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult CategoryDelete(int id)
+        public ActionResult CategoryDelete(int id,Admin admin)
         {
             string msg;
+            if (admin.UserName != "mangyu")
+            {
+                return Json(new
+                {
+                    result = false,
+                    msg = "你没有该权限！"
+                });
+            }
             return Json(new {
                 result=repository.DeleteCategory(id,out msg),
                 msg=msg

@@ -315,12 +315,14 @@
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
+    <Compile Include="Infrastructure\Binders\AdminModelBinder.cs" />
     <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\Binders\ReaderModelBinder.cs" />
     <Compile Include="Infrastructure\Concrete\FormAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\Utils.cs" />
     <Compile Include="Models\AdminAllModel.cs" />
+    <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\BooksListViewModel.cs" />
     <Compile Include="Models\BorrowViewModel.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
