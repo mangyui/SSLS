@@ -14,10 +14,12 @@ namespace SSLS.WebUI.Controllers
     public class AdminController : Controller
     {
         private IBooksRepository repository;
+        private IBorrowProcessor borrowProcessor;
         public int PageSize = 6;
-        public AdminController(IBooksRepository bookRepository)
+        public AdminController(IBooksRepository bookRepository, IBorrowProcessor proc)
         {
-            this.repository = bookRepository;;
+            this.repository = bookRepository;
+            this.borrowProcessor = proc;
         }       
         // GET: Admin
         public ActionResult Index()
@@ -197,6 +199,32 @@ namespace SSLS.WebUI.Controllers
             };
             return View(viewModel);
         }
+        [HttpPost]
+        public ActionResult ToReturn(int readerId,Admin admin)
+        {
+            if (admin.UserName != "mangyu")
+            {
+                return Json(new
+                {
+                    result = false,
+                    mess = "你没有该权限！"
+                });
+            }
+            else
+            {
+                Reader reader = repository.Readers.Where(b => b.Id == readerId).FirstOrDefault();
+                var borrowlist = repository.Borrows.Where(b => b.Reader_ID == readerId && b.State == "在借");
+                foreach (var b in borrowlist)
+                {
+                    borrowProcessor.ProcessReturn(b.Id, reader);
+                }
+                return Json(new
+                {
+                    result = true,
+                    mess = "操作已完成！"
+                });
+            }
+        }
         public ActionResult ReaderDetail(int id)
         {
             Reader reader = repository.Readers.Where(r => r.Id == id).FirstOrDefault();
@@ -234,6 +262,11 @@ namespace SSLS.WebUI.Controllers
         public ActionResult GetBookTop()
         {
             return Json(repository.GetBookTop());
+        }
+        [HttpPost]
+        public ActionResult GetAllReader()
+        {
+            return Json(repository.GetAllReader());
         }
         [HttpPost]
         public ActionResult GetReaderTop()

@@ -35,6 +35,7 @@ namespace SSLS.Domain.Abstract
         object[] GetCatogoryChart();
         object[] GetBorrowChart();
         object[] GetBorrowCategory();
+        object[] GetAllReader();
         object[] GetBookTop();
         object[] GetReaderTop();
         object[] GetFineChart();

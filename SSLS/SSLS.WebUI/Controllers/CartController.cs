@@ -106,6 +106,12 @@ namespace SSLS.WebUI.Controllers
                 return RedirectToAction("Checkout");
             }
             List<Book> books = Session["books"] as List<Book>;
+            int cc=repository.Borrows.Where(f => f.Reader_ID == reader.Id && f.State == "在借").Count();
+            if ((books.Count() + cc) > 3)
+            {
+                TempData["msg_error"] = "已限制在借数，你借阅过多!";
+                return RedirectToAction("Checkout");
+            }
             borrowProcessor.ProcessBorrow(books, reader);
             cart.Clear();
             Session["books"] = null;

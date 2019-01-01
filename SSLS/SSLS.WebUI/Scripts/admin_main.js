@@ -43,6 +43,24 @@ layer.ready(function () {
             })
         });
     };
+    toReturn = function (mess, id) {            //归还
+        layer.confirm(mess, {         //询问框
+            title: '强制归还',
+            btn: ['确定', '取消'], //按钮
+            anim: 3
+        }, function () {
+            $.post("/Admin/ToReturn", { readerId: id }, function (data) {
+                if (data.result == true) {
+                    layer.alert(data.mess, { icon: 1 }, function () {
+                        window.location.reload();
+                    });
+                }
+                else {
+                    layer.alert(data.mess, { icon: 2, });
+                }
+            })
+        });
+    };
 })
 
 $(function () {
@@ -147,6 +165,7 @@ $(function () {
 
         var Borrow_Chart = echarts.init(document.getElementById('Borrow_Chart'));
         var Borrow_Category = echarts.init(document.getElementById('Borrow_Category'));
+        var all_Reader = echarts.init(document.getElementById('all_Reader'));
 
         var option2 = {
             title: {
@@ -274,6 +293,72 @@ $(function () {
                     // 根据名字对应到相应的系列
                     data: data[1]
                 }]
+            });
+        });
+
+        var all_Reader_option = {   //all读者在借
+            title: {
+                text: '读者在借',
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            legend: {
+                data: ['在借数']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                name: '数量（n）',
+                type: 'value',
+                boundaryGap: [0, 1]
+            },
+            yAxis: {
+                name: '读者名',
+                type: 'category',
+                data: ['读者1', '读者2', '读者3', '读者4', '读者5']
+            },
+            series: [
+                {
+                    name: '在借数',
+                    type: 'bar',
+                    data: [0, 0, 0, 0, 0]
+                }
+            ]
+        };
+        all_Reader.setOption(all_Reader_option);
+
+        all_Reader.showLoading();
+        $.post('/Admin/GetAllReader').done(function (data) {
+            // 填入数据
+            all_Reader.hideLoading();
+            all_Reader.setOption({
+                yAxis: {
+                    data: data[0]
+                },
+                series: [
+                {
+                    name: '在借数',
+                    type: 'bar',
+                    data: data[1]
+                }
+                ]
             });
         });
     }

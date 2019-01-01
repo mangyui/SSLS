@@ -251,6 +251,25 @@ namespace SSLS.Domain.Concrete
               values
             };
         }
+        public object[] GetAllReader()
+        {
+            int count = db.Reader.Count();
+            string[] readers = new string[count];
+            int[] values = new int[count];
+            int i = 0;
+            var readersEntry = db.Reader.OrderByDescending(b => b.Borrow.Count(p=>p.State=="在借"));
+            foreach (var c in readersEntry)
+            {
+                readers[i] = c.Name;
+                values[i] = c.Borrow.Count(b => b.State == "在借");
+                i++;
+            }
+            object[] obj = new object[]{
+              readers.Reverse(),
+              values.Reverse()
+            };
+            return obj;
+        }
         public object[] GetBookTop()
         {
             string[] books=new string[6];

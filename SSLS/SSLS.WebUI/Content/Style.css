@@ -57,7 +57,7 @@ body{
 .hheight {
     margin-top: 5px;
     font-weight:bold;
-    font-size:2vh;
+    font-size:17px;
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
@@ -611,6 +611,7 @@ footer p{
         background-color: #fff;
         padding: 10px;
         box-shadow: 0 1px 2px 0 #cecece;
+		overflow: hidden;
     }
     .Detail_bigimg{
         padding:20px;
@@ -676,6 +677,7 @@ footer p{
         padding:20px;
         border-top: 5px solid #006c8a;
         box-shadow: 0 1px 2px 0 #cecece;
+		overflow: hidden;
     }
     .Cart_select{
         display: inline-block;
@@ -849,6 +851,10 @@ a.My_block{
         width:25%;
         height:40px;
     }
+	.hheight {
+		padding-top:3px;
+		font-size:14px;
+	}
     .Mythub{
         margin:0 0 10px 0;
     }
@@ -905,5 +911,14 @@ a.My_block{
    }
     .touch_table  .Cart_book img{
         width:50%;
+    }
+    .awater p{
+        width:134px;
+        
+    }
+    .Checkout_reader td, .Checkout_reader th{
+        overflow: hidden;
+       text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }

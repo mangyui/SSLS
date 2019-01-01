@@ -3,28 +3,28 @@ SSLS
 
 校园自助图书管理系统
 
-PC端
+SSLS展示
 
-![运行截图](./show/SSLS_1.png)
+![运行截图](./show/ssls3.png)
 
-移动端
+SSLS后台管理展示
 
-![运行截图](./show/SSLS_2.png)
+![运行截图](./show/ssls4.png)
 
 所用技术
 ------
->* ASP.NET MVC
+>* ASP.NET MVC + SQLServer
 
->* BootStrap
+>* BootStrap + layui
 
->* 
+>* Echats
 
 
 说明
 -----
 >*开发环境：VS Studio
 
->*程序包未上传，可根据packages.config文件安装
+>*程序包未上传，可根据packages.config文件直接安装
 
 >*数据库在Data文件夹下
 

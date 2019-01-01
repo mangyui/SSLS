@@ -15,22 +15,22 @@ namespace SSLS.WebUI
             routes.MapRoute(
                    null,//路由名称，不需要指定
                    "",
-                   new { Controller = "Book", action = "List", categoryId = 0, page = 1 }//默认控制器为Book，动作方法为List
+                   new { Controller = "Book", action = "List", categoryId = 0, page = 1 }
                );
             routes.MapRoute(
-                    null,//路由名称，不需要指定
-                    "page{page}",//Url的形
-                    new { Controller = "Book", action = "List", categoryId = 0 }//默认控制器为Book，动作方法为List
+                    null,
+                    "page{page}",
+                    new { Controller = "Book", action = "List", categoryId = 0 }
                 );
             routes.MapRoute(
-                   null,//路由名称，不需要指定
-                   "cid{categoryId}",//Url的形
-                   new { Controller = "Book", action = "List", page = 1 }//默认控制器为Book，动作方法为List
+                   null,
+                   "cid{categoryId}",
+                   new { Controller = "Book", action = "List", page = 1 }
                );
             routes.MapRoute(
-                   null,//路由名称，不需要指定
-                   "cid{categoryId}/page{page}",//Url的形
-                   new { Controller = "Book", action = "List" }//默认控制器为Book，动作方法为List
+                   null,
+                   "cid{categoryId}/page{page}",
+                   new { Controller = "Book", action = "List" }
                );
             routes.MapRoute(
                 name: null,

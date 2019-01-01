@@ -21,7 +21,7 @@
                     <th>读者昵称</th>
                     <th>读者班级</th>
                     <th class="">读者邮箱</th>
-                    <th class="">借阅次数</th>
+                    <th class="">在借数(总借)</th>
                     <th class="">操作</th>
                 </tr>
                 @foreach (var item in Model.Readers)
@@ -32,10 +32,13 @@
                         <td>@item.Name</td>
                         <td>@item.Class</td>
                         <td>@item.Email</td>
-                        <td>@item.Borrow.Count()</td>
+                        <td>@item.Borrow.Count(b => b.State == "在借") ( <b>@item.Borrow.Count()</b> )</td>
                         <td>
                             <a onclick="layerReader('/Admin/ReaderDetail?id=@item.Id')" class="label label-primary">
                                 <span class="glyphicon glyphicon-eye-open"></span>查看
+                            </a>
+                            <a onclick="toReturn('强制归还 @item.Name 的全部借阅','@item.Id')" class="label label-danger">
+                                <span class="glyphicon glyphicon-flash"></span>归还
                             </a>
                         </td>
                     </tr>
